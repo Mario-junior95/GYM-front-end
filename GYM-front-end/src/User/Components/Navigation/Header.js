@@ -4,6 +4,8 @@ import Hamburger from "./Hamburger";
 import LogoWhite from "../../../Images/logoWhite.svg";
 import LogoBlack from "../../../Images/logoBlack.svg";
 
+import "./MyAccountBtn.css";
+
 const Header = (props) => {
   const { history } = props;
   // State of our Menu
@@ -67,6 +69,13 @@ const Header = (props) => {
     }, 1200);
   };
 
+  /* Logout Function */
+  
+  const Logout = () => {
+    localStorage.clear();
+    history.push("/");
+  };
+
   return (
     <header>
       <div className="container">
@@ -74,11 +83,11 @@ const Header = (props) => {
           <div className="inner-header">
             <div className="logo">
               {state.menuName !== "Close" ? (
-                <Link to="/home">
+                <Link to="/">
                   <img src={LogoWhite} alt="error-logo" />
                 </Link>
               ) : (
-                <Link to="/home">
+                <Link to="/">
                   <img src={LogoBlack} alt="error-logo" />
                 </Link>
               )}
@@ -114,6 +123,64 @@ const Header = (props) => {
         </div>
       </div>
       <Hamburger state={state} />
+      <div className="container_button">
+        <div className="center">
+          {localStorage.getItem("token") ? (
+            <Link exact="true" to="/myinfo">
+              <button className="btn">
+                <svg
+                  width="180px"
+                  height="60px"
+                  viewBox="0 0 180 60"
+                  className="border"
+                >
+                  <polyline
+                    points="179,1 179,59 1,59 1,1 179,1"
+                    className="bg-line"
+                  />
+                  <polyline
+                    points="179,1 179,59 1,59 1,1 179,1"
+                    className="hl-line"
+                  />
+                </svg>
+                <span>My Account</span>
+              </button>
+            </Link>
+          ) : (
+            <Link exact="true" to="/SignIn">
+              <button className="btn">
+                <svg
+                  width="180px"
+                  height="60px"
+                  viewBox="0 0 180 60"
+                  className="border"
+                >
+                  <polyline
+                    points="179,1 179,59 1,59 1,1 179,1"
+                    className="bg-line"
+                  />
+                  <polyline
+                    points="179,1 179,59 1,59 1,1 179,1"
+                    className="hl-line"
+                  />
+                </svg>
+                <span>My Account</span>
+              </button>
+            </Link>
+          )}
+        </div>
+        <div>
+          {localStorage.getItem("token") ? (
+            <div className="logout">
+              <button className="btn" onClick={Logout}>
+                <span>Logout</span>
+              </button>
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
+      </div>
     </header>
   );
 };

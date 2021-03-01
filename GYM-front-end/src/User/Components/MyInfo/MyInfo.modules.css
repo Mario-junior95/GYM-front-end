@@ -1,0 +1,43 @@
+.sideBox {
+  border-left: 1px white solid;
+  padding: 0 2vw;
+  height: 30vw;
+  margin-top: 6vw;
+}
+
+.sideBox > h1 {
+  font-size: 3em;
+  letter-spacing: 4px;
+}
+
+.sideBox > span {
+  font-family: Termina, Impact, Arial Black, sans-serif;
+}
+
+.sideBox > span:hover {
+  color: gray;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.infoText {
+  text-transform: lowercase !important;
+  font-family: Termina, Impact, Arial Black, sans-serif;
+  letter-spacing: 0;
+  font-size: 1.5em !important;
+  /* display: inline-block; */
+  text-align: justify;
+}
+
+.gender_male {
+  transform: translate(28vw, -32vw);
+  overflow: hidden !important;
+  height: 33vw;
+}
+
+.gender_female {
+  transform: translate(35vw, -32vw);
+  overflow: hidden !important;
+  height: 33vw;
+  width: 20vw;
+}

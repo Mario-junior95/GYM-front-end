@@ -6,6 +6,8 @@ import Home from "../../../Images/Home.jpg";
 import WorkPlan from "../../../Images/Workout.jpg";
 import Coaches from "../../../Images/Coaches.jpg";
 
+
+
 import {
   staggerText,
   staggerReveal,
@@ -17,7 +19,6 @@ import {
 
 const Hamburger = (props) => {
   const { state } = props;
-  console.log({ state });
   // Create varibles of our dom nodes
   let menuLayer = useRef(null);
   let reveal1 = useRef(null);
@@ -94,6 +95,11 @@ const Hamburger = (props) => {
 
   const [listOne, setListOne] = useState("");
 
+  /*    Logout Function */
+  const Logout = () => {
+    localStorage.clear();
+  };
+
   return (
     <div ref={(el) => (menuLayer = el)} className="hamburger-menu">
       <div
@@ -106,12 +112,12 @@ const Hamburger = (props) => {
             <div className="menu-links">
               <nav>
                 <ul>
-                  <li className = "listLink1">
+                  <li className="listLink1">
                     <Link
                       onMouseEnter={(e) => handleHover(e)}
                       onMouseOut={(e) => handleHoverExit(e)}
                       ref={(el) => (line1 = el)}
-                      to="/home"
+                      to="/"
                       onMouseOver={() => setListOne({ ...hoverOne })}
                       onMouseLeave={() => setListOne({})}
                     >
@@ -144,15 +150,39 @@ const Hamburger = (props) => {
                   </li>
                 </ul>
                 <ul className="special_font">
-                  <li>
+                  {!localStorage.getItem("token") ? (
+                    <li>
+                      <Link
+                        onMouseEnter={(e) => handleHover(e)}
+                        onMouseOut={(e) => handleHoverExit(e)}
+                        ref={(el) => (line3 = el)}
+                        to="/SignIn"
+                        className="MiniMenu"
+                      >
+                        Login
+                      </Link>
+                    </li>
+                  ) : (
+                    <li>
+                      <Link
+                        onMouseEnter={(e) => handleHover(e)}
+                        onMouseOut={(e) => handleHoverExit(e)}
+                        ref={(el) => (line3 = el)}
+                        to="/"
+                        onClick={Logout}
+                      >
+                        Logout
+                      </Link>
+                    </li>
+                  )}
+                       <li>
                     <Link
                       onMouseEnter={(e) => handleHover(e)}
                       onMouseOut={(e) => handleHoverExit(e)}
                       ref={(el) => (line3 = el)}
-                      to="/login"
-                      className="MiniMenu"
+                      to="/shop"
                     >
-                      Login
+                      Shop
                     </Link>
                   </li>
                   <li>
