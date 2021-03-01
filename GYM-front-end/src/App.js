@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./App.scss";
 import "./App.css";
 
+{/**     User Routes   */}
+
 import Header from "./User/Components/Navigation/Header";
 import Home from "./User/Components/Home/Home";
 import WorkOutPlan from "./User/Components/WorkOutPlan/WorkOutPlan";
@@ -13,6 +15,10 @@ import ContactUs from "./User/Components/ContactUs/ContactUs";
 import FAQ from "./User/Components/FAQ/Faq";
 import UserAccount from "./User/Components/UserAccount/UserAccount";
 
+{/**     Admin Routes   */}
+
+import AdminLogin from "./Admin/AdminLogin/AdminLogin";
+
 /** user Protected Routes */
 import ProtectedRouteUser from "./ProtectedRouteUser";
 import MyInfo from "./User/Components/MyInfo/MyInfo";
@@ -20,7 +26,7 @@ import MyInfo from "./User/Components/MyInfo/MyInfo";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
-  const [isUserAuth, setIsUserAuth] = useState(localStorage.getItem("token"));
+  const [isUserAuth, ] = useState(localStorage.getItem("token"));
 
   return (
     <Router>
@@ -46,6 +52,10 @@ function App() {
                 <Route exact path="/contactUs" component={ContactUs} />
                 <Route exact path="/faq" component={FAQ} />
               </Switch>
+
+              {/**   Admin Section  */}
+              
+              <Route path="/Admin-Login" component={AdminLogin} />
             </div>
           </div>
         </div>

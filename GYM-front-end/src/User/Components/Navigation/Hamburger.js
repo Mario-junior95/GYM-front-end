@@ -6,8 +6,6 @@ import Home from "../../../Images/Home.jpg";
 import WorkPlan from "../../../Images/Workout.jpg";
 import Coaches from "../../../Images/Coaches.jpg";
 
-
-
 import {
   staggerText,
   staggerReveal,
@@ -169,13 +167,13 @@ const Hamburger = (props) => {
                         onMouseOut={(e) => handleHoverExit(e)}
                         ref={(el) => (line3 = el)}
                         to="/"
-                        onClick={Logout}
+                        onClick={() => Logout()}
                       >
                         Logout
                       </Link>
                     </li>
                   )}
-                       <li>
+                  <li>
                     <Link
                       onMouseEnter={(e) => handleHover(e)}
                       onMouseOut={(e) => handleHoverExit(e)}

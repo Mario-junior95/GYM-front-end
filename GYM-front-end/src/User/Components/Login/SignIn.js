@@ -6,7 +6,7 @@ import "./Login.css";
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [token, setToken] = useState("");
+  const [redirect, setRedirect] = useState(null);
 
   /** error states */
 
@@ -36,6 +36,7 @@ const SignIn = () => {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
       }).then((response) => {
+        handleReset();
         localStorage.setItem("id", response.data.user.id);
         localStorage.setItem("token", response.data.access_token);
         localStorage.setItem("email", response.data.user.email);
@@ -45,8 +46,6 @@ const SignIn = () => {
         localStorage.setItem("date", response.data.user.date);
         localStorage.setItem("gender", response.data.user.gender);
         localStorage.setItem("address", response.data.user.address);
-        setToken(response.data.access_token);
-        handleReset();
       });
     } catch (error) {
       if (error.response) {
@@ -61,10 +60,15 @@ const SignIn = () => {
   };
 
   useEffect(() => {
-    return () => {
-      handleReset();
-    };
-  }, []);
+    
+      localStorage.getItem("token")
+        ? setRedirect("/myinfo")
+        : setRedirect("/SignIn");
+    
+  }, [redirect]);
+
+  const redirectFunc = () =>
+    redirect && <Redirect exact="true" to={redirect} />;
 
   return (
     <div className="block">
@@ -131,12 +135,12 @@ const SignIn = () => {
             type="submit"
             value="Submit"
             className="btnLogin"
-            onClick={Login}
+            onClick={(e) => Login(e)}
           >
             Sign In
           </button>
+          {redirectFunc()}
         </form>
-        {token ? <Redirect exact="true" to="/myinfo" /> : null}
       </section>
       <section className="rightSide">
         <h1>Sign Up</h1>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./MyInfo.modules.css";
 import Male from "../../../Images/male.png";
 import Female from "../../../Images/Female.png";

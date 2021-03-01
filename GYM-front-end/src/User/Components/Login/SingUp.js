@@ -13,7 +13,7 @@ const SingUp = () => {
   const [success, setSuccess] = useState("");
   // const [memberShipId , setMemberShipId] = useState(0);
 
-  const [listMember, setListMember] = useState([]);
+  const [ , setListMember] = useState([]);
 
   /** Error States */
 
@@ -50,6 +50,12 @@ const SingUp = () => {
     setPasswordErr("");
     // setMemberShipIdErr("");
   };
+
+  // useEffect(() => {
+  //   return () => {
+  //     clearData();
+  //   };
+  // }, []);
 
   const handleAdd = async (e) => {
     e.preventDefault();
@@ -220,7 +226,7 @@ const SingUp = () => {
           type="submit"
           value="Submit"
           className="btnLogin"
-          onClick={handleAdd}
+          onClick={(e) => handleAdd(e)}
         >
           Save
         </button>

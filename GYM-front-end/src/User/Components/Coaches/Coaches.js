@@ -1,13 +1,13 @@
-import React from 'react';
-import './Coaches.css';
+import React from "react";
+import "./Coaches.css";
 
 const Coaches = () => {
-    return (
-        <div className = "containers">
-        <div className="Coaches_banner"></div>
-        <div>Coaches</div>
-        </div>
-    )
-}
+  return (
+    <div className="containers">
+      <div className="Coaches_banner"></div>
+      <div>Coaches</div>
+    </div>
+  );
+};
 
-export default Coaches
+export default Coaches;

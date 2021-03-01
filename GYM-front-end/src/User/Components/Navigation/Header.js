@@ -70,7 +70,7 @@ const Header = (props) => {
   };
 
   /* Logout Function */
-  
+
   const Logout = () => {
     localStorage.clear();
     history.push("/");
@@ -97,7 +97,7 @@ const Header = (props) => {
                 <div className="menu">
                   <button
                     disabled={disabled}
-                    onClick={handleMenu}
+                    onClick={() => handleMenu()}
                     style={{ color: "white" }}
                   >
                     {state.menuName}
@@ -110,7 +110,7 @@ const Header = (props) => {
                 <div className="menu">
                   <button
                     disabled={disabled}
-                    onClick={handleMenu}
+                    onClick={() => handleMenu()}
                     style={{ color: "black" }}
                   >
                     {state.menuName}
@@ -172,7 +172,7 @@ const Header = (props) => {
         <div>
           {localStorage.getItem("token") ? (
             <div className="logout">
-              <button className="btn" onClick={Logout}>
+              <button className="btn" onClick={() => Logout()}>
                 <span>Logout</span>
               </button>
             </div>
