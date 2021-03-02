@@ -152,3 +152,8 @@ label input:valid + .label-text {
   border: 1px white solid;
   margin: 13px 0;
 }
+
+.LoginSection{
+  background-color: black !important;
+  height:49vw;
+}

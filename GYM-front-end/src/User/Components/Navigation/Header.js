@@ -31,6 +31,9 @@ const Header = (props) => {
         hover: false,
       });
     });
+    return () => {
+      setState('');
+    }
   }, [history]);
 
   // Toggle menu
@@ -72,7 +75,15 @@ const Header = (props) => {
   /* Logout Function */
 
   const Logout = () => {
-    localStorage.clear();
+    localStorage.removeItem("idUser");
+    localStorage.removeItem("token");
+    localStorage.removeItem("email");
+    localStorage.removeItem("firstname");
+    localStorage.removeItem("lastname");
+    localStorage.removeItem("phone");
+    localStorage.removeItem("date");
+    localStorage.removeItem("gender");
+    localStorage.removeItem("address");
     history.push("/");
   };
 

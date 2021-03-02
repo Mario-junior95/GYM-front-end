@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Header from "../Navigation/Header";
 import Axios from "axios";
 
 const SingUp = () => {
@@ -13,7 +14,7 @@ const SingUp = () => {
   const [success, setSuccess] = useState("");
   // const [memberShipId , setMemberShipId] = useState(0);
 
-  const [ , setListMember] = useState([]);
+  const [, setListMember] = useState([]);
 
   /** Error States */
 
@@ -97,140 +98,149 @@ const SingUp = () => {
   };
 
   return (
-    <div className="blockSignUp SignUpSide">
-      <span style={{ color: "green" }}>{success}</span>
-      <h1 style={{ fontSize: "40px" }}>SIGN UP</h1>
-      <form>
-        <span style={{ color: "red" }}>{firstNameErr}</span>
-        <label>
-          <input
-            type="text"
-            value={firstName}
-            onChange={(e) => {
-              setFirstName(e.target.value);
-              setFirstNameErr("");
-            }}
-          />
-          <div className="label-text">First Name</div>
-        </label>
-        <span style={{ color: "red" }}>{lastNameErr}</span>
-        <label>
-          <input
-            type="text"
-            value={lastName}
-            onChange={(e) => {
-              setLastName(e.target.value);
-              setLastNameErr("");
-            }}
-          />
-          <div className="label-text">Last Name</div>
-        </label>
-        <span style={{ color: "red" }}>{emailErr}</span>
-        <label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-              setEmailErr("");
-            }}
-          />
-          <div className="label-text">Email</div>
-        </label>
-        <span style={{ color: "red" }}>{phoneErr}</span>
-        <label>
-          <input
-            type="tel"
-            value={phone}
-            onChange={(e) => {
-              setPhone(e.target.value);
-              setPhoneErr("");
-            }}
-          />
-          <div className="label-text">Phone</div>
-        </label>
-        <span style={{ color: "red" }}>{addressErr}</span>
-        <label>
-          <input
-            type="text"
-            value={address}
-            onChange={(e) => {
-              setAddress(e.target.value);
-              setAddressErr("");
-            }}
-          />
-          <div className="label-text">Address</div>
-        </label>
-        <span style={{ color: "red" }}>{dateErr}</span>
-        <label>
-          <div>Date of Birth</div>
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => {
-              setDate(e.target.value);
-              setDateErr("");
-            }}
-          />
-        </label>
-        <span style={{ color: "red" }}>{genderErr}</span>
-        <div className="gender">
-          <label>
-            <span>Male</span>
-            <input
-              type="radio"
-              name="gender"
-              value="Male"
-              checked={gender === "Male"}
-              onChange={(e) => {
-                setGender("Male");
-                setGenderErr("");
-              }}
-            />
-          </label>
-          <label>
-            <span>Female</span>
-            <input
-              type="radio"
-              name="gender"
-              value="Female"
-              checked={gender === "Female"}
-              onChange={(e) => {
-                setGender("Female");
-                setGenderErr("");
-              }}
-            />
-          </label>
+    <div className="App">
+      <Header />
+      <div className="container">
+        <div className="wrapper">
+          <div className="home">
+            <div className="blockSignUp SignUpSide">
+              <span style={{ color: "green" }}>{success}</span>
+              <h1 style={{ fontSize: "40px" }}>SIGN UP</h1>
+              <form>
+                <span style={{ color: "red" }}>{firstNameErr}</span>
+                <label>
+                  <input
+                    type="text"
+                    value={firstName}
+                    onChange={(e) => {
+                      setFirstName(e.target.value);
+                      setFirstNameErr("");
+                    }}
+                  />
+                  <div className="label-text">First Name</div>
+                </label>
+                <span style={{ color: "red" }}>{lastNameErr}</span>
+                <label>
+                  <input
+                    type="text"
+                    value={lastName}
+                    onChange={(e) => {
+                      setLastName(e.target.value);
+                      setLastNameErr("");
+                    }}
+                  />
+                  <div className="label-text">Last Name</div>
+                </label>
+                <span style={{ color: "red" }}>{emailErr}</span>
+                <label>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      setEmailErr("");
+                    }}
+                  />
+                  <div className="label-text">Email</div>
+                </label>
+                <span style={{ color: "red" }}>{phoneErr}</span>
+                <label>
+                  <input
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => {
+                      setPhone(e.target.value);
+                      setPhoneErr("");
+                    }}
+                  />
+                  <div className="label-text">Phone</div>
+                </label>
+                <span style={{ color: "red" }}>{addressErr}</span>
+                <label>
+                  <input
+                    type="text"
+                    value={address}
+                    onChange={(e) => {
+                      setAddress(e.target.value);
+                      setAddressErr("");
+                    }}
+                  />
+                  <div className="label-text">Address</div>
+                </label>
+                <span style={{ color: "red" }}>{dateErr}</span>
+                <label>
+                  <div>Date of Birth</div>
+                  <input
+                    type="date"
+                    value={date}
+                    onChange={(e) => {
+                      setDate(e.target.value);
+                      setDateErr("");
+                    }}
+                  />
+                </label>
+                <span style={{ color: "red" }}>{genderErr}</span>
+                <div className="gender">
+                  <label>
+                    <span>Male</span>
+                    <input
+                      type="radio"
+                      name="gender"
+                      value="Male"
+                      checked={gender === "Male"}
+                      onChange={(e) => {
+                        setGender("Male");
+                        setGenderErr("");
+                      }}
+                    />
+                  </label>
+                  <label>
+                    <span>Female</span>
+                    <input
+                      type="radio"
+                      name="gender"
+                      value="Female"
+                      checked={gender === "Female"}
+                      onChange={(e) => {
+                        setGender("Female");
+                        setGenderErr("");
+                      }}
+                    />
+                  </label>
+                </div>
+                <span style={{ color: "red" }}>{passwordErr}</span>
+                <label>
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                      setPasswordErr("");
+                    }}
+                  />
+                  <div className="label-text">Password</div>
+                </label>
+                <label>
+                  <div>MemberShip Type</div>
+                  <select className="memberType">
+                    <option value="">--</option>
+                    <option>Mario</option>
+                    <option>Mario</option>
+                  </select>
+                </label>
+                <button
+                  type="submit"
+                  value="Submit"
+                  className="btnLogin"
+                  onClick={(e) => handleAdd(e)}
+                >
+                  Save
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
-        <span style={{ color: "red" }}>{passwordErr}</span>
-        <label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-              setPasswordErr("");
-            }}
-          />
-          <div className="label-text">Password</div>
-        </label>
-        <label>
-          <div>MemberShip Type</div>
-          <select className="memberType">
-            <option value="">--</option>
-            <option>Mario</option>
-            <option>Mario</option>
-          </select>
-        </label>
-        <button
-          type="submit"
-          value="Submit"
-          className="btnLogin"
-          onClick={(e) => handleAdd(e)}
-        >
-          Save
-        </button>
-      </form>
+      </div>
     </div>
   );
 };

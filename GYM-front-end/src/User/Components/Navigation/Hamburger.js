@@ -50,6 +50,9 @@ const Hamburger = (props) => {
       fadeInUp(info);
       staggerText(line1, line2, line3);
     }
+    return () => {
+
+    }
   }, [state]);
 
   //Change image  on Hover
@@ -95,7 +98,15 @@ const Hamburger = (props) => {
 
   /*    Logout Function */
   const Logout = () => {
-    localStorage.clear();
+    localStorage.removeItem("idUser");
+    localStorage.removeItem("token");
+    localStorage.removeItem("email");
+    localStorage.removeItem("firstname");
+    localStorage.removeItem("lastname");
+    localStorage.removeItem("phone");
+    localStorage.removeItem("date");
+    localStorage.removeItem("gender");
+    localStorage.removeItem("address");
   };
 
   return (

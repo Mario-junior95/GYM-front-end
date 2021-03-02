@@ -1,13 +1,23 @@
-import React from 'react';
-import './Home.css';
+import React from "react";
+import "./Home.css";
+import Header from "../Navigation/Header";
 
 const Home = () => {
-    return (
-        <div className = "containers">
-        <div className="Home_banner"></div>
-        <div>Home</div>
+  return (
+    <div className="App">
+      <Header />
+      <div className="container">
+        <div className="wrapper">
+          <div className="home">
+            <div className="containers">
+              <div className="Home_banner"></div>
+              <div>Home</div>
+            </div>
+          </div>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default Home
+export default Home;
