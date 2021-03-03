@@ -52,12 +52,6 @@ const SingUp = () => {
     // setMemberShipIdErr("");
   };
 
-  // useEffect(() => {
-  //   return () => {
-  //     clearData();
-  //   };
-  // }, []);
-
   const handleAdd = async (e) => {
     e.preventDefault();
     const data = new FormData();
@@ -108,77 +102,167 @@ const SingUp = () => {
               <h1 style={{ fontSize: "40px" }}>SIGN UP</h1>
               <form>
                 <span style={{ color: "red" }}>{firstNameErr}</span>
-                <label>
-                  <input
-                    type="text"
-                    value={firstName}
-                    onChange={(e) => {
-                      setFirstName(e.target.value);
-                      setFirstNameErr("");
-                    }}
-                  />
-                  <div className="label-text">First Name</div>
-                </label>
+                {firstNameErr ? (
+                  <label>
+                    <input
+                      type="text"
+                      value={firstName}
+                      style={{ borderBottom: "1px red solid" }}
+                      onChange={(e) => {
+                        setFirstName(e.target.value);
+                        setFirstNameErr("");
+                      }}
+                    />
+                    <div className="label-text">First Name</div>
+                  </label>
+                ) : (
+                  <label>
+                    <input
+                      type="text"
+                      value={firstName}
+                      onChange={(e) => {
+                        setFirstName(e.target.value);
+                        setFirstNameErr("");
+                      }}
+                    />
+                    <div className="label-text">First Name</div>
+                  </label>
+                )}
                 <span style={{ color: "red" }}>{lastNameErr}</span>
-                <label>
-                  <input
-                    type="text"
-                    value={lastName}
-                    onChange={(e) => {
-                      setLastName(e.target.value);
-                      setLastNameErr("");
-                    }}
-                  />
-                  <div className="label-text">Last Name</div>
-                </label>
+                {lastNameErr ? (
+                  <label>
+                    <input
+                      type="text"
+                      value={lastName}
+                      style={{ borderBottom: "1px red solid" }}
+                      onChange={(e) => {
+                        setLastName(e.target.value);
+                        setLastNameErr("");
+                      }}
+                    />
+                    <div className="label-text">Last Name</div>
+                  </label>
+                ) : (
+                  <label>
+                    <input
+                      type="text"
+                      value={lastName}
+                      onChange={(e) => {
+                        setLastName(e.target.value);
+                        setLastNameErr("");
+                      }}
+                    />
+                    <div className="label-text">Last Name</div>
+                  </label>
+                )}
                 <span style={{ color: "red" }}>{emailErr}</span>
-                <label>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                      setEmailErr("");
-                    }}
-                  />
-                  <div className="label-text">Email</div>
-                </label>
+                {emailErr ? (
+                  <label>
+                    <input
+                      type="email"
+                      value={email}
+                      style={{ borderBottom: "1px red solid" }}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                        setEmailErr("");
+                      }}
+                    />
+                    <div className="label-text">Email</div>
+                  </label>
+                ) : (
+                  <label>
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                        setEmailErr("");
+                      }}
+                    />
+                    <div className="label-text">Email</div>
+                  </label>
+                )}
                 <span style={{ color: "red" }}>{phoneErr}</span>
-                <label>
-                  <input
-                    type="tel"
-                    value={phone}
-                    onChange={(e) => {
-                      setPhone(e.target.value);
-                      setPhoneErr("");
-                    }}
-                  />
-                  <div className="label-text">Phone</div>
-                </label>
+                {phoneErr ? (
+                  <label>
+                    <input
+                      type="tel"
+                      value={phone}
+                      onChange={(e) => {
+                        setPhone(e.target.value);
+                        setPhoneErr("");
+                      }}
+                      style={{ borderBottom: "1px red solid" }}
+                    />
+                    <div className="label-text">Phone</div>
+                  </label>
+                ) : (
+                  <label>
+                    <input
+                      type="tel"
+                      value={phone}
+                      onChange={(e) => {
+                        setPhone(e.target.value);
+                        setPhoneErr("");
+                      }}
+                    />
+                    <div className="label-text">Phone</div>
+                  </label>
+                )}
                 <span style={{ color: "red" }}>{addressErr}</span>
-                <label>
-                  <input
-                    type="text"
-                    value={address}
-                    onChange={(e) => {
-                      setAddress(e.target.value);
-                      setAddressErr("");
-                    }}
-                  />
-                  <div className="label-text">Address</div>
-                </label>
+                {addressErr ? (
+                  <label>
+                    <input
+                      type="text"
+                      value={address}
+                      onChange={(e) => {
+                        setAddress(e.target.value);
+                        setAddressErr("");
+                      }}
+                      style={{ borderBottom: "1px red solid" }}
+                    />
+                    <div className="label-text">Address</div>
+                  </label>
+                ) : (
+                  <label>
+                    <input
+                      type="text"
+                      value={address}
+                      onChange={(e) => {
+                        setAddress(e.target.value);
+                        setAddressErr("");
+                      }}
+                    />
+                    <div className="label-text">Address</div>
+                  </label>
+                )}
                 <span style={{ color: "red" }}>{dateErr}</span>
-                <label>
-                  <div>Date of Birth</div>
-                  <input
-                    type="date"
-                    value={date}
-                    onChange={(e) => {
-                      setDate(e.target.value);
-                      setDateErr("");
-                    }}
-                  />
-                </label>
+                {dateErr ? (
+                  <label>
+                    <div>Date of Birth</div>
+                    <input
+                      type="date"
+                      value={date}
+                      onChange={(e) => {
+                        setDate(e.target.value);
+                        setDateErr("");
+                      }}
+                      style={{ border: "1px red solid" }}
+                    />
+                  </label>
+                ) : (
+                  <label>
+                    <div>Date of Birth</div>
+                    <input
+                      type="date"
+                      value={date}
+                      onChange={(e) => {
+                        setDate(e.target.value);
+                        setDateErr("");
+                      }}
+                    />
+                  </label>
+                )}
                 <span style={{ color: "red" }}>{genderErr}</span>
                 <div className="gender">
                   <label>
@@ -209,17 +293,32 @@ const SingUp = () => {
                   </label>
                 </div>
                 <span style={{ color: "red" }}>{passwordErr}</span>
-                <label>
-                  <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => {
-                      setPassword(e.target.value);
-                      setPasswordErr("");
-                    }}
-                  />
-                  <div className="label-text">Password</div>
-                </label>
+                {passwordErr ? (
+                  <label>
+                    <input
+                      type="password"
+                      value={password}
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                        setPasswordErr("");
+                      }}
+                      style={{ borderBottom: "1px red solid" }}
+                    />
+                    <div className="label-text">Password</div>
+                  </label>
+                ) : (
+                  <label>
+                    <input
+                      type="password"
+                      value={password}
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                        setPasswordErr("");
+                      }}
+                    />
+                    <div className="label-text">Password</div>
+                  </label>
+                )}
                 <label>
                   <div>MemberShip Type</div>
                   <select className="memberType">
@@ -233,6 +332,7 @@ const SingUp = () => {
                   value="Submit"
                   className="btnLogin"
                   onClick={(e) => handleAdd(e)}
+                  id="success"
                 >
                   Save
                 </button>

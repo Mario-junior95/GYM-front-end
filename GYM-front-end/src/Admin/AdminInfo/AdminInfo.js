@@ -5,6 +5,7 @@ import Axios from "axios";
 import "./AdminInfo.css";
 
 import AddAdminRodal from "./AddAdminRodal";
+import EditAdminRodal from "./EditAdminRodal";
 
 import {
   Typography,
@@ -42,8 +43,9 @@ const AdminInfo = () => {
   const classes = useStyles();
 
   const [listAdmin, setlistAdmin] = useState([]);
+
+  const [list, setList] = useState([]);
   const [page, setPage] = React.useState(0);
-  const [data, setData] = useState([]);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const [render, setRender] = useState(false);
@@ -59,7 +61,12 @@ const AdminInfo = () => {
         Authorization: "Bearer " + localStorage.getItem("tokens"),
       },
     }).then((response) => {
-      setlistAdmin(response.data.admin);
+      if (response.data.status === "Token is Expired") {
+        expireToken();
+        return window.location.reload();
+      } else {
+        setlistAdmin(response.data.admin);
+      }
     });
   }, [render]);
 
@@ -74,6 +81,7 @@ const AdminInfo = () => {
 
   /**  Rodal Delete Functions  */
   const [visible, setVisible] = useState(false);
+  const [visibleEdit, setVisibleEdit] = useState(false);
 
   const show = () => {
     setVisible(true);
@@ -81,6 +89,14 @@ const AdminInfo = () => {
 
   const hide = () => {
     setVisible(false);
+  };
+
+  const showEdit = () => {
+    setVisibleEdit(true);
+  };
+
+  const hideEdit = () => {
+    setVisibleEdit(false);
   };
 
   /** Delete Admin */
@@ -136,17 +152,19 @@ const AdminInfo = () => {
                       onClick={show}
                       style={{ cursor: "pointer" }}
                     />
-                    <AddAdminRodal
-                      visible={visible}
-                      hide={hide}
-                      animation={"animation"}
-                      duration={500}
-                      closeMaskOnClick={true}
-                      closeOnEsc={true}
-                      height={550}
-                      width={500}
-                      render={{ setRender }}
-                    />
+                    {visible && (
+                      <AddAdminRodal
+                        visible={visible}
+                        hide={hide}
+                        animation={"slideDown"}
+                        duration={500}
+                        closeMaskOnClick={true}
+                        closeOnEsc={true}
+                        height={550}
+                        width={500}
+                        render={{ setRender }}
+                      />
+                    )}
                   </TableCell>
                 </TableRow>
               </TableHead>
@@ -162,7 +180,16 @@ const AdminInfo = () => {
                         <TableCell align="right">{val.email}</TableCell>
                         <TableCell align="right"></TableCell>
                         <TableCell align="right">
-                          <input type="submit" value="Edit" className="edit" />
+                          <input
+                            type="submit"
+                            value="Edit"
+                            className="edit"
+                            style={{ cursor: "pointer" }}
+                            onClick={() => {
+                              showEdit();
+                              setList(val);
+                            }}
+                          />
                         </TableCell>
                         <TableCell align="right">
                           <input
@@ -178,6 +205,22 @@ const AdminInfo = () => {
               </TableBody>
             </Table>
           </TableContainer>
+          {visibleEdit && (
+            <EditAdminRodal
+              visible={visibleEdit}
+              hide={hideEdit}
+              animation={"flip"}
+              duration={500}
+              closeMaskOnClick={true}
+              closeOnEsc={true}
+              height={550}
+              width={500}
+              render={{ setRender }}
+              show={showEdit}
+              val={list}
+              render={{ setRender }}
+            />
+          )}
           <TablePagination
             rowsPerPageOptions={[4, 7]}
             component="div"

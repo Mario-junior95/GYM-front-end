@@ -5,7 +5,6 @@ import "rodal/lib/rodal.css";
 import "./AdminInfo.css";
 import Axios from "axios";
 import { Button, Grid, TextField } from "@material-ui/core";
-import { Alert, AlertTitle } from "@material-ui/lab";
 
 const AddAdminRodal = (props) => {
   const { setRender } = props.render;
@@ -46,6 +45,8 @@ const AddAdminRodal = (props) => {
 
   const [success, setSuccess] = useState("");
 
+  const [close, setClose] = useState("");
+
   /**   Create Admin */
 
   const handleAdd = async (e) => {
@@ -69,9 +70,11 @@ const AddAdminRodal = (props) => {
         } else {
           setListAdmin(response.data.admin);
           setRender((prev) => !prev);
-
           setSuccess("Admin Added Successfully!!!");
           clearData();
+          setTimeout(() => {
+            setClose(props.hide);
+          }, 2300);
         }
       });
     } catch (error) {
@@ -89,7 +92,7 @@ const AddAdminRodal = (props) => {
   return (
     <Rodal
       visible={props.visible}
-      onClose={props.hide}
+      onClose={success ? close : props.hide}
       animation={props.animation}
       duration={props.duration}
       closeMaskOnClick={props.closeMaskOnClick}
@@ -100,8 +103,8 @@ const AddAdminRodal = (props) => {
       <form className="addAdmin">
         <h1 className="Rodal_Title">Add New Admin</h1>
         <Grid container spacing={3}>
+          <span style={{ color: "green", margin: "0 auto" }}>{success}</span>
           <Grid item xs={12}>
-            <span style={{ color: "green", margin: "0 auto" }}>{success}</span>
             <Grid container spacing={2}>
               <span style={{ color: "red", margin: "0 auto" }}>
                 {firstNameErr}

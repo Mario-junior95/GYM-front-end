@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 import "./AdminSideNav.css";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import PersonIcon from "@material-ui/icons/Person";
+import LockIcon from "@material-ui/icons/Lock";
 import { Link, useHistory } from "react-router-dom";
 import { useConfirm } from "material-ui-confirm";
 import LogoWhite from "../../Images/logoWhite.svg";
@@ -22,6 +23,10 @@ import {
   IconButton,
   Button,
 } from "@material-ui/core";
+
+// Import ChangePassword Rodal
+
+import ChangePasswordRodal from "../ChangePassword/ChangePasswordRodal";
 
 const drawerWidth = 240;
 
@@ -97,6 +102,18 @@ export default function AdminSideNav() {
   const history = useHistory();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+
+  /**    Rodal Password   */
+
+  const [visible, setVisible] = useState(false);
+
+  const show = () => {
+    setVisible(true);
+  };
+
+  const hide = () => {
+    setVisible(false);
+  };
 
   /**    Logout Button Confirmation */
 
@@ -183,12 +200,20 @@ export default function AdminSideNav() {
             <Link to="/admin">
               <div>
                 <PersonIcon />
-                Admin
+                Admins
               </div>
             </Link>
           </ListItem>
           <ListItem>
-            <Link to="/admin-memberShip">Member</Link>
+            <Link to="/admin-memberShip">Members</Link>
+          </ListItem>
+          <ListItem>
+            <Link onClick={show} style={{ cursor: "pointer" }}>
+              <div>
+                <LockIcon />
+                Change Password
+              </div>
+            </Link>
           </ListItem>
           <ListItem className={classes.root}>
             <Button color="secondary" onClick={fire}>
@@ -197,6 +222,18 @@ export default function AdminSideNav() {
           </ListItem>
         </List>
       </Drawer>
+      {visible && (
+        <ChangePasswordRodal
+          visible={visible}
+          hide={hide}
+          animation={"slideLeft"}
+          duration={500}
+          closeMaskOnClick={true}
+          closeOnEsc={true}
+          height={400}
+          width={500}
+        />
+      )}
     </div>
   );
 }
