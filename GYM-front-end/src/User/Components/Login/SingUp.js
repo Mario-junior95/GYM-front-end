@@ -319,14 +319,14 @@ const SingUp = () => {
                     <div className="label-text">Password</div>
                   </label>
                 )}
-                <label>
+                {/* <label>
                   <div>MemberShip Type</div>
                   <select className="memberType">
                     <option value="">--</option>
                     <option>Mario</option>
                     <option>Mario</option>
                   </select>
-                </label>
+                </label> */}
                 <button
                   type="submit"
                   value="Submit"

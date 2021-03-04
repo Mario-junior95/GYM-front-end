@@ -105,6 +105,24 @@ const EditAdminRodal = (props) => {
             <span style={{ color: "green", margin: "0 auto" }}>{success}</span>
             <Grid item xs={12}>
               <Grid container spacing={2}>
+              <span style={{ color: "red", margin: "0 auto" }}>
+                  {userNameErr}
+                </span>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    inputRef={inputEl}
+                    label="Username"
+                    name="username"
+                    size="small"
+                    variant="outlined"
+                    value={userName}
+                    onChange={(e) => {
+                      setUserName(e.target.value);
+                      setUserNameErr("");
+                    }}
+                  />
+                </Grid>
                 <span style={{ color: "red", margin: "0 auto" }}>
                   {firstNameErr}
                 </span>
@@ -153,24 +171,6 @@ const EditAdminRodal = (props) => {
                     onChange={(e) => {
                       setEmail(e.target.value);
                       setEmailErr("");
-                    }}
-                  />
-                </Grid>
-                <span style={{ color: "red", margin: "0 auto" }}>
-                  {userNameErr}
-                </span>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    inputRef={inputEl}
-                    label="Username"
-                    name="username"
-                    size="small"
-                    variant="outlined"
-                    value={userName}
-                    onChange={(e) => {
-                      setUserName(e.target.value);
-                      setUserNameErr("");
                     }}
                   />
                 </Grid>

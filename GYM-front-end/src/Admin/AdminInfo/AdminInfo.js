@@ -4,6 +4,7 @@ import AdminSideNav from "../AdminSideNav/AdminSideNav";
 import Axios from "axios";
 import "./AdminInfo.css";
 
+import { Button, Grid, TextField } from "@material-ui/core";
 import AddAdminRodal from "./AddAdminRodal";
 import EditAdminRodal from "./EditAdminRodal";
 
@@ -123,6 +124,29 @@ const AdminInfo = () => {
     }
   };
 
+  /**   Search Section  */
+
+  const [filteredData, setFilteredData] = useState([]);
+  const [search, setSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(6);
+
+  useEffect(() => {
+    setFilteredData(
+      listAdmin.filter(
+        (admin) =>
+          admin.firstname.toLowerCase().includes(search.toLowerCase()) ||
+          admin.lastname.toLowerCase().includes(search.toLowerCase()) ||
+          admin.email.toLowerCase().includes(search.toLowerCase()) ||
+          admin.username.toLowerCase().includes(search.toLowerCase())
+      )
+    );
+  }, [search, listAdmin]);
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = filteredData.slice(indexOfFirstPost, indexOfLastPost);
+
   return (
     <div className={classes.root}>
       <AdminSideNav />
@@ -169,39 +193,48 @@ const AdminInfo = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {listAdmin
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((val) => {
-                    return (
-                      <TableRow key={val.id}>
-                        <TableCell align="right">{val.username}</TableCell>
-                        <TableCell align="right">{val.firstname}</TableCell>
-                        <TableCell align="right">{val.lastname}</TableCell>
-                        <TableCell align="right">{val.email}</TableCell>
-                        <TableCell align="right"></TableCell>
-                        <TableCell align="right">
-                          <input
-                            type="submit"
-                            value="Edit"
-                            className="edit"
-                            style={{ cursor: "pointer" }}
-                            onClick={() => {
-                              showEdit();
-                              setList(val);
-                            }}
-                          />
-                        </TableCell>
-                        <TableCell align="right">
-                          <input
-                            type="submit"
-                            value="Delete"
-                            className="delete"
-                            onClick={() => deleteAdmin(val.id)}
-                          />
-                        </TableCell>
-                      </TableRow>
-                    );
-                  })}
+                {filteredData.length === 0 ? (
+                  <span style={{ color: "red" }}>No Result Found</span>
+                ) : (
+                  <>
+                    {currentPosts
+                      .slice(
+                        page * rowsPerPage,
+                        page * rowsPerPage + rowsPerPage
+                      )
+                      .map((val) => {
+                        return (
+                          <TableRow key={val.id}>
+                            <TableCell align="right">{val.username}</TableCell>
+                            <TableCell align="right">{val.firstname}</TableCell>
+                            <TableCell align="right">{val.lastname}</TableCell>
+                            <TableCell align="right">{val.email}</TableCell>
+                            <TableCell align="right"></TableCell>
+                            <TableCell align="right">
+                              <input
+                                type="submit"
+                                value="Edit"
+                                className="edit"
+                                style={{ cursor: "pointer" }}
+                                onClick={() => {
+                                  showEdit();
+                                  setList(val);
+                                }}
+                              />
+                            </TableCell>
+                            <TableCell align="right">
+                              <input
+                                type="submit"
+                                value="Delete"
+                                className="delete"
+                                onClick={() => deleteAdmin(val.id)}
+                              />
+                            </TableCell>
+                          </TableRow>
+                        );
+                      })}
+                  </>
+                )}
               </TableBody>
             </Table>
           </TableContainer>
@@ -221,15 +254,30 @@ const AdminInfo = () => {
               render={{ setRender }}
             />
           )}
-          <TablePagination
-            rowsPerPageOptions={[4, 7]}
-            component="div"
-            count={listAdmin.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onChangePage={handleChangePage}
-            onChangeRowsPerPage={handleChangeRowsPerPage}
-          />
+
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+            <TextField
+              fullWidth
+              label="Search"
+              name="search"
+              size="small"
+              variant="outlined"
+              style={{ width: "20vw", margin: "6px 0 0 6px" }}
+              value={search}
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
+            />
+            <TablePagination
+              rowsPerPageOptions={[4, 7]}
+              component="div"
+              count={currentPosts.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onChangePage={handleChangePage}
+              onChangeRowsPerPage={handleChangeRowsPerPage}
+            />
+          </div>
         </Paper>
       </main>
     </div>

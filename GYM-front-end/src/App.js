@@ -1,5 +1,10 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import { ConfirmProvider } from "material-ui-confirm";
 import "./App.scss";
 import "./App.css";
@@ -16,6 +21,7 @@ import ContactUs from "./User/Components/ContactUs/ContactUs";
 import FAQ from "./User/Components/FAQ/Faq";
 import UserAccount from "./User/Components/UserAccount/UserAccount";
 import MyInfo from "./User/Components/MyInfo/MyInfo";
+import EditInfo from "./User/Components/MyInfo/EditInfo";
 
 /**     Admin Routes   */
 
@@ -48,6 +54,12 @@ function App() {
           exact
           path="/myinfo"
           component={MyInfo}
+          isUserAuth={isUserAuth}
+        />
+        <ProtectedRouteUser
+          exact
+          path="/editInfo"
+          component={EditInfo}
           isUserAuth={isUserAuth}
         />
         <Route exact path="/userAccount" component={UserAccount} />

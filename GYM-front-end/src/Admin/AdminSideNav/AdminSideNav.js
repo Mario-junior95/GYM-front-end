@@ -4,8 +4,9 @@ import "./AdminSideNav.css";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import PersonIcon from "@material-ui/icons/Person";
+import GroupIcon from "@material-ui/icons/Group";
 import LockIcon from "@material-ui/icons/Lock";
+import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import { Link, useHistory } from "react-router-dom";
 import { useConfirm } from "material-ui-confirm";
 import LogoWhite from "../../Images/logoWhite.svg";
@@ -199,13 +200,18 @@ export default function AdminSideNav() {
           <ListItem>
             <Link to="/admin">
               <div>
-                <PersonIcon />
+                <GroupIcon />
                 Admins
               </div>
             </Link>
           </ListItem>
           <ListItem>
-            <Link to="/admin-memberShip">Members</Link>
+            <Link to="/admin-memberShip">
+              <div>
+                <PeopleAltIcon />
+                Members
+              </div>
+            </Link>
           </ListItem>
           <ListItem>
             <Link onClick={show} style={{ cursor: "pointer" }}>
