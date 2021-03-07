@@ -153,7 +153,8 @@ label input:valid + .label-text {
   margin: 13px 0;
 }
 
-.LoginSection{
+.LoginSection {
   background-color: black !important;
-  height:49vw;
+  height: 49vw;
+  overflow: hidden;
 }

@@ -9,10 +9,13 @@ import { ConfirmProvider } from "material-ui-confirm";
 import "./App.scss";
 import "./App.css";
 
+
+
 /**     User Routes   */
 
 import Home from "./User/Components/Home/Home";
 import WorkOutPlan from "./User/Components/WorkOutPlan/WorkOutPlan";
+import GYM from "./User/Components/WorkOutPlan/WorkOutPlanMenu/Gym";
 import Coaches from "./User/Components/Coaches/Coaches";
 import SignIn from "./User/Components/Login/SignIn";
 import SignUp from "./User/Components/Login/SingUp";
@@ -28,6 +31,7 @@ import EditInfo from "./User/Components/MyInfo/EditInfo";
 import AdminLogin from "./Admin/AdminLogin/AdminLogin";
 import AdminInfo from "./Admin/AdminInfo/AdminInfo";
 import MemberShipType from "./Admin/MemberShipType/MemberShipType";
+import AdminWorkout from "./Admin/AdminWorkout/AdminWorkout";
 
 //eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9hZG1pbi1sb2dpbiIsImlhdCI6MTYxNDc5NjA2OCwiZXhwIjoxNjE0Nzk5NjY4LCJuYmYiOjE2MTQ3OTYwNjgsImp0aSI6Im1GN29uZUpKREN1enlodFciLCJzdWIiOjEsInBydiI6ImNmMjg0YzJiMWUwNmYzM2MyNmJkNTc5NzU2NmQ5ZmQ3NGJlMTFiZjUifQ.G0OnJAQOcz8Q7NVbVdMrjlKEB1uHNdyaQ3_pOMw_s8A
 
@@ -48,6 +52,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/workoutPlan" component={WorkOutPlan} />
+        <Route exact path="/workoutPlan/Gym" component = {GYM}/>
         <Route exact path="/coaches" component={Coaches} />
         <Route exact path="/SignIn" component={SignIn} />
         <ProtectedRouteUser
@@ -68,7 +73,6 @@ function App() {
         <Route exact path="/contactUs" component={ContactUs} />
         <Route exact path="/faq" component={FAQ} />
       </Switch>
-
       <Switch>
         <Route path="/admin-Login" component={AdminLogin} />
         <ConfirmProvider>
@@ -82,6 +86,12 @@ function App() {
             exact
             path="/admin-memberShip"
             component={MemberShipType}
+            isAdminAuth={isAdminAuth}
+          />
+          <ProtectedRouteAdmin
+            exact
+            path="/admin-workout"
+            component={AdminWorkout}
             isAdminAuth={isAdminAuth}
           />
         </ConfirmProvider>

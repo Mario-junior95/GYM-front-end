@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import AdminSideNav from "../AdminSideNav/AdminSideNav";
 import Axios from "axios";
-import "./AdminInfo.css";
 
-import {TextField } from "@material-ui/core";
-import AddAdminRodal from "./AddAdminRodal";
-import EditAdminRodal from "./EditAdminRodal";
+import { TextField } from "@material-ui/core";
+import FitnessCenterIcon from "@material-ui/icons/FitnessCenter";
+import EditWorkoutRodal from "./EditWorkoutRodal";
+import ViewWorkoutRodal from "./ViewWorkoutRodal";
 
 import {
   Typography,
@@ -20,7 +20,6 @@ import {
   TablePagination,
   TableRow,
 } from "@material-ui/core";
-import PersonAddIcon from "@material-ui/icons/PersonAdd";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,23 +42,11 @@ const useStyles = makeStyles((theme) => ({
 const AdminInfo = () => {
   const classes = useStyles();
 
-  const history = useHistory();
-
-  const routeChange = () => {
-    let path = `/admin-Login`;
-    history.push(path);
-  };
-
-  const clearStorage = () => {
-    localStorage.removeItem("tokens");
-    localStorage.removeItem("username");
-    localStorage.removeItem("idAdmin");
-    routeChange();
-  };
-
-  const [listAdmin, setlistAdmin] = useState([]);
+  const [listWorkouts, setlistWorkouts] = useState([]);
 
   const [list, setList] = useState([]);
+  const [listView, setListView] = useState([]);
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -70,7 +57,7 @@ const AdminInfo = () => {
   };
 
   useEffect(async () => {
-    await Axios.get("http://localhost:8000/api/admin", {
+    await Axios.get("http://localhost:8000/api/workout", {
       headers: {
         "content-type": "multipart/form-data",
         Authorization: "Bearer " + localStorage.getItem("tokens"),
@@ -84,7 +71,7 @@ const AdminInfo = () => {
         expireToken();
         return window.location.reload();
       } else {
-        setlistAdmin(response.data.admin);
+        setlistWorkouts(response.data.workout);
       }
     });
   }, [render]);
@@ -99,16 +86,9 @@ const AdminInfo = () => {
   };
 
   /**  Rodal Delete Functions  */
-  const [visible, setVisible] = useState(false);
+
   const [visibleEdit, setVisibleEdit] = useState(false);
-
-  const show = () => {
-    setVisible(true);
-  };
-
-  const hide = () => {
-    setVisible(false);
-  };
+  const [visibleView, setVisibleView] = useState(false);
 
   const showEdit = () => {
     setVisibleEdit(true);
@@ -118,37 +98,12 @@ const AdminInfo = () => {
     setVisibleEdit(false);
   };
 
-  /** Delete Admin */
+  const showView = () => {
+    setVisibleView(true);
+  };
 
-  const deleteAdmin = async (id) => {
-    try {
-      await Axios.delete(`http://localhost:8000/api/admin/${id} `, {
-        headers: {
-          Accept: "application/json",
-          "content-type": "multipart/form-data",
-          Authorization: "Bearer " + localStorage.getItem("tokens"),
-        },
-      }).then((response) => {
-        if (
-          response.data.status === "Token is Expired" ||
-          response.data.status === "Token is Invalid" ||
-          response.data.status === "Authorization Token not found"
-        ) {
-          expireToken();
-          return window.location.reload();
-        } else if (response.status === 200) {
-          if (localStorage.getItem("idAdmin") === `${id}`) {
-            clearStorage();
-          } else {
-            console.log(response);
-            setRender((prev) => !prev);
-            console.log(localStorage.getItem("idAdmin") === `${id}`);
-          }
-        }
-      });
-    } catch (error) {
-      console.log(error);
-    }
+  const hideView = () => {
+    setVisibleView(false);
   };
 
   /**   Search Section  */
@@ -160,15 +115,11 @@ const AdminInfo = () => {
 
   useEffect(() => {
     setFilteredData(
-      listAdmin.filter(
-        (admin) =>
-          admin.firstname.toLowerCase().includes(search.toLowerCase()) ||
-          admin.lastname.toLowerCase().includes(search.toLowerCase()) ||
-          admin.email.toLowerCase().includes(search.toLowerCase()) ||
-          admin.username.toLowerCase().includes(search.toLowerCase())
+      listWorkouts.filter((workout) =>
+        workout.name.toLowerCase().includes(search.toLowerCase())
       )
     );
-  }, [search, listAdmin]);
+  }, [search, listWorkouts]);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -185,37 +136,17 @@ const AdminInfo = () => {
               <TableHead>
                 <TableRow>
                   <TableCell align="right">
-                    <b>Username</b>
+                    <b>Name</b>
                   </TableCell>
                   <TableCell align="right">
-                    <b>FirstName</b>
-                  </TableCell>
-                  <TableCell align="right">
-                    <b>LastName</b>
-                  </TableCell>
-                  <TableCell align="right">
-                    <b>Email</b>
+                    <b>Description</b>
                   </TableCell>
                   <TableCell align="right"></TableCell>
                   <TableCell align="right"></TableCell>
                   <TableCell align="right">
-                    <PersonAddIcon
-                      onClick={show}
-                      style={{ cursor: "pointer" }}
+                    <FitnessCenterIcon
+                      style={{ cursor: "pointer", margin: "8px 0 0 8vw" }}
                     />
-                    {visible && (
-                      <AddAdminRodal
-                        visible={visible}
-                        hide={hide}
-                        animation={"slideDown"}
-                        duration={500}
-                        closeMaskOnClick={true}
-                        closeOnEsc={true}
-                        height={550}
-                        width={500}
-                        render={{ setRender }}
-                      />
-                    )}
                   </TableCell>
                 </TableRow>
               </TableHead>
@@ -234,11 +165,22 @@ const AdminInfo = () => {
                       .map((val) => {
                         return (
                           <TableRow key={val.id}>
-                            <TableCell align="right">{val.username}</TableCell>
-                            <TableCell align="right">{val.firstname}</TableCell>
-                            <TableCell align="right">{val.lastname}</TableCell>
-                            <TableCell align="right">{val.email}</TableCell>
+                            <TableCell align="right">{val.name}</TableCell>
+                            <TableCell align="right">
+                              {val.description.slice(0, 50) + "..."}
+                            </TableCell>
                             <TableCell align="right"></TableCell>
+                            <TableCell align="right">
+                              <input
+                                type="submit"
+                                value="View"
+                                className="view"
+                                onClick={() => {
+                                  showView();
+                                  setListView(val);
+                                }}
+                              />
+                            </TableCell>
                             <TableCell align="right">
                               <input
                                 type="submit"
@@ -251,14 +193,6 @@ const AdminInfo = () => {
                                 }}
                               />
                             </TableCell>
-                            <TableCell align="right">
-                              <input
-                                type="submit"
-                                value="Delete"
-                                className="delete"
-                                onClick={() => deleteAdmin(val.id)}
-                              />
-                            </TableCell>
                           </TableRow>
                         );
                       })}
@@ -268,7 +202,7 @@ const AdminInfo = () => {
             </Table>
           </TableContainer>
           {visibleEdit && (
-            <EditAdminRodal
+            <EditWorkoutRodal
               visible={visibleEdit}
               hide={hideEdit}
               animation={"flip"}
@@ -280,7 +214,21 @@ const AdminInfo = () => {
               render={{ setRender }}
               show={showEdit}
               val={list}
-              render={{ setRender }}
+            />
+          )}
+
+          {visibleView && (
+            <ViewWorkoutRodal
+              visible={visibleView}
+              hide={hideView}
+              animation={"rotate"}
+              duration={500}
+              closeMaskOnClick={true}
+              closeOnEsc={true}
+              height={631}
+              width={500}
+              show={showView}
+              val={listView}
             />
           )}
 
@@ -298,7 +246,7 @@ const AdminInfo = () => {
               }}
             />
             <TablePagination
-              rowsPerPageOptions={[4, 7]}
+              rowsPerPageOptions={[3, 6]}
               component="div"
               count={currentPosts.length}
               rowsPerPage={rowsPerPage}

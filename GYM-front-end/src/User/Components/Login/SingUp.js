@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import Header from "../Navigation/Header";
 import Axios from "axios";
+import './Login.css';
 
 const SingUp = () => {
   const [firstName, setFirstName] = useState("");
@@ -52,6 +54,13 @@ const SingUp = () => {
     // setMemberShipIdErr("");
   };
 
+  const history = useHistory();
+
+  const routeChange = () => {
+    let path = `/myinfo`;
+    history.push(path);
+  };
+
   const handleAdd = async (e) => {
     e.preventDefault();
     const data = new FormData();
@@ -73,6 +82,7 @@ const SingUp = () => {
           setSuccess("Sign Up successfully");
           setTimeout(() => {
             setSuccess("");
+            routeChange();
           }, 4000);
         }
       );

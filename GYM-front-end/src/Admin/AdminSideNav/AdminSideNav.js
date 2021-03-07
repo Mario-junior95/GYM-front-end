@@ -7,6 +7,8 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import GroupIcon from "@material-ui/icons/Group";
 import LockIcon from "@material-ui/icons/Lock";
 import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import FitnessCenterIcon from "@material-ui/icons/FitnessCenter";
 import { Link, useHistory } from "react-router-dom";
 import { useConfirm } from "material-ui-confirm";
 import LogoWhite from "../../Images/logoWhite.svg";
@@ -214,6 +216,14 @@ export default function AdminSideNav() {
             </Link>
           </ListItem>
           <ListItem>
+            <Link to="/admin-workout">
+              <div>
+                <FitnessCenterIcon />
+                Workouts
+              </div>
+            </Link>
+          </ListItem>
+          <ListItem>
             <Link onClick={show} style={{ cursor: "pointer" }}>
               <div>
                 <LockIcon />
@@ -223,7 +233,10 @@ export default function AdminSideNav() {
           </ListItem>
           <ListItem className={classes.root}>
             <Button color="secondary" onClick={fire}>
-              Logout
+              <div>
+                <ExitToAppIcon style={{ marginLeft: "-2.6vw" }} />
+                Logout
+              </div>
             </Button>
           </ListItem>
         </List>

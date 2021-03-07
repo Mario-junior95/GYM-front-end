@@ -4,6 +4,8 @@ import Header from "../Navigation/Header";
 import Axios from "axios";
 import "./MyInfo.scss";
 
+import WallWorkout from "../../../Images/wall-workout.png";
+
 const EditInfo = () => {
   const [newFirstName, setnewFirstName] = useState("");
   const [newLastName, setnewLastName] = useState("");
@@ -18,14 +20,14 @@ const EditInfo = () => {
   const history = useHistory();
 
   const routeChange = () => {
-    let path = `/myinfo`;
+    let path = `/SignIn`;
     history.push(path);
   };
 
   const [, setListMember] = useState([]);
 
   const expireToken = () => {
-    localStorage.clear() && <Redirect exact to="/SignIn" />;
+    localStorage.clear() && <Redirect exact="true" to="/SignIn" />;
   };
 
   useEffect(async () => {
@@ -38,7 +40,12 @@ const EditInfo = () => {
         },
       }
     ).then((response) => {
-      if (response.data.status === "Token is Expired") {
+      if (
+        response.data.status === "Token is Invalid" ||
+        response.data.status === "Authorization Token not found" ||
+        response.data.status === "Token is Invalid" ||
+        response.data.status === "Authorization Token not found"
+      ) {
         expireToken();
         return window.location.reload();
       } else {
@@ -66,7 +73,7 @@ const EditInfo = () => {
 
   // const [memberShipIdErr , setMemberShipIdErr] = useState(0);
 
-  const handleAdd = async () => {
+  const handleEdit = async () => {
     const data = new FormData();
     data.append("firstname", newFirstName);
     data.append("lastname", newLastName);
@@ -101,7 +108,7 @@ const EditInfo = () => {
         setnewAddressErr(error.response.data.errors.address);
         setnewDateErr(error.response.data.errors.date);
         setnewGenderErr(error.response.data.errors.gender);
-        console.log(error);
+        console.log(error.response.data.errors.date);
 
         // setMemberShipIdErr(error.response.data.errors.membership_id);
       }
@@ -111,6 +118,8 @@ const EditInfo = () => {
   return (
     <div className="App">
       <Header />
+      <div style={{display:'flex'}}>
+      {/* <img src={WallWorkout} alt="error_wallWorkout" style={{width: '40vw' ,height: '40vw' , position:'fixed' }}/> */}
       <div className="container">
         <div className="wrapper">
           <div className="home">
@@ -322,7 +331,7 @@ const EditInfo = () => {
                   value="Submit"
                   className="btnLogin"
                   onClick={(e) => {
-                    handleAdd(localStorage.getItem("idUser"));
+                    handleEdit(localStorage.getItem("idUser"));
                     e.preventDefault();
                   }}
                   id="success"
@@ -334,6 +343,7 @@ const EditInfo = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

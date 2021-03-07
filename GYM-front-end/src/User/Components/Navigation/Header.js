@@ -5,6 +5,7 @@ import LogoWhite from "../../../Images/logoWhite.svg";
 import LogoBlack from "../../../Images/logoBlack.svg";
 
 import "./MyAccountBtn.css";
+import './Header.css';
 
 const Header = (props) => {
   const { history } = props;
@@ -88,7 +89,7 @@ const Header = (props) => {
   };
 
   return (
-    <header>
+    <header className ="headers">
       <div className="container">
         <div className="wrapper">
           <div className="inner-header">

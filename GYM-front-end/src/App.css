@@ -51,6 +51,9 @@
 .delete[type="submit"] {
   background-color: red;
 }
+.view[type="submit"]{
+  background-color: rgb(13, 255, 13);
+}
 
 [type="submit"]:focus {
   outline: none;

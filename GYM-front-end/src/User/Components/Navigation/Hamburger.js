@@ -66,7 +66,7 @@ const Hamburger = (props) => {
       height: "100vh",
       top: "0px",
       backgroundSize: " 93.4%",
-      width: "100vw",
+      width: "99vw",
     },
   });
 
@@ -78,7 +78,7 @@ const Hamburger = (props) => {
       height: "100vh",
       top: "0px",
       backgroundSize: " 93.4%",
-      width: "100vw",
+      width: "99vw",
     },
   });
 
@@ -90,7 +90,7 @@ const Hamburger = (props) => {
       height: "100vh",
       top: "0px",
       backgroundSize: " 93.4%",
-      width: "100vw",
+      width: "99vw",
     },
   });
 

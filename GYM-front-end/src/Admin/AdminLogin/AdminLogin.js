@@ -5,7 +5,7 @@ import Axios from "axios";
 import "./AdminLogin.css";
 
 // MUI Core
-import { Button, Container, Grid, TextField } from "@material-ui/core";
+import { Button, Container, Grid, TextField  , Typography} from "@material-ui/core";
 
 const AdminLogin = () => {
   /**     states    */
@@ -55,9 +55,9 @@ const AdminLogin = () => {
   }, []);
 
   if (redirect) {
-    return <Redirect exact to="/admin" />;
+    return <Redirect to="/admin" />;
   } else {
-    <Redirect exact to="/admin-Login" />;
+    <Redirect  to="/admin-Login" />;
   }
 
   return (
@@ -67,12 +67,12 @@ const AdminLogin = () => {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Grid container spacing={2}>
-              <span style={{ color: "red", marginLeft: "4px" }}>
+              <Typography style={{ color: "red", marginLeft: "4px" }}>
                 {handleError}
-              </span>
-              <span style={{ color: "red", marginLeft: "4px" }}>
+              </Typography>
+              <Typography style={{ color: "red", marginLeft: "4px" }}>
                 {usernameError}
-              </span>
+              </Typography>
               <Grid item xs={12}>
                 <TextField
                   fullWidth
@@ -89,9 +89,9 @@ const AdminLogin = () => {
                   value={username}
                 />
               </Grid>
-              <span style={{ color: "red", marginLeft: "9px" }}>
+              <Typography style={{ color: "red", marginLeft: "9px" }}>
                 {passwordError}
-              </span>
+              </Typography>
               <Grid item xs={12}>
                 <TextField
                   fullWidth

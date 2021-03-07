@@ -4,7 +4,7 @@ import Rodal from "rodal";
 import "rodal/lib/rodal.css";
 import "./AdminInfo.css";
 import Axios from "axios";
-import { Button, Grid, TextField } from "@material-ui/core";
+import { Button, Grid, TextField , Typography} from "@material-ui/core";
 
 const AddAdminRodal = (props) => {
   const { setRender } = props.render;
@@ -40,7 +40,7 @@ const AddAdminRodal = (props) => {
   };
 
   const expireToken = () => {
-    localStorage.clear() && <Redirect exact to="/Admin-Login" />;
+    localStorage.clear() && <Redirect exact="true" to="/Admin-Login" />;
   };
 
   const [success, setSuccess] = useState("");
@@ -103,12 +103,12 @@ const AddAdminRodal = (props) => {
       <form className="addAdmin">
         <h1 className="Rodal_Title">Add New Admin</h1>
         <Grid container spacing={3}>
-          <span style={{ color: "green", margin: "0 auto" }}>{success}</span>
+          <Typography style={{ color: "green", margin: "0 auto" }}>{success}</Typography>
           <Grid item xs={12}>
             <Grid container spacing={2}>
-              <span style={{ color: "red", margin: "0 auto" }}>
+              <Typography style={{ color: "red", margin: "0 auto" }}>
                 {firstNameErr}
-              </span>
+              </Typography>
               <Grid item xs={12}>
                 <TextField
                   fullWidth
@@ -123,9 +123,9 @@ const AddAdminRodal = (props) => {
                   }}
                 />
               </Grid>
-              <span style={{ color: "red", margin: "0 auto" }}>
+              <Typography style={{ color: "red", margin: "0 auto" }}>
                 {lastNameErr}
-              </span>
+              </Typography>
               <Grid item xs={12}>
                 <TextField
                   fullWidth
@@ -140,7 +140,7 @@ const AddAdminRodal = (props) => {
                   }}
                 />
               </Grid>
-              <span style={{ color: "red", margin: "0 auto" }}>{emailErr}</span>
+              <Typography style={{ color: "red", margin: "0 auto" }}>{emailErr}</Typography>
               <Grid item xs={12}>
                 <TextField
                   fullWidth
@@ -155,9 +155,9 @@ const AddAdminRodal = (props) => {
                   }}
                 />
               </Grid>
-              <span style={{ color: "red", margin: "0 auto" }}>
+              <Typography style={{ color: "red", margin: "0 auto" }}>
                 {userNameErr}
-              </span>
+              </Typography>
               <Grid item xs={12}>
                 <TextField
                   fullWidth
@@ -173,9 +173,9 @@ const AddAdminRodal = (props) => {
                   }}
                 />
               </Grid>
-              <span style={{ color: "red", margin: "0 auto" }}>
+              <Typography style={{ color: "red", margin: "0 auto" }}>
                 {passwordErr}
-              </span>
+              </Typography>
               <Grid item xs={12}>
                 <TextField
                   fullWidth

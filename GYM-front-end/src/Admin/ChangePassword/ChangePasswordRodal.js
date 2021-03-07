@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import Rodal from "rodal";
 import "rodal/lib/rodal.css";
-import { Button, Grid, TextField } from "@material-ui/core";
+import { Button, Grid, TextField , Typography } from "@material-ui/core";
 
 import Axios from "axios";
 
@@ -15,7 +15,7 @@ const ChangePasswordRodal = (props) => {
   const [close, setClose] = useState("");
 
   const expireToken = () => {
-    localStorage.clear() && <Redirect exact to="/Admin-Login" />;
+    localStorage.clear() && <Redirect exact = "true" to="/Admin-Login" />;
   };
 
   const ChangePassword = async (e) => {
@@ -36,7 +36,11 @@ const ChangePasswordRodal = (props) => {
           },
         }
       ).then((response) => {
-        if (response.data.status === "Token is Expired") {
+        if (
+          response.data.status === "Token is Expired" ||
+          response.data.status === "Token is Invalid" ||
+          response.data.status === "Authorization Token not found"
+        ) {
           expireToken();
           return window.location.reload();
         } else {
@@ -81,10 +85,10 @@ const ChangePasswordRodal = (props) => {
           Change Your current Password
         </h1>
         <Grid container spacing={3}>
-          <span style={{ color: "green", margin: "0 auto" }}>{success}</span>
+          <Typography style={{ color: "green", margin: "0 auto" }}>{success}</Typography>
           <Grid item xs={12}>
             <Grid container spacing={2}>
-              <span style={{ color: "red", margin: "0 auto" }}>{passErr}</span>
+              <Typography style={{ color: "red", margin: "0 auto" }}>{passErr}</Typography>
               <Grid item xs={12}>
                 <TextField
                   fullWidth

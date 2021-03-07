@@ -1,6 +1,6 @@
 import React, { useState, inputEl } from "react";
 import { Redirect } from "react-router-dom";
-import { Button, Grid, TextField } from "@material-ui/core";
+import { Button, Grid, TextField  , Typography} from "@material-ui/core";
 import Axios from "axios";
 
 import Rodal from "rodal";
@@ -21,21 +21,8 @@ const EditAdminRodal = (props) => {
   const [userNameErr, setUserNameErr] = useState("");
   const [emailErr, setEmailErr] = useState("");
 
-  /**  Clear Data */
-
-  const clearData = () => {
-    setFirstName("");
-    setLastName("");
-    setUserName("");
-    setEmail("");
-    setFirstNameErr("");
-    setLastNameErr("");
-    setUserNameErr("");
-    setEmailErr("");
-  };
-
   const expireToken = () => {
-    localStorage.clear() && <Redirect exact to="/Admin-Login" />;
+    localStorage.clear() && <Redirect exact = "true" to="/Admin-Login" />;
   };
 
   const [success, setSuccess] = useState("");
@@ -62,7 +49,11 @@ const EditAdminRodal = (props) => {
           },
         }
       ).then((response) => {
-        if (response.data.status === "Token is Expired") {
+        if (
+          response.data.status === "Token is Expired" ||
+          response.data.status === "Token is Invalid" ||
+          response.data.status === "Authorization Token not found"
+        ) {
           expireToken();
           return window.location.reload();
         } else {
@@ -102,12 +93,12 @@ const EditAdminRodal = (props) => {
             Update Admin Info
           </h1>
           <Grid container spacing={3}>
-            <span style={{ color: "green", margin: "0 auto" }}>{success}</span>
+            <Typography style={{ color: "green", margin: "0 auto" }}>{success}</Typography>
             <Grid item xs={12}>
               <Grid container spacing={2}>
-              <span style={{ color: "red", margin: "0 auto" }}>
+                <Typography style={{ color: "red", margin: "0 auto" }}>
                   {userNameErr}
-                </span>
+                </Typography>
                 <Grid item xs={12}>
                   <TextField
                     fullWidth
@@ -123,9 +114,9 @@ const EditAdminRodal = (props) => {
                     }}
                   />
                 </Grid>
-                <span style={{ color: "red", margin: "0 auto" }}>
+                <Typography style={{ color: "red", margin: "0 auto" }}>
                   {firstNameErr}
-                </span>
+                </Typography>
                 <Grid item xs={12}>
                   <TextField
                     fullWidth
@@ -140,9 +131,9 @@ const EditAdminRodal = (props) => {
                     }}
                   />
                 </Grid>
-                <span style={{ color: "red", margin: "0 auto" }}>
+                <Typography style={{ color: "red", margin: "0 auto" }}>
                   {lastNameErr}
-                </span>
+                </Typography>
                 <Grid item xs={12}>
                   <TextField
                     fullWidth
@@ -157,9 +148,9 @@ const EditAdminRodal = (props) => {
                     }}
                   />
                 </Grid>
-                <span style={{ color: "red", margin: "0 auto" }}>
+                <Typography style={{ color: "red", margin: "0 auto" }}>
                   {emailErr}
-                </span>
+                </Typography>
                 <Grid item xs={12}>
                   <TextField
                     fullWidth

@@ -6,8 +6,8 @@ import Header from "../Navigation/Header";
 import Male from "../../../Images/male.png";
 import Female from "../../../Images/Female.png";
 import UserAccount from "../UserAccount/UserAccount";
-
 import Axios from "axios";
+// import "../Navigation/Headers.css"
 
 const MyInfo = () => {
   const [firstName, setFirstName] = useState("");
@@ -19,7 +19,7 @@ const MyInfo = () => {
   const [email, setEmail] = useState("");
 
   const expireToken = () => {
-    localStorage.clear() && <Redirect exact to="/SignIn" />;
+    localStorage.clear() && <Redirect exact="true" to="/SignIn" />;
   };
 
   useEffect(async () => {
@@ -32,17 +32,23 @@ const MyInfo = () => {
         },
       }
     ).then((response) => {
-      if (response.data.status === "Token is Expired") {
+      if (
+        response.data.status === "Token is Expired" ||
+        response.data.status === "Token is Invalid" ||
+        response.data.status === "Authorization Token not found"
+      ) {
         expireToken();
         return window.location.reload();
       } else {
         setFirstName(response.data.user.firstname);
         setLastName(response.data.user.lastname);
-        setGender(response.data.user.gender);
+
         setDate(response.data.user.date);
         setPhone(response.data.user.phone);
         setEmail(response.data.user.email);
         setAddress(response.data.user.address);
+
+        setGender(response.data.user.gender);
       }
     });
   }, []);
@@ -103,6 +109,8 @@ const MyInfo = () => {
                         marginTop: "-28vw",
                         marginLeft: "30vw",
                         height: "30vw",
+                        position: "relative",
+                        zIndex: "1001",
                       }}
                     />
                   ) : (
@@ -115,6 +123,8 @@ const MyInfo = () => {
                         marginTop: "-28vw",
                         marginLeft: "37vw",
                         height: "35vw",
+                        position: "relative",
+                        zIndex: "1001",
                       }}
                     />
                   )}
