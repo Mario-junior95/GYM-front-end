@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Header from "../Navigation/Header";
 import Axios from "axios";
-import './Login.css';
+import "./Login.css";
 
 const SingUp = () => {
   const [firstName, setFirstName] = useState("");
@@ -14,7 +14,7 @@ const SingUp = () => {
   const [gender, setGender] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState("");
-  // const [memberShipId , setMemberShipId] = useState(0);
+  const [memberShipId, setMemberShipId] = useState(1);
 
   const [, setListMember] = useState([]);
 
@@ -30,6 +30,8 @@ const SingUp = () => {
   const [passwordErr, setPasswordErr] = useState("");
 
   // const [memberShipIdErr , setMemberShipIdErr] = useState(0);
+
+  const [render, setRender] = useState(false);
 
   /**  Clear Data */
 
@@ -57,8 +59,15 @@ const SingUp = () => {
   const history = useHistory();
 
   const routeChange = () => {
+    let path = `/payment`;
+    history.push(path);
+    // window.location.reload(true);
+  };
+
+  const routeChangeToInfo = () => {
     let path = `/myinfo`;
     history.push(path);
+    window.location.reload(true);
   };
 
   const handleAdd = async (e) => {
@@ -72,18 +81,37 @@ const SingUp = () => {
     data.append("date", date);
     data.append("gender", gender);
     data.append("password", password);
-    // data.append("membership_id" ,memberShipId);
+    data.append("membership_id", memberShipId);
 
     try {
       await Axios.post("http://localhost:8000/api/register", data).then(
         (response) => {
           setListMember(response.data);
+          localStorage.setItem("idUser", response.data.user.id);
+          localStorage.setItem("token", response.data.access_token);
+          localStorage.setItem("email", response.data.user.email);
+          localStorage.setItem("firstname", response.data.user.firstname);
+          localStorage.setItem("lastname", response.data.user.lastname);
+          localStorage.setItem("phone", response.data.user.phone);
+          localStorage.setItem("date", response.data.user.date);
+          localStorage.setItem("gender", response.data.user.gender);
+          localStorage.setItem("address", response.data.user.address);
+          localStorage.setItem(
+            "membership_id",
+            response.data.user.membership_id
+          );
+
+          console.log(response.data);
           clearData();
           setSuccess("Sign Up successfully");
           setTimeout(() => {
             setSuccess("");
-            routeChange();
-          }, 4000);
+            if (response.data.user.membership_id === 1) {
+              routeChangeToInfo();
+            } else {
+              routeChange();
+            }
+          }, 2000);
         }
       );
     } catch (error) {
@@ -100,6 +128,14 @@ const SingUp = () => {
       }
     }
   };
+
+  const [membership, setMemberShip] = useState([]);
+
+  useEffect(() => {
+    Axios.get("http://localhost:8000/api/membership").then((response) => {
+      setMemberShip(response.data.membership);
+    });
+  }, []);
 
   return (
     <div className="App">
@@ -329,14 +365,24 @@ const SingUp = () => {
                     <div className="label-text">Password</div>
                   </label>
                 )}
-                {/* <label>
+                <label>
                   <div>MemberShip Type</div>
-                  <select className="memberType">
-                    <option value="">--</option>
-                    <option>Mario</option>
-                    <option>Mario</option>
+                  <select
+                    className="memberType"
+                    onChange={(e) => {
+                      setMemberShipId(e.target.value);
+                    }}
+                  >
+                    {/* <option>--</option> */}
+                    {membership.map((val) => {
+                      return (
+                        <option key={val.id} value={val.id}>
+                          {val.name}
+                        </option>
+                      );
+                    })}
                   </select>
-                </label> */}
+                </label>
                 <button
                   type="submit"
                   value="Submit"

@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState  , useEffect} from "react";
 import { Link, Redirect } from "react-router-dom";
 import Header from "../Navigation/Header";
 import Axios from "axios";
-import './Login.css';
+import "./Login.css";
+
 
 const SignIn = () => {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -46,6 +48,8 @@ const SignIn = () => {
         localStorage.setItem("date", response.data.user.date);
         localStorage.setItem("gender", response.data.user.gender);
         localStorage.setItem("address", response.data.user.address);
+        localStorage.setItem("membership_id", response.data.user.membership_id);
+        
         window.location.reload(true);
       });
     } catch (error) {
@@ -59,6 +63,8 @@ const SignIn = () => {
       }
     }
   };
+
+
 
   return (
     <div className="LoginSection">

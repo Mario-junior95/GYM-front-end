@@ -5,7 +5,7 @@ import "./Gym.css";
 
 import Axios from "axios";
 
-const Gym = () => {
+const Pool = () => {
   const [listMembership, setListMembership] = useState([]);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const Gym = () => {
         <div className="wrapper">
           <div className="home">
             {listMembership.map((val, index) => {
-              if (index !== 0 && index === 2) {
+              if (index !== 0 && index === 11) {
                 return (
                   <div className="cardBox" key={val.id}>
                     <div className="card">
@@ -76,7 +76,7 @@ const Gym = () => {
               }
             })}
             {listMembership.map((val, index) => {
-              if (index !== 0 && index === 1) {
+              if (index !== 0 && index === 12) {
                 return (
                   <div className="cardBox" key={val.id}>
                     <div className="card">
@@ -108,4 +108,4 @@ const Gym = () => {
   );
 };
 
-export default Gym;
+export default Pool;

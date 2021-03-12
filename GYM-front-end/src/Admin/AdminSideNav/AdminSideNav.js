@@ -12,6 +12,11 @@ import FitnessCenterIcon from "@material-ui/icons/FitnessCenter";
 import { Link, useHistory } from "react-router-dom";
 import { useConfirm } from "material-ui-confirm";
 import LogoWhite from "../../Images/logoWhite.svg";
+import SportsMmaIcon from "@material-ui/icons/SportsMma";
+import SportsIcon from "@material-ui/icons/Sports";
+import PersonIcon from "@material-ui/icons/Person";
+
+import EditAdminInfo from "../EditAdminInfo/EditAdminInfo";
 
 import {
   makeStyles,
@@ -116,6 +121,16 @@ export default function AdminSideNav() {
 
   const hide = () => {
     setVisible(false);
+  };
+
+  const [visibleEdit, setVisibleEdit] = useState(false);
+
+  const showEdit = () => {
+    setVisibleEdit(true);
+  };
+
+  const hideEdit = () => {
+    setVisibleEdit(false);
   };
 
   /**    Logout Button Confirmation */
@@ -224,6 +239,35 @@ export default function AdminSideNav() {
             </Link>
           </ListItem>
           <ListItem>
+            <Link to="/admin-membershipType">
+              <div>
+                <SportsMmaIcon />
+                MemberShipType
+              </div>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/admin-instructor">
+              <div>
+                <SportsIcon />
+                Instructor
+              </div>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link
+              onClick={() => {
+                showEdit();
+              }}
+              style={{ cursor: "pointer" }}
+            >
+              <div>
+                <PersonIcon />
+                Update Your Info
+              </div>
+            </Link>
+          </ListItem>
+          <ListItem>
             <Link onClick={show} style={{ cursor: "pointer" }}>
               <div>
                 <LockIcon />
@@ -250,6 +294,19 @@ export default function AdminSideNav() {
           closeMaskOnClick={true}
           closeOnEsc={true}
           height={400}
+          width={500}
+        />
+      )}
+
+      {visibleEdit && (
+        <EditAdminInfo
+          visible={visibleEdit}
+          hide={hideEdit}
+          animation={"flip"}
+          duration={500}
+          closeMaskOnClick={true}
+          closeOnEsc={true}
+          height={550}
           width={500}
         />
       )}

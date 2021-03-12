@@ -2,41 +2,51 @@ import React, { useState, inputEl } from "react";
 import { Redirect } from "react-router-dom";
 import Rodal from "rodal";
 import "rodal/lib/rodal.css";
-import "./AdminInfo.css";
+import "../AdminInfo/AdminInfo.css";
 import Axios from "axios";
-import { Button, Grid, TextField, Typography } from "@material-ui/core";
+import {
+  Button,
+  Grid,
+  TextField,
+  Typography,
+  TextareaAutosize,
+} from "@material-ui/core";
 
-const AddAdminRodal = (props) => {
+const AddInstructorRodal = (props) => {
   const { setRender } = props.render;
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [listAdmin, setListAdmin] = useState([]);
+  const [contact, setContact] = useState("");
+  const [address, setAddress] = useState("");
+  const [image, setImage] = useState(null);
+  const [description, setDescription] = useState("");
+
+  const [listInstructor, setListInstructor] = useState([]);
 
   /** error States */
 
-  const [firstNameErr, setFirstNameErr] = useState("");
-  const [lastNameErr, setLastNameErr] = useState("");
-  const [userNameErr, setUserNameErr] = useState("");
-  const [passwordErr, setPasswordErr] = useState("");
+  const [nameErr, setNameErr] = useState("");
   const [emailErr, setEmailErr] = useState("");
+  const [contactErr, setContactErr] = useState("");
+  const [addressErr, setAddressErr] = useState("");
+  const [imageErr, setImageErr] = useState("");
+  const [descriptionErr, setDescriptionErr] = useState("");
 
   /**  Clear Data */
 
   const clearData = () => {
-    setFirstName("");
-    setLastName("");
-    setUserName("");
-    setPassword("");
+    setName("");
     setEmail("");
-    setFirstNameErr("");
-    setLastNameErr("");
-    setUserNameErr("");
-    setPasswordErr("");
+    setContact("");
+    setAddress("");
+    setNameErr("");
     setEmailErr("");
+    setContactErr("");
+    setAddressErr("");
+    setImageErr("");
+    setDescription("");
+    setDescriptionErr("");
   };
 
   const expireToken = () => {
@@ -52,13 +62,14 @@ const AddAdminRodal = (props) => {
   const handleAdd = async (e) => {
     e.preventDefault();
     const data = new FormData();
-    data.append("firstname", firstName);
-    data.append("lastname", lastName);
+    data.append("name", name);
     data.append("email", email);
-    data.append("username", userName);
-    data.append("password", password);
+    data.append("phone", contact);
+    data.append("address", address);
+    data.append("image", image);
+    data.append("description", description);
     try {
-      await Axios.post("http://localhost:8000/api/admin", data, {
+      await Axios.post("http://localhost:8000/api/instructor", data, {
         headers: {
           "content-type": "multipart/form-data",
           Authorization: "Bearer " + localStorage.getItem("tokens"),
@@ -72,9 +83,9 @@ const AddAdminRodal = (props) => {
           expireToken();
           return window.location.reload();
         } else {
-          setListAdmin(response.data.admin);
+          setListInstructor(response.data.instructor);
           setRender((prev) => !prev);
-          setSuccess("Admin Added Successfully!!!");
+          setSuccess("Instructor Added Successfully!!!");
           clearData();
           setTimeout(() => {
             setClose(props.hide);
@@ -84,11 +95,12 @@ const AddAdminRodal = (props) => {
     } catch (error) {
       if (error.response) {
         console.log(error);
-        setFirstNameErr(error.response.data.errors.firstname);
-        setLastNameErr(error.response.data.errors.lastname);
-        setUserNameErr(error.response.data.errors.username);
-        setPasswordErr(error.response.data.errors.password);
+        setNameErr(error.response.data.errors.name);
         setEmailErr(error.response.data.errors.email);
+        setContactErr(error.response.data.errors.phone);
+        setAddressErr(error.response.data.errors.address);
+        setImageErr(error.response.data.errors.image);
+        setDescriptionErr(error.response.data.errors.description);
       }
     }
   };
@@ -105,7 +117,7 @@ const AddAdminRodal = (props) => {
       width={props.width}
     >
       <form className="addAdmin">
-        <h1 className="Rodal_Title">Add New Admin</h1>
+        <h1 className="Rodal_Title">Add New Instructor</h1>
         <Grid container spacing={3}>
           <Typography style={{ color: "green", margin: "0 auto" }}>
             {success}
@@ -113,36 +125,19 @@ const AddAdminRodal = (props) => {
           <Grid item xs={12}>
             <Grid container spacing={2}>
               <Typography style={{ color: "red", margin: "0 auto" }}>
-                {firstNameErr}
+                {nameErr}
               </Typography>
               <Grid item xs={12}>
                 <TextField
                   fullWidth
-                  label="Firstname"
-                  name="firstname"
+                  label="Full Name"
+                  name="fullname"
                   size="small"
                   variant="outlined"
-                  value={firstName}
+                  value={name}
                   onChange={(e) => {
-                    setFirstName(e.target.value);
-                    setFirstNameErr("");
-                  }}
-                />
-              </Grid>
-              <Typography style={{ color: "red", margin: "0 auto" }}>
-                {lastNameErr}
-              </Typography>
-              <Grid item xs={12}>
-                <TextField
-                  fullWidth
-                  label="Lastname"
-                  name="lastname"
-                  size="small"
-                  variant="outlined"
-                  value={lastName}
-                  onChange={(e) => {
-                    setLastName(e.target.value);
-                    setLastNameErr("");
+                    setName(e.target.value);
+                    setNameErr("");
                   }}
                 />
               </Grid>
@@ -164,41 +159,80 @@ const AddAdminRodal = (props) => {
                 />
               </Grid>
               <Typography style={{ color: "red", margin: "0 auto" }}>
-                {userNameErr}
+                {contactErr}
+              </Typography>
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  label="Contact Number"
+                  name="contact"
+                  size="small"
+                  variant="outlined"
+                  value={contact}
+                  onChange={(e) => {
+                    setContact(e.target.value);
+                    setContactErr("");
+                  }}
+                />
+              </Grid>
+              <Typography style={{ color: "red", margin: "0 auto" }}>
+                {addressErr}
               </Typography>
               <Grid item xs={12}>
                 <TextField
                   fullWidth
                   inputRef={inputEl}
-                  label="Username"
-                  name="username"
+                  label="Address"
+                  name="address"
                   size="small"
                   variant="outlined"
-                  value={userName}
+                  value={address}
                   onChange={(e) => {
-                    setUserName(e.target.value);
-                    setUserNameErr("");
+                    setAddress(e.target.value);
+                    setAddressErr("");
                   }}
                 />
               </Grid>
               <Typography style={{ color: "red", margin: "0 auto" }}>
-                {passwordErr}
+                {imageErr}
               </Typography>
-              <Grid item xs={12}>
-                <TextField
-                  fullWidth
-                  label="Password"
-                  name="password"
-                  size="small"
-                  variant="outlined"
-                  type="password"
-                  value={password}
+              <Button>
+                <input
+                  type="file"
                   onChange={(e) => {
-                    setPassword(e.target.value);
-                    setPasswordErr("");
+                    setImage(e.target.files[0]);
+                    setImageErr("");
                   }}
                 />
-              </Grid>
+              </Button>
+              <Typography
+                style={{
+                  marginRight: "26vw",
+                  color: "#2196f3",
+                  textTransform: "uppercase",
+                  fontFamily: "Impact, Arial black, sans-serif",
+                }}
+              >
+                Description
+              </Typography>
+              <Typography style={{ color: "red", margin: "0px 20vw" }}>
+                {descriptionErr}
+              </Typography>
+              <TextareaAutosize
+                rows={5}
+                cols={90}
+                fullWidth
+                inputRef={inputEl}
+                label="Description"
+                name="description"
+                size="small"
+                variant="outlined"
+                value={description}
+                onChange={(e) => {
+                  setDescription(e.target.value);
+                  setDescriptionErr("");
+                }}
+              />
             </Grid>
           </Grid>
           <Grid item xs={12}>
@@ -218,4 +252,4 @@ const AddAdminRodal = (props) => {
   );
 };
 
-export default AddAdminRodal;
+export default AddInstructorRodal;

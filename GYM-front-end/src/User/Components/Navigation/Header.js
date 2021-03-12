@@ -85,6 +85,7 @@ const Header = (props) => {
     localStorage.removeItem("date");
     localStorage.removeItem("gender");
     localStorage.removeItem("address");
+    localStorage.removeItem("membership_id");
     history.push("/");
   };
 

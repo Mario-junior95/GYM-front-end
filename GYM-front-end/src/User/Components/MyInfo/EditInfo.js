@@ -69,6 +69,7 @@ const EditInfo = () => {
   const [newAddressErr, setnewAddressErr] = useState("");
   const [newDateErr, setnewDateErr] = useState("");
   const [newGenderErr, setnewGenderErr] = useState("");
+  // const [memberShipId , setMemberShipId] = useState(0);
   //   const [passwordErr, setPasswordErr] = useState("");
 
   // const [memberShipIdErr , setMemberShipIdErr] = useState(0);
@@ -93,7 +94,7 @@ const EditInfo = () => {
         data
       ).then((response) => {
         setListMember(response.data);
-        setSuccess("Sign Up successfully");
+        setSuccess("Edit Info successfully");
         setTimeout(() => {
           setSuccess("");
           routeChange();
@@ -118,232 +119,232 @@ const EditInfo = () => {
   return (
     <div className="App">
       <Header />
-      <div style={{display:'flex'}}>
-      {/* <img src={WallWorkout} alt="error_wallWorkout" style={{width: '40vw' ,height: '40vw' , position:'fixed' }}/> */}
-      <div className="container">
-        <div className="wrapper">
-          <div className="home">
-            <div className="arrows">
-              <input
-                type="checkbox"
-                id="animation3"
-                onClick={() =>
-                  setTimeout(() => {
-                    routeChange();
-                  }, 1500)
-                }
-              />
-              <label htmlFor="animation3">
-                <div className="arrow"></div>
-              </label>
-            </div>
-            <div className="blockEditInfo SignUpSide">
-              <span style={{ color: "green" }}>{success}</span>
-              <h1 style={{ fontSize: "40px" }}>Edit My Info</h1>
-              <form>
-                <span style={{ color: "red" }}>{newFirstNameErr}</span>
-                {newFirstNameErr ? (
-                  <label>
-                    <input
-                      type="text"
-                      style={{ borderBottom: "1px red solid" }}
-                      onChange={(e) => {
-                        setnewFirstName(e.target.value);
-                        setnewFirstNameErr("");
-                      }}
-                    />
-                    <div className="label-text">First Name</div>
-                  </label>
-                ) : (
-                  <label>
-                    <input
-                      type="text"
-                      value={newFirstName}
-                      onChange={(e) => {
-                        setnewFirstName(e.target.value);
-                        setnewFirstNameErr("");
-                      }}
-                    />
-                    <div className="label-text">First Name</div>
-                  </label>
-                )}
-                <span style={{ color: "red" }}>{newLastNameErr}</span>
-                {newLastNameErr ? (
-                  <label>
-                    <input
-                      type="text"
-                      style={{ borderBottom: "1px red solid" }}
-                      onChange={(e) => {
-                        setnewLastName(e.target.value);
-                        setnewLastNameErr("");
-                      }}
-                    />
-                    <div className="label-text">Last Name</div>
-                  </label>
-                ) : (
-                  <label>
-                    <input
-                      type="text"
-                      value={newLastName}
-                      onChange={(e) => {
-                        setnewLastName(e.target.value);
-                        setnewLastNameErr("");
-                      }}
-                    />
-                    <div className="label-text">Last Name</div>
-                  </label>
-                )}
-                <span style={{ color: "red" }}>{newEmailErr}</span>
-                {newEmailErr ? (
-                  <label>
-                    <input
-                      type="newEmail"
-                      style={{ borderBottom: "1px red solid" }}
-                      onChange={(e) => {
-                        setnewEmail(e.target.value);
-                        setnewEmailErr("");
-                      }}
-                    />
-                    <div className="label-text">newEmail</div>
-                  </label>
-                ) : (
-                  <label>
-                    <input
-                      type="newEmail"
-                      value={newEmail}
-                      onChange={(e) => {
-                        setnewEmail(e.target.value);
-                        setnewEmailErr("");
-                      }}
-                    />
-                    <div className="label-text">newEmail</div>
-                  </label>
-                )}
-                <span style={{ color: "red" }}>{newPhoneErr}</span>
-                {newPhoneErr ? (
-                  <label>
-                    <input
-                      type="tel"
-                      onChange={(e) => {
-                        setnewPhone(e.target.value);
-                        setnewPhoneErr("");
-                      }}
-                      style={{ borderBottom: "1px red solid" }}
-                    />
-                    <div className="label-text">newPhone</div>
-                  </label>
-                ) : (
-                  <label>
-                    <input
-                      type="tel"
-                      value={newPhone}
-                      onChange={(e) => {
-                        setnewPhone(e.target.value);
-                        setnewPhoneErr("");
-                      }}
-                    />
-                    <div className="label-text">newPhone</div>
-                  </label>
-                )}
-                <span style={{ color: "red" }}>{newAddressErr}</span>
-                {newAddressErr ? (
-                  <label>
-                    <input
-                      type="text"
-                      onChange={(e) => {
-                        setnewAddress(e.target.value);
-                        setnewAddressErr("");
-                      }}
-                      style={{ borderBottom: "1px red solid" }}
-                    />
-                    <div className="label-text">newAddress</div>
-                  </label>
-                ) : (
-                  <label>
-                    <input
-                      type="text"
-                      value={newAddress}
-                      onChange={(e) => {
-                        setnewAddress(e.target.value);
-                        setnewAddressErr("");
-                      }}
-                    />
-                    <div className="label-text">newAddress</div>
-                  </label>
-                )}{" "}
-                <span style={{ color: "red" }}>{newDateErr}</span>
-                {newDateErr ? (
-                  <label>
-                    <div>newDate of Birth</div>
-                    <input
-                      type="newDate"
-                      onChange={(e) => {
-                        setnewDate(e.target.value);
-                        setnewDateErr("");
-                      }}
-                      style={{ border: "1px red solid" }}
-                    />
-                  </label>
-                ) : (
-                  <label>
-                    <div>newDate of Birth</div>
-                    <input
-                      type="date"
-                      value={newDate}
-                      onChange={(e) => {
-                        setnewDate(e.target.value);
-                        setnewDateErr("");
-                      }}
-                    />
-                  </label>
-                )}
-                <span style={{ color: "red" }}>{newGenderErr}</span>
-                <div className="gender">
-                  <label>
-                    <span>Male</span>
-                    <input
-                      type="radio"
-                      name="gender"
-                      value="Male"
-                      checked={newGender === "Male"}
-                      onChange={(e) => {
-                        setnewGender("Male");
-                        setnewGenderErr("");
-                      }}
-                    />
-                  </label>
-                  <label>
-                    <span>Female</span>
-                    <input
-                      type="radio"
-                      name="gender"
-                      value="Female"
-                      checked={newGender === "Female"}
-                      onChange={(e) => {
-                        setnewGender("Female");
-                        setnewGenderErr("");
-                      }}
-                    />
-                  </label>
-                </div>
-                <button
-                  type="submit"
-                  value="Submit"
-                  className="btnLogin"
-                  onClick={(e) => {
-                    handleEdit(localStorage.getItem("idUser"));
-                    e.preventDefault();
-                  }}
-                  id="success"
-                >
-                  Save
-                </button>
-              </form>
+      <div style={{ display: "flex" }}>
+        {/* <img src={WallWorkout} alt="error_wallWorkout" style={{width: '40vw' ,height: '40vw' , position:'fixed' }}/> */}
+        <div className="container">
+          <div className="wrapper">
+            <div className="home">
+              <div className="arrows">
+                <input
+                  type="checkbox"
+                  id="animation3"
+                  onClick={() =>
+                    setTimeout(() => {
+                      routeChange();
+                    }, 1500)
+                  }
+                />
+                <label htmlFor="animation3">
+                  <div className="arrow"></div>
+                </label>
+              </div>
+              <div className="blockEditInfo SignUpSide">
+                <span style={{ color: "green" }}>{success}</span>
+                <h1 style={{ fontSize: "40px" }}>Edit My Info</h1>
+                <form>
+                  <span style={{ color: "red" }}>{newFirstNameErr}</span>
+                  {newFirstNameErr ? (
+                    <label>
+                      <input
+                        type="text"
+                        style={{ borderBottom: "1px red solid" }}
+                        onChange={(e) => {
+                          setnewFirstName(e.target.value);
+                          setnewFirstNameErr("");
+                        }}
+                      />
+                      <div className="label-text">First Name</div>
+                    </label>
+                  ) : (
+                    <label>
+                      <input
+                        type="text"
+                        value={newFirstName}
+                        onChange={(e) => {
+                          setnewFirstName(e.target.value);
+                          setnewFirstNameErr("");
+                        }}
+                      />
+                      <div className="label-text">First Name</div>
+                    </label>
+                  )}
+                  <span style={{ color: "red" }}>{newLastNameErr}</span>
+                  {newLastNameErr ? (
+                    <label>
+                      <input
+                        type="text"
+                        style={{ borderBottom: "1px red solid" }}
+                        onChange={(e) => {
+                          setnewLastName(e.target.value);
+                          setnewLastNameErr("");
+                        }}
+                      />
+                      <div className="label-text">Last Name</div>
+                    </label>
+                  ) : (
+                    <label>
+                      <input
+                        type="text"
+                        value={newLastName}
+                        onChange={(e) => {
+                          setnewLastName(e.target.value);
+                          setnewLastNameErr("");
+                        }}
+                      />
+                      <div className="label-text">Last Name</div>
+                    </label>
+                  )}
+                  <span style={{ color: "red" }}>{newEmailErr}</span>
+                  {newEmailErr ? (
+                    <label>
+                      <input
+                        type="newEmail"
+                        style={{ borderBottom: "1px red solid" }}
+                        onChange={(e) => {
+                          setnewEmail(e.target.value);
+                          setnewEmailErr("");
+                        }}
+                      />
+                      <div className="label-text">newEmail</div>
+                    </label>
+                  ) : (
+                    <label>
+                      <input
+                        type="newEmail"
+                        value={newEmail}
+                        onChange={(e) => {
+                          setnewEmail(e.target.value);
+                          setnewEmailErr("");
+                        }}
+                      />
+                      <div className="label-text">newEmail</div>
+                    </label>
+                  )}
+                  <span style={{ color: "red" }}>{newPhoneErr}</span>
+                  {newPhoneErr ? (
+                    <label>
+                      <input
+                        type="tel"
+                        onChange={(e) => {
+                          setnewPhone(e.target.value);
+                          setnewPhoneErr("");
+                        }}
+                        style={{ borderBottom: "1px red solid" }}
+                      />
+                      <div className="label-text">newPhone</div>
+                    </label>
+                  ) : (
+                    <label>
+                      <input
+                        type="tel"
+                        value={newPhone}
+                        onChange={(e) => {
+                          setnewPhone(e.target.value);
+                          setnewPhoneErr("");
+                        }}
+                      />
+                      <div className="label-text">newPhone</div>
+                    </label>
+                  )}
+                  <span style={{ color: "red" }}>{newAddressErr}</span>
+                  {newAddressErr ? (
+                    <label>
+                      <input
+                        type="text"
+                        onChange={(e) => {
+                          setnewAddress(e.target.value);
+                          setnewAddressErr("");
+                        }}
+                        style={{ borderBottom: "1px red solid" }}
+                      />
+                      <div className="label-text">newAddress</div>
+                    </label>
+                  ) : (
+                    <label>
+                      <input
+                        type="text"
+                        value={newAddress}
+                        onChange={(e) => {
+                          setnewAddress(e.target.value);
+                          setnewAddressErr("");
+                        }}
+                      />
+                      <div className="label-text">newAddress</div>
+                    </label>
+                  )}{" "}
+                  <span style={{ color: "red" }}>{newDateErr}</span>
+                  {newDateErr ? (
+                    <label>
+                      <div>newDate of Birth</div>
+                      <input
+                        type="newDate"
+                        onChange={(e) => {
+                          setnewDate(e.target.value);
+                          setnewDateErr("");
+                        }}
+                        style={{ border: "1px red solid" }}
+                      />
+                    </label>
+                  ) : (
+                    <label>
+                      <div>newDate of Birth</div>
+                      <input
+                        type="date"
+                        value={newDate}
+                        onChange={(e) => {
+                          setnewDate(e.target.value);
+                          setnewDateErr("");
+                        }}
+                      />
+                    </label>
+                  )}
+                  <span style={{ color: "red" }}>{newGenderErr}</span>
+                  <div className="gender">
+                    <label>
+                      <span>Male</span>
+                      <input
+                        type="radio"
+                        name="gender"
+                        value="Male"
+                        checked={newGender === "Male"}
+                        onChange={(e) => {
+                          setnewGender("Male");
+                          setnewGenderErr("");
+                        }}
+                      />
+                    </label>
+                    <label>
+                      <span>Female</span>
+                      <input
+                        type="radio"
+                        name="gender"
+                        value="Female"
+                        checked={newGender === "Female"}
+                        onChange={(e) => {
+                          setnewGender("Female");
+                          setnewGenderErr("");
+                        }}
+                      />
+                    </label>
+                  </div>
+                  <button
+                    type="submit"
+                    value="Submit"
+                    className="btnLogin"
+                    onClick={(e) => {
+                      handleEdit(localStorage.getItem("idUser"));
+                      e.preventDefault();
+                    }}
+                    id="success"
+                  >
+                    Save
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };

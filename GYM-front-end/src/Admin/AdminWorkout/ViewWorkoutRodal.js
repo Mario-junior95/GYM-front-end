@@ -5,8 +5,8 @@ import Rodal from "rodal";
 import "rodal/lib/rodal.css";
 
 const ViewWorkoutRodal = (props) => {
-  console.log(props.val);
-  console.log(props.val.image);
+  // console.log(props.val);
+  // console.log(props.val.image);
   return (
     <div>
       <Rodal
