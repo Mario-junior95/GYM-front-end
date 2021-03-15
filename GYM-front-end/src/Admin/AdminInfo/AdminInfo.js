@@ -239,18 +239,7 @@ const AdminInfo = () => {
                             <TableCell align="right">{val.lastname}</TableCell>
                             <TableCell align="right">{val.email}</TableCell>
                             <TableCell align="right"></TableCell>
-                            <TableCell align="right">
-                              {/* <input
-                                type="submit"
-                                value="Edit"
-                                className="edit"
-                                style={{ cursor: "pointer" }}
-                                onClick={() => {
-                                  showEdit();
-                                  setList(val);
-                                }}
-                              /> */}
-                            </TableCell>
+                            <TableCell align="right"></TableCell>
                             <TableCell align="right">
                               <input
                                 type="submit"
@@ -267,22 +256,6 @@ const AdminInfo = () => {
               </TableBody>
             </Table>
           </TableContainer>
-          {/* {visibleEdit && (
-            <EditAdminRodal
-              visible={visibleEdit}
-              hide={hideEdit}
-              animation={"flip"}
-              duration={500}
-              closeMaskOnClick={true}
-              closeOnEsc={true}
-              height={550}
-              width={500}
-              render={{ setRender }}
-              show={showEdit}
-              val={list}
-              render={{ setRender }}
-            />
-          )} */}
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
             <TextField

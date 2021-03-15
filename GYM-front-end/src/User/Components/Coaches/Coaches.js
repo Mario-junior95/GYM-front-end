@@ -1,16 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { Redirect, Link, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./Coaches.css";
 import Header from "../Navigation/Header";
 import Axios from "axios";
 
-import Calendar from "../Calendar/Calendar";
+import Footer from "../Footer/Footer";
 
 import "./Modal.css";
 import $ from "jquery";
 import ModalCoaches from "./ModalCoaches";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 const Coaches = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 3000,
+    });
+    AOS.refresh();
+  }, []);
+
   const [render, setRender] = useState(false);
   const [listInstructor, setListInstructor] = useState([]);
 
@@ -50,7 +60,7 @@ const Coaches = () => {
       <div className="container">
         <div className="wrapper">
           <div className="home">
-            <div className="containers">
+            <div className="containers" style={{ marginBottom: "3vw" }}>
               <div className="Coaches_banner"></div>
               <p
                 style={{
@@ -68,10 +78,13 @@ const Coaches = () => {
                     return (
                       <div
                         key={val.id}
-                        style={{ display: "flex" }}
-                        className="postionCoach"
+                        style={{ display: "flex", marginLeft: "6vw" }}
                       >
                         <img
+                          data-aos="fade-zoom-in"
+                          data-aos-easing="ease-in-back"
+                          data-aos-delay="400"
+                          data-aos-offset="0"
                           src={`http://localhost:8000/storage/${val.image}`}
                           alt="error_coach_image"
                           style={{ width: "45vw", margin: "20px" }}
@@ -84,6 +97,9 @@ const Coaches = () => {
                             </strong>
                           </p>
                           <p>{val.description}</p>
+                          <p style={{ fontWeight: "bold", fontSize: "15px" }}>
+                            {val.price + "$ /hr"}
+                          </p>
                           <div>
                             {localStorage.getItem("token") ? (
                               <div className="btn-wrap">
@@ -107,7 +123,11 @@ const Coaches = () => {
                                 ></a>
                                 <button
                                   className="btnLogin"
-                                  style={{ padding: "13px 0vw" }}
+                                  style={{
+                                    padding: "13px 0vw",
+                                    boxShadow:
+                                      " 0 2px 10px 0 rgba(95, 186, 233, 0.3)",
+                                  }}
                                   onClick={() => {
                                     warningWithTimeOut();
                                     setNamePt(val.name);
@@ -140,6 +160,10 @@ const Coaches = () => {
                           src={`http://localhost:8000/storage/${val.image}`}
                           alt="error_coach_image"
                           style={{ width: "45vw", margin: "20px" }}
+                          data-aos="fade-zoom-in"
+                          data-aos-easing="ease-in-back"
+                          data-aos-delay="400"
+                          data-aos-offset="0"
                         />
                         <div className="coachInfo">
                           <p>
@@ -149,6 +173,9 @@ const Coaches = () => {
                             </strong>
                           </p>
                           <p>{val.description}</p>
+                          <p style={{ fontWeight: "bold", fontSize: "15px" }}>
+                            {val.price + "$ /hr"}
+                          </p>
                           <div>
                             {localStorage.getItem("token") ? (
                               <div className="btn-wrap">
@@ -168,7 +195,11 @@ const Coaches = () => {
                               <Link to={link}>
                                 <button
                                   className="btnLogin"
-                                  style={{ padding: "13px 0vw" }}
+                                  style={{
+                                    padding: "13px 0vw",
+                                    boxShadow:
+                                      " 0 2px 10px 0 rgba(95, 186, 233, 0.3)",
+                                  }}
                                   onClick={() => {
                                     warningWithTimeOut();
                                     setNamePt(val.name);
@@ -193,6 +224,7 @@ const Coaches = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

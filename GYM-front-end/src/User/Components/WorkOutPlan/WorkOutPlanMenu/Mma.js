@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Header from "../../Navigation/Header";
 import "./Gym.css";
-
+import Footer from "../../Footer/Footer";
 import Axios from "axios";
 
 const Mma = () => {
@@ -103,6 +103,9 @@ const Mma = () => {
             })}
           </div>
         </div>
+      </div>
+      <div style={{padding: '17vw 0 0 0'}}>
+      <Footer/>
       </div>
     </div>
   );

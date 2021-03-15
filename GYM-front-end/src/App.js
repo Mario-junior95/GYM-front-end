@@ -25,7 +25,6 @@ import UserAccount from "./User/Components/UserAccount/UserAccount";
 import MyInfo from "./User/Components/MyInfo/MyInfo";
 import MyClass from "./User/Components/Classe/Classes";
 import EditInfo from "./User/Components/MyInfo/EditInfo";
-import Calendar from "./User/Components/Calendar/Calendar";
 
 /**     Admin Routes   */
 
@@ -35,6 +34,12 @@ import Members from "./Admin/Members/Members";
 import MemberShipType from "./Admin/MemberShipType/MemberShipType";
 import AdminWorkout from "./Admin/AdminWorkout/AdminWorkout";
 import Instructor from "./Admin/Instructor/Instructor";
+import InstructorDate from "./Admin/InstructorDate/InstructorDate";
+import AdminShop from "./Admin/AdminShop/AdminShop";
+import HomeAdmin from "./Admin/HomeAdmin/HomeAdmin";
+import FaqAdmin from "./Admin/FaqAdmin/FaqAdmin";
+import ContactUsAdmin from "./Admin/ContactUsAdmin/ContactUsAdmin";
+import WorkWithUs from "./Admin/WorkWithUs/WorkWithUs";
 
 //eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9hZG1pbi1sb2dpbiIsImlhdCI6MTYxNDc5NjA2OCwiZXhwIjoxNjE0Nzk5NjY4LCJuYmYiOjE2MTQ3OTYwNjgsImp0aSI6Im1GN29uZUpKREN1enlodFciLCJzdWIiOjEsInBydiI6ImNmMjg0YzJiMWUwNmYzM2MyNmJkNTc5NzU2NmQ5ZmQ3NGJlMTFiZjUifQ.G0OnJAQOcz8Q7NVbVdMrjlKEB1uHNdyaQ3_pOMw_s8A
 
@@ -87,12 +92,6 @@ function App() {
           component={Payment}
           isUserAuth={isUserAuth}
         />
-        <ProtectedRouteUser
-          exact
-          path="/calendar"
-          component={Calendar}
-          isUserAuth={isUserAuth}
-        />
         <Route exact path="/userAccount" component={UserAccount} />
         <Route exact path="/SignUp" component={SignUp} />
         <Route exact path="/shop" component={Shop} />
@@ -102,6 +101,12 @@ function App() {
       <Switch>
         <Route path="/admin-Login" component={AdminLogin} />
         <ConfirmProvider>
+          <ProtectedRouteAdmin
+            exact
+            path="/admin-home"
+            component={HomeAdmin}
+            isAdminAuth={isAdminAuth}
+          />
           <ProtectedRouteAdmin
             exact
             path="/admin"
@@ -130,6 +135,36 @@ function App() {
             exact
             path="/admin-instructor"
             component={Instructor}
+            isAdminAuth={isAdminAuth}
+          />
+          <ProtectedRouteAdmin
+            exact
+            path="/admin-instructorDate"
+            component={InstructorDate}
+            isAdminAuth={isAdminAuth}
+          />
+          <ProtectedRouteAdmin
+            exact
+            path="/admin-shop"
+            component={AdminShop}
+            isAdminAuth={isAdminAuth}
+          />
+          <ProtectedRouteAdmin
+            exact
+            path="/admin-faq"
+            component={FaqAdmin}
+            isAdminAuth={isAdminAuth}
+          />
+          <ProtectedRouteAdmin
+            exact
+            path="/admin-contactus"
+            component={ContactUsAdmin}
+            isAdminAuth={isAdminAuth}
+          />
+          <ProtectedRouteAdmin
+            exact
+            path="/admin-workWithUs"
+            component={WorkWithUs}
             isAdminAuth={isAdminAuth}
           />
         </ConfirmProvider>

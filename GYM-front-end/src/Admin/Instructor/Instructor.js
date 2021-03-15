@@ -189,26 +189,17 @@ const Instructor = () => {
                   <TableCell align="right">
                     <b>Description</b>
                   </TableCell>
+                  <TableCell align="right">
+                    <b>Cost</b>
+                  </TableCell>
                   <TableCell align="right"></TableCell>
                   <TableCell align="right"></TableCell>
+
                   <TableCell align="right">
                     <PersonAddIcon
                       onClick={show}
-                      style={{ cursor: "pointer", margin: "8px 0 0 7vw" }}
+                      style={{ cursor: "pointer", margin: "8px 0 0 6vw" }}
                     />
-                    {visible && (
-                      <AddInstructorRodal
-                        visible={visible}
-                        hide={hide}
-                        animation={"slideDown"}
-                        duration={500}
-                        closeMaskOnClick={true}
-                        closeOnEsc={true}
-                        height={635}
-                        width={750}
-                        render={{ setRender }}
-                      />
-                    )}
                   </TableCell>
                 </TableRow>
               </TableHead>
@@ -233,6 +224,9 @@ const Instructor = () => {
                             <TableCell align="right">{val.phone}</TableCell>
                             <TableCell align="right">
                               {val.description.slice(0, 25) + "..."}
+                            </TableCell>
+                            <TableCell align="right">
+                              {val.price + " $"}
                             </TableCell>
                             <TableCell align="right">
                               <input
@@ -273,6 +267,19 @@ const Instructor = () => {
               </TableBody>
             </Table>
           </TableContainer>
+          {visible && (
+            <AddInstructorRodal
+              visible={visible}
+              hide={hide}
+              animation={"slideDown"}
+              duration={500}
+              closeMaskOnClick={true}
+              closeOnEsc={true}
+              height={635}
+              width={750}
+              render={{ setRender }}
+            />
+          )}
           {visibleEdit && (
             <EditInstructorRodal
               visible={visibleEdit}
@@ -281,7 +288,7 @@ const Instructor = () => {
               duration={500}
               closeMaskOnClick={true}
               closeOnEsc={true}
-              height={600}
+              height={643}
               width={600}
               render={{ setRender }}
               show={showEdit}
@@ -298,7 +305,7 @@ const Instructor = () => {
               duration={500}
               closeMaskOnClick={true}
               closeOnEsc={true}
-              height={550}
+              height={650}
               width={800}
               show={showView}
               val={list}

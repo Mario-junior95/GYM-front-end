@@ -4,6 +4,7 @@
   justify-content: center;
   flex-wrap: wrap;
   z-index: 1;
+  margin-left: 12vw;
 }
 
 .blockCard .card {
@@ -46,19 +47,19 @@
 }
 
 .blockCard .card .content h2 {
-    position: absolute;
-    top: -99px;
-    right: -135px;
-    font-size: 8em;
-    color: rgba(255, 255, 255, 0.5);
-    pointer-events: none;
+  position: absolute;
+  top: -99px;
+  right: -135px;
+  font-size: 8em;
+  color: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
 }
 
 .blockCard .card .content h3 {
-    color: #fff;
-    z-index: 1;
-    margin-top: 19vw;
-    margin-left: -14vw;
+  color: #fff;
+  z-index: 1;
+  margin-top: 19vw;
+  margin-left: -14vw;
 }
 
 .blockCard .card .content ul {

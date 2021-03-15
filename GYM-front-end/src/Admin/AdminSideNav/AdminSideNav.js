@@ -15,8 +15,14 @@ import LogoWhite from "../../Images/logoWhite.svg";
 import SportsMmaIcon from "@material-ui/icons/SportsMma";
 import SportsIcon from "@material-ui/icons/Sports";
 import PersonIcon from "@material-ui/icons/Person";
+import ScheduleIcon from "@material-ui/icons/Schedule";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
+import ContactMailIcon from "@material-ui/icons/ContactMail";
+import WorkIcon from "@material-ui/icons/Work";
 
 import EditAdminInfo from "../EditAdminInfo/EditAdminInfo";
+import HomeIcon from "@material-ui/icons/Home";
 
 import {
   makeStyles,
@@ -215,6 +221,14 @@ export default function AdminSideNav() {
         />
         <List>
           <ListItem>
+            <Link to="/admin-home">
+              <div>
+                <HomeIcon />
+                Home
+              </div>
+            </Link>
+          </ListItem>
+          <ListItem>
             <Link to="/admin">
               <div>
                 <GroupIcon />
@@ -251,6 +265,46 @@ export default function AdminSideNav() {
               <div>
                 <SportsIcon />
                 Instructor
+              </div>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/admin-instructorDate">
+              <div>
+                <ScheduleIcon />
+                Instructor Times
+              </div>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/admin-shop">
+              <div>
+                <ShoppingCartIcon />
+                Shop Items
+              </div>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/admin-faq">
+              <div>
+                <QuestionAnswerIcon />
+                FAQ's
+              </div>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/admin-contactus">
+              <div>
+                <ContactMailIcon />
+                Contact Us
+              </div>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/admin-workWithUs">
+              <div>
+                <WorkIcon />
+                Work With Us
               </div>
             </Link>
           </ListItem>
@@ -302,7 +356,7 @@ export default function AdminSideNav() {
         <EditAdminInfo
           visible={visibleEdit}
           hide={hideEdit}
-          animation={"flip"}
+          animation={"slideLeft"}
           duration={500}
           closeMaskOnClick={true}
           closeOnEsc={true}

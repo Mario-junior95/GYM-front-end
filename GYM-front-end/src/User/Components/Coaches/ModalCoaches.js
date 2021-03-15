@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Redirect } from "react-router-dom";
+import React, { useState } from "react";
+import { Redirect, useHistory } from "react-router-dom";
 import "./Modal.css";
 
 import "react-calendar/dist/Calendar.css";
@@ -16,6 +16,8 @@ const ModalCoaches = (props) => {
   const [dataTime, setDataTime] = useState([]);
   const [timeById, setTimeById] = useState("");
 
+  const [success, setSuccess] = useState("");
+
   /**   Error Times */
   const [error, setError] = useState("");
 
@@ -23,6 +25,7 @@ const ModalCoaches = (props) => {
     Axios.get("http://localhost:8000/api/time").then((response) => {
       setListTime(response.data.time);
       setTimeMessage("Pick A Time");
+      console.log(value);
     });
   };
 
@@ -31,6 +34,8 @@ const ModalCoaches = (props) => {
   };
 
   let currentDate = new Date();
+
+  const history = useHistory();
 
   return (
     <div id="modal">
@@ -53,12 +58,18 @@ const ModalCoaches = (props) => {
             <Calendar onChange={onChange} value={value} onClickDay={Time} />
           </p>
           {!error ? (
-            <h2 style={{ color: "black", fontSize: "15px" }}>{timeMessage}</h2>
+            ((
+              <h2 style={{ color: "black", fontSize: "15px" }}>
+                {timeMessage}
+              </h2>
+            ),
+            (<h2 style={{ color: "green", fontSize: "15px" }}>{success}</h2>))
           ) : (
             <h2 style={{ color: "red", fontSize: "15px" }}>{error}</h2>
           )}
 
-          {value.getDate() >= currentDate.getDate() ? (
+          {value.getDate() >= currentDate.getDate() ||
+          value.getTime() >= currentDate.getTime() ? (
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
               {listTime.map((val, index) => {
                 const handleAdd = async (e) => {
@@ -92,6 +103,12 @@ const ModalCoaches = (props) => {
                         setDataTime(response.data.userInstTime);
                         setTimeById(val.id);
                         setError("");
+                        setSuccess(
+                          `Your booking has been approved from ${val.start} until ${val.end}`
+                        );
+                        setTimeout(() => {
+                          history.push("/payment");
+                        }, 2500);
                       }
                     });
                   } catch (error) {

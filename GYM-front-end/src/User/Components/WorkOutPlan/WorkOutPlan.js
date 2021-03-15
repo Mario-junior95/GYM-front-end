@@ -4,6 +4,8 @@ import Header from "../Navigation/Header";
 import "./WorkOutPlan.css";
 import "../Navigation/Headers.css";
 
+import Footer from "../Footer/Footer";
+
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Axios from "axios";
@@ -30,7 +32,7 @@ const WorkOutPlan = () => {
       <div className="container">
         <div className="wrapper">
           <div className="home">
-            <div className="containers">
+            <div className="containers" style={{ marginBottom: "5vw " }}>
               <div className="WorkOut_banner"></div>
               <div className="workplanMenu">
                 <a href="#gym">GYM</a>
@@ -310,6 +312,7 @@ const WorkOutPlan = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

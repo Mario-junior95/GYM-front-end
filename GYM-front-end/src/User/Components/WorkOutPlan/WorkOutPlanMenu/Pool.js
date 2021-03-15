@@ -4,6 +4,7 @@ import Header from "../../Navigation/Header";
 import "./Gym.css";
 
 import Axios from "axios";
+import Footer from "../../Footer/Footer";
 
 const Pool = () => {
   const [listMembership, setListMembership] = useState([]);
@@ -103,6 +104,9 @@ const Pool = () => {
             })}
           </div>
         </div>
+      </div>
+      <div style={{padding: '17vw 0 0 0'}}>
+      <Footer/>
       </div>
     </div>
   );

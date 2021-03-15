@@ -18,6 +18,7 @@ const EditInstructorRodal = (props) => {
   const [contact, setContact] = useState(props.val.phone);
   const [address, setAddress] = useState(props.val.address);
   const [description, setDescription] = useState(props.val.description);
+  const [price, setPrice] = useState(props.val.price);
   const [image, setImage] = useState("null");
 
   const { setRender } = props.render;
@@ -30,6 +31,7 @@ const EditInstructorRodal = (props) => {
   const [addressErr, setAddressErr] = useState("");
   const [imageErr, setImageErr] = useState("");
   const [descriptionErr, setDescriptionErr] = useState("");
+  const [priceErr, setPriceErr] = useState("");
 
   const expireToken = () => {
     localStorage.clear() && <Redirect exact="true" to="/Admin-Login" />;
@@ -50,6 +52,7 @@ const EditInstructorRodal = (props) => {
     data.append("email", email);
     data.append("image", image);
     data.append("description", description);
+    data.append("price", price);
     try {
       await Axios.post(
         `http://localhost:8000/api/instructor/${props.val.id}?_method=PUT `,
@@ -85,6 +88,7 @@ const EditInstructorRodal = (props) => {
         setAddressErr(error.response.data.errors.address);
         setImageErr(error.response.data.errors.image);
         setDescriptionErr(error.response.data.errors.description);
+        setPriceErr(error.response.data.error.price);
         console.log(error);
       }
     }
@@ -177,6 +181,21 @@ const EditInstructorRodal = (props) => {
                     onChange={(e) => {
                       setAddress(e.target.value);
                       setAddressErr("");
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    inputRef={inputEl}
+                    label="Price"
+                    name="price"
+                    size="small"
+                    variant="outlined"
+                    value={price}
+                    onChange={(e) => {
+                      setPrice(e.target.value);
+                      setPriceErr("");
                     }}
                   />
                 </Grid>

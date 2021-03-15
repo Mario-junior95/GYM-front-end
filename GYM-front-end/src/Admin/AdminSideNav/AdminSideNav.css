@@ -23,7 +23,7 @@
 
 .MuiListItem-root > a > div > svg.MuiSvgIcon-root {
   width: 3vw !important;
-  margin-top: 10px !important;
+  margin-top: 5px !important;
   color: #2196f3;
   margin-left: -3px;
 }
@@ -32,11 +32,8 @@
   padding-left: 35px;
   padding-right: 16px;
   padding-top: 4px;
-  line-height: 2;
+  line-height: 1.45;
 }
-/* .MuiDrawer-root > .makeStyles-drawerClose-11 {
-  width: 36px;
-} */
 
 .MuiList-root > .MuiListItem-root > a {
   text-decoration: none;

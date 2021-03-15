@@ -21,6 +21,7 @@ const AddInstructorRodal = (props) => {
   const [address, setAddress] = useState("");
   const [image, setImage] = useState(null);
   const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
 
   const [listInstructor, setListInstructor] = useState([]);
 
@@ -32,6 +33,7 @@ const AddInstructorRodal = (props) => {
   const [addressErr, setAddressErr] = useState("");
   const [imageErr, setImageErr] = useState("");
   const [descriptionErr, setDescriptionErr] = useState("");
+  const [priceErr, setPriceErr] = useState("");
 
   /**  Clear Data */
 
@@ -47,6 +49,8 @@ const AddInstructorRodal = (props) => {
     setImageErr("");
     setDescription("");
     setDescriptionErr("");
+    setPrice("");
+    setPriceErr("");
   };
 
   const expireToken = () => {
@@ -68,6 +72,7 @@ const AddInstructorRodal = (props) => {
     data.append("address", address);
     data.append("image", image);
     data.append("description", description);
+    data.append("price", price);
     try {
       await Axios.post("http://localhost:8000/api/instructor", data, {
         headers: {
@@ -101,6 +106,7 @@ const AddInstructorRodal = (props) => {
         setAddressErr(error.response.data.errors.address);
         setImageErr(error.response.data.errors.image);
         setDescriptionErr(error.response.data.errors.description);
+        setPriceErr(error.response.data.errors.price);
       }
     }
   };
@@ -190,6 +196,24 @@ const AddInstructorRodal = (props) => {
                   onChange={(e) => {
                     setAddress(e.target.value);
                     setAddressErr("");
+                  }}
+                />
+              </Grid>
+              <Typography style={{ color: "red", margin: "0 auto" }}>
+                {priceErr}
+              </Typography>
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  inputRef={inputEl}
+                  label="Price"
+                  name="price"
+                  size="small"
+                  variant="outlined"
+                  value={price}
+                  onChange={(e) => {
+                    setPrice(e.target.value);
+                    setPriceErr("");
                   }}
                 />
               </Grid>

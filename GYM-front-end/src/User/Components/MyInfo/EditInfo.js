@@ -69,10 +69,6 @@ const EditInfo = () => {
   const [newAddressErr, setnewAddressErr] = useState("");
   const [newDateErr, setnewDateErr] = useState("");
   const [newGenderErr, setnewGenderErr] = useState("");
-  // const [memberShipId , setMemberShipId] = useState(0);
-  //   const [passwordErr, setPasswordErr] = useState("");
-
-  // const [memberShipIdErr , setMemberShipIdErr] = useState(0);
 
   const handleEdit = async () => {
     const data = new FormData();
@@ -83,8 +79,6 @@ const EditInfo = () => {
     data.append("address", newAddress);
     data.append("date", newDate);
     data.append("gender", newGender);
-    // data.append("password", password);
-    // data.append("membership_id" ,memberShipId);
 
     try {
       await Axios.post(

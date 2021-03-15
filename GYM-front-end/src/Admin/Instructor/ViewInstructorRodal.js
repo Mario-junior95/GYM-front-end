@@ -25,22 +25,6 @@ const ViewInstructorRodal = (props) => {
           style={{ width: "50%", margin: "0 21%" }}
           alt="error_instructor_img"
         />
-        {/* <p style={{ textAlign: "center" }}>
-          <strong>Full Name :</strong>
-          {props.val.name}
-        </p>
-        <p style={{ textAlign: "center" }}>
-          <strong>Email :</strong>
-          {props.val.email}
-        </p>
-        <p style={{ textAlign: "center" }}>
-          <strong>Phone Number : </strong>
-          {props.val.phone}
-        </p>
-        <p style={{ textAlign: "center" }}>
-          <strong> Address : </strong>
-          {props.val.address}
-        </p> */}
         <p style={{ textAlign: "center" }}>
           <strong> Description : </strong>
           <br />

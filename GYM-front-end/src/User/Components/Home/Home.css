@@ -1,7 +1,31 @@
-.Home_banner{
-background-image: url("../../../Images/Home.jpg");
-height: 100vh;
-background-size: 100%;
-/* width: 100vw; */
-width: 99vw;
+.Home_banner {
+  background-image: url("../../../Images/Home.jpg");
+  height: 100vh;
+  background-size: 100%;
+  /* width: 100vw; */
+  width: 99vw;
+}
+
+.home_title {
+  color: #fff;
+  font-size: 4vw;
+  font-family: Termina, Impact, Arial Black, sans-serif;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: white;
+  text-transform: uppercase;
+  margin-left: 3px;
+  text-align: center;
+}
+
+.home_paragraph_top {
+  color: #fff;
+  font-size: 1vw;
+  font-family: Termina, Impact, Arial BLACK, sans-serif;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: WHITE;
+  text-transform: uppercase;
+  margin-left: 3px;
+  text-align: center;
 }

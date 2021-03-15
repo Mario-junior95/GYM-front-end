@@ -6,6 +6,8 @@ import "./Payement.css";
 import VanillaTilt from "vanilla-tilt";
 import CreditCardLogo from "../../../../Images/creditcard.png";
 
+import Footer from "../../Footer/Footer";
+
 const Payment = () => {
   useEffect(() => {
     VanillaTilt.init(document.querySelectorAll(".card"), {
@@ -101,6 +103,9 @@ const Payment = () => {
             Phone Number : {localStorage.getItem("phone")}
           </p>
         </div>
+      </div>
+      <div style={{ marginTop: "-7vw" }}>
+        <Footer />
       </div>
     </div>
   );
