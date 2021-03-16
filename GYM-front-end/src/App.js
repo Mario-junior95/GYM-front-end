@@ -40,9 +40,10 @@ import HomeAdmin from "./Admin/HomeAdmin/HomeAdmin";
 import FaqAdmin from "./Admin/FaqAdmin/FaqAdmin";
 import ContactUsAdmin from "./Admin/ContactUsAdmin/ContactUsAdmin";
 import WorkWithUs from "./Admin/WorkWithUs/WorkWithUs";
-import TheMerchandise from "./User/TheMerchandise/TheMerchandise";
+import TheMerchandise from "./User/Components/TheMerchandise/TheMerchandise";
 
-//eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9hZG1pbi1sb2dpbiIsImlhdCI6MTYxNDc5NjA2OCwiZXhwIjoxNjE0Nzk5NjY4LCJuYmYiOjE2MTQ3OTYwNjgsImp0aSI6Im1GN29uZUpKREN1enlodFciLCJzdWIiOjEsInBydiI6ImNmMjg0YzJiMWUwNmYzM2MyNmJkNTc5NzU2NmQ5ZmQ3NGJlMTFiZjUifQ.G0OnJAQOcz8Q7NVbVdMrjlKEB1uHNdyaQ3_pOMw_s8A
+/**       Super Admin Routes  */
+import SuperAdmin from "./SuperAdmin/SuperAdminLogin";
 
 /** user Protected Routes */
 
@@ -52,9 +53,19 @@ import ProtectedRouteUser from "./ProtectedRouteUser";
 
 import ProtectedRouteAdmin from "./ProtectedRouteAdmin";
 
+/**  Pt Protected Routes */
+import ProtectedRoutePtPanel from "./ProtectedRoutePtPanel";
+
+/**  PT Panel   */
+
+import PtLogin from "./PtPanel/PtLogin/PtLogin";
+import PtMembers from "../src/PtPanel/PtMembers/PtMembers";
+
 function App() {
   const [isUserAuth] = useState(localStorage.getItem("token"));
   const [isAdminAuth] = useState(localStorage.getItem("tokens"));
+  const [isSuperAdminAuth] = useState(localStorage.getItem("superAdminToken"));
+  const [isPtAuth] = useState(localStorage.getItem("PtToken"));
 
   return (
     <Router>
@@ -107,74 +118,159 @@ function App() {
       </Switch>
       <Switch>
         <Route path="/admin-Login" component={AdminLogin} />
+        <Route path="/superAdmin-Login" component={SuperAdmin} />
         <ConfirmProvider>
-          <ProtectedRouteAdmin
-            exact
-            path="/admin-home"
-            component={HomeAdmin}
-            isAdminAuth={isAdminAuth}
-          />
-          <ProtectedRouteAdmin
-            exact
-            path="/admin"
-            component={AdminInfo}
-            isAdminAuth={isAdminAuth}
-          />
-          <ProtectedRouteAdmin
-            exact
-            path="/admin-memberShip"
-            component={Members}
-            isAdminAuth={isAdminAuth}
-          />
-          <ProtectedRouteAdmin
-            exact
-            path="/admin-workout"
-            component={AdminWorkout}
-            isAdminAuth={isAdminAuth}
-          />
-          <ProtectedRouteAdmin
-            exact
-            path="/admin-membershipType"
-            component={MemberShipType}
-            isAdminAuth={isAdminAuth}
-          />
-          <ProtectedRouteAdmin
-            exact
-            path="/admin-instructor"
-            component={Instructor}
-            isAdminAuth={isAdminAuth}
-          />
-          <ProtectedRouteAdmin
-            exact
-            path="/admin-instructorDate"
-            component={InstructorDate}
-            isAdminAuth={isAdminAuth}
-          />
-          <ProtectedRouteAdmin
-            exact
-            path="/admin-shop"
-            component={AdminShop}
-            isAdminAuth={isAdminAuth}
-          />
-          <ProtectedRouteAdmin
-            exact
-            path="/admin-faq"
-            component={FaqAdmin}
-            isAdminAuth={isAdminAuth}
-          />
-          <ProtectedRouteAdmin
-            exact
-            path="/admin-contactus"
-            component={ContactUsAdmin}
-            isAdminAuth={isAdminAuth}
-          />
-          <ProtectedRouteAdmin
-            exact
-            path="/admin-workWithUs"
-            component={WorkWithUs}
-            isAdminAuth={isAdminAuth}
-          />
+          {isAdminAuth ? (
+            <>
+              <ProtectedRouteAdmin
+                exact
+                path="/admin-home"
+                component={HomeAdmin}
+                isAdminAuth={isAdminAuth}
+              />
+              <ProtectedRouteAdmin
+                exact
+                path="/admin"
+                component={AdminInfo}
+                isAdminAuth={isAdminAuth}
+              />
+              <ProtectedRouteAdmin
+                exact
+                path="/admin-memberShip"
+                component={Members}
+                isAdminAuth={isAdminAuth}
+              />
+              <ProtectedRouteAdmin
+                exact
+                path="/admin-workout"
+                component={AdminWorkout}
+                isAdminAuth={isAdminAuth}
+              />
+              <ProtectedRouteAdmin
+                exact
+                path="/admin-membershipType"
+                component={MemberShipType}
+                isAdminAuth={isAdminAuth}
+              />
+              <ProtectedRouteAdmin
+                exact
+                path="/admin-instructor"
+                component={Instructor}
+                isAdminAuth={isAdminAuth}
+              />
+              <ProtectedRouteAdmin
+                exact
+                path="/admin-instructorDate"
+                component={InstructorDate}
+                isAdminAuth={isAdminAuth}
+              />
+              <ProtectedRouteAdmin
+                exact
+                path="/admin-shop"
+                component={AdminShop}
+                isAdminAuth={isAdminAuth}
+              />
+              <ProtectedRouteAdmin
+                exact
+                path="/admin-faq"
+                component={FaqAdmin}
+                isAdminAuth={isAdminAuth}
+              />
+              <ProtectedRouteAdmin
+                exact
+                path="/admin-contactus"
+                component={ContactUsAdmin}
+                isAdminAuth={isAdminAuth}
+              />
+              <ProtectedRouteAdmin
+                exact
+                path="/admin-workWithUs"
+                component={WorkWithUs}
+                isAdminAuth={isAdminAuth}
+              />
+            </>
+          ) : (
+            isSuperAdminAuth && (
+              <>
+                <ProtectedRouteAdmin
+                  exact
+                  path="/admin-home"
+                  component={HomeAdmin}
+                  isAdminAuth={isSuperAdminAuth}
+                />
+                <ProtectedRouteAdmin
+                  exact
+                  path="/admin"
+                  component={AdminInfo}
+                  isAdminAuth={isSuperAdminAuth}
+                />
+                <ProtectedRouteAdmin
+                  exact
+                  path="/admin-memberShip"
+                  component={Members}
+                  isAdminAuth={isSuperAdminAuth}
+                />
+                <ProtectedRouteAdmin
+                  exact
+                  path="/admin-workout"
+                  component={AdminWorkout}
+                  isAdminAuth={isSuperAdminAuth}
+                />
+                <ProtectedRouteAdmin
+                  exact
+                  path="/admin-membershipType"
+                  component={MemberShipType}
+                  isAdminAuth={isSuperAdminAuth}
+                />
+                <ProtectedRouteAdmin
+                  exact
+                  path="/admin-instructor"
+                  component={Instructor}
+                  isAdminAuth={isSuperAdminAuth}
+                />
+                <ProtectedRouteAdmin
+                  exact
+                  path="/admin-instructorDate"
+                  component={InstructorDate}
+                  isAdminAuth={isSuperAdminAuth}
+                />
+                <ProtectedRouteAdmin
+                  exact
+                  path="/admin-shop"
+                  component={AdminShop}
+                  isAdminAuth={isSuperAdminAuth}
+                />
+                <ProtectedRouteAdmin
+                  exact
+                  path="/admin-faq"
+                  component={FaqAdmin}
+                  isAdminAuth={isSuperAdminAuth}
+                />
+                <ProtectedRouteAdmin
+                  exact
+                  path="/admin-contactus"
+                  component={ContactUsAdmin}
+                  isAdminAuth={isSuperAdminAuth}
+                />
+                <ProtectedRouteAdmin
+                  exact
+                  path="/admin-workWithUs"
+                  component={WorkWithUs}
+                  isAdminAuth={isSuperAdminAuth}
+                />
+              </>
+            )
+          )}
         </ConfirmProvider>
+      </Switch>
+      <Switch>
+        <Route exact path="/pt-login" component={PtLogin} />
+        <ProtectedRoutePtPanel
+          exact
+          path="/pt-members"
+          component={PtMembers}
+          isPtAuth={isPtAuth}
+        />
       </Switch>
     </Router>
   );

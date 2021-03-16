@@ -72,7 +72,14 @@ const Coaches = () => {
               >
                 {warning}
               </p>
-              <div style={{ marginBottom: "6vw" }} className="containerCoaches">
+              <div
+                style={{
+                  marginBottom: "6vw",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+                className="containerCoaches"
+              >
                 {listInstructor.map((val, index) => {
                   if (index % 2 === 0) {
                     return (

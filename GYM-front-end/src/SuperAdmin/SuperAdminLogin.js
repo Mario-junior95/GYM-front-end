@@ -2,16 +2,22 @@ import React, { useState, useEffect, inputEl } from "react";
 import { Redirect } from "react-router-dom";
 import Axios from "axios";
 
-import "./AdminLogin.css";
+import "../Admin/AdminLogin/AdminLogin.css";
 
 // MUI Core
-import { Button, Container, Grid, TextField  , Typography} from "@material-ui/core";
+import {
+  Button,
+  Container,
+  Grid,
+  TextField,
+  Typography,
+} from "@material-ui/core";
 
-const AdminLogin = () => {
+const SuperAdminLogin = () => {
   /**     states    */
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [tokens, setTokens] = useState("");
+  const [superAdminToken, setSuperAdminToken] = useState("");
 
   /** Error States */
 
@@ -22,18 +28,21 @@ const AdminLogin = () => {
   const HandleLogin = async (e) => {
     e.preventDefault();
     try {
-      await Axios.post("http://localhost:8000/api/admin-login", {
+      await Axios.post("http://localhost:8000/api/superadmin-login", {
         username: username,
         password: password,
       }).then((response) => {
-        setTokens(response.data.access_token);
+        setSuperAdminToken(response.data.access_token);
 
-        localStorage.setItem("username", response.data.admin.username);
-        localStorage.setItem("idAdmin", response.data.admin.id);
+        localStorage.setItem(
+          "usernameSuperAdmin",
+          response.data.superAdmin.username
+        );
+        localStorage.setItem("idSuperAdmin", response.data.superAdmin.id);
         response &&
           response.data &&
           response.data.access_token &&
-          localStorage.setItem("tokens", response.data.access_token);
+          localStorage.setItem("superAdminToken", response.data.access_token);
       });
       window.location.reload();
     } catch (error) {
@@ -51,19 +60,19 @@ const AdminLogin = () => {
   const [redirect, setRedirect] = useState(null);
 
   useEffect(() => {
-    setRedirect(localStorage.getItem("tokens"));
+    setRedirect(localStorage.getItem("superAdminToken"));
   }, []);
 
   if (redirect) {
     return <Redirect to="/admin-home" />;
   } else {
-    <Redirect  to="/admin-Login" />;
+    <Redirect to="/superadmin-Login" />;
   }
 
   return (
     <Container maxWidth="xs" className="adminContainer">
       <form>
-        <h1>Admin Panel</h1>
+        <h1>Super Admin Panel</h1>
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Grid container spacing={2}>
@@ -127,4 +136,4 @@ const AdminLogin = () => {
   );
 };
 
-export default AdminLogin;
+export default SuperAdminLogin;

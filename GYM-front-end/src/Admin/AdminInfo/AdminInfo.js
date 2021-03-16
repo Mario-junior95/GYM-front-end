@@ -73,7 +73,7 @@ const AdminInfo = () => {
     await Axios.get("http://localhost:8000/api/admin", {
       headers: {
         "content-type": "multipart/form-data",
-        Authorization: "Bearer " + localStorage.getItem("tokens"),
+        Authorization: "Bearer " + localStorage.getItem("superAdminToken"),
       },
     }).then((response) => {
       if (
@@ -126,7 +126,7 @@ const AdminInfo = () => {
         headers: {
           Accept: "application/json",
           "content-type": "multipart/form-data",
-          Authorization: "Bearer " + localStorage.getItem("tokens"),
+          Authorization: "Bearer " + localStorage.getItem("superAdminToken"),
         },
       }).then((response) => {
         if (

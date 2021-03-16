@@ -4,7 +4,7 @@
 
 .App {
   background-color: black;
-  height: auto;
+  height: auto !important;
 }
 
 /**   Admin Panel Style */

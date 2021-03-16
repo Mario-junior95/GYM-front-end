@@ -76,6 +76,7 @@ const HomeAdmin = () => {
         return window.location.reload();
       } else {
         setlistHome(response.data.home);
+        // console.log(response.data.home)
       }
     });
   }, [render]);

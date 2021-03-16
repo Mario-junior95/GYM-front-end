@@ -1,28 +1,21 @@
 import React, { useState } from "react";
 import clsx from "clsx";
-import "./AdminSideNav.css";
+import "../../Admin/AdminSideNav/AdminSideNav.css";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import GroupIcon from "@material-ui/icons/Group";
+
 import LockIcon from "@material-ui/icons/Lock";
 import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import FitnessCenterIcon from "@material-ui/icons/FitnessCenter";
+
 import { Link, useHistory } from "react-router-dom";
 import { useConfirm } from "material-ui-confirm";
 import LogoWhite from "../../Images/logoWhite.svg";
-import SportsMmaIcon from "@material-ui/icons/SportsMma";
-import SportsIcon from "@material-ui/icons/Sports";
-import PersonIcon from "@material-ui/icons/Person";
-import ScheduleIcon from "@material-ui/icons/Schedule";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
-import ContactMailIcon from "@material-ui/icons/ContactMail";
-import WorkIcon from "@material-ui/icons/Work";
 
-import EditAdminInfo from "../EditAdminInfo/EditAdminInfo";
-import HomeIcon from "@material-ui/icons/Home";
+import PersonIcon from "@material-ui/icons/Person";
+
+// import EditAdminInfo from "../EditAdminInfo/EditAdminInfo";
 
 import {
   makeStyles,
@@ -40,7 +33,7 @@ import {
 
 // Import ChangePassword Rodal
 
-import ChangePasswordRodal from "../ChangePassword/ChangePasswordRodal";
+// import ChangePasswordRodal from "../ChangePassword/ChangePasswordRodal";
 
 const drawerWidth = 240;
 
@@ -111,7 +104,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AdminSideNav() {
+export default function PtSideNav() {
   const classes = useStyles();
   const history = useHistory();
   const theme = useTheme();
@@ -194,12 +187,9 @@ export default function AdminSideNav() {
           >
             <MenuIcon />
           </IconButton>
-          {localStorage.getItem("tokens")? <Typography variant="h6" noWrap>
-            Admin Panel
-          </Typography>:
-           <Typography variant="h6" noWrap >
-           Super Admin Panel
-         </Typography>}
+          <Typography variant="h6" noWrap>
+            PT Panel
+          </Typography>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -231,105 +221,14 @@ export default function AdminSideNav() {
         />
         <List>
           <ListItem>
-            <Link to="/admin-home">
-              <div>
-                <HomeIcon />
-                Home
-              </div>
-            </Link>
-          </ListItem>
-          {localStorage.getItem("superAdminToken") ? (
-            <ListItem>
-              <Link to="/admin">
-                <div>
-                  <GroupIcon />
-                  Admins
-                </div>
-              </Link>
-            </ListItem>
-          ) : (
-            <ListItem style={{ display: "none" }}>
-              <Link to="/admin">
-                <div>
-                  <GroupIcon />
-                  Admins
-                </div>
-              </Link>
-            </ListItem>
-          )}
-          <ListItem>
-            <Link to="/admin-memberShip">
+            <Link to="/pt-members">
               <div>
                 <PeopleAltIcon />
                 Members
               </div>
             </Link>
           </ListItem>
-          <ListItem>
-            <Link to="/admin-workout">
-              <div>
-                <FitnessCenterIcon />
-                Workouts
-              </div>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link to="/admin-membershipType">
-              <div>
-                <SportsMmaIcon />
-                MemberShipType
-              </div>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link to="/admin-instructor">
-              <div>
-                <SportsIcon />
-                Instructor
-              </div>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link to="/admin-instructorDate">
-              <div>
-                <ScheduleIcon />
-                Instructor Times
-              </div>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link to="/admin-shop">
-              <div>
-                <ShoppingCartIcon />
-                Shop Items
-              </div>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link to="/admin-faq">
-              <div>
-                <QuestionAnswerIcon />
-                FAQ's
-              </div>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link to="/admin-contactus">
-              <div>
-                <ContactMailIcon />
-                Contact Us
-              </div>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link to="/admin-workWithUs">
-              <div>
-                <WorkIcon />
-                Work With Us
-              </div>
-            </Link>
-          </ListItem>
-          {localStorage.getItem("tokens") ? (
+          {localStorage.getItem("PtToken") ? (
             <>
               <ListItem>
                 <Link
@@ -388,7 +287,7 @@ export default function AdminSideNav() {
           </ListItem>
         </List>
       </Drawer>
-      {visible && (
+      {/* {visible && (
         <ChangePasswordRodal
           visible={visible}
           hide={hide}
@@ -412,7 +311,7 @@ export default function AdminSideNav() {
           height={550}
           width={500}
         />
-      )}
+      )} */}
     </div>
   );
 }

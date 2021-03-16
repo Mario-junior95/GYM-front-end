@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Header from "../Components/Navigation/Header";
-import UserAccount from "../Components/UserAccount/UserAccount";
+import Header from "../Navigation/Header";
+import UserAccount from "../UserAccount/UserAccount";
 
 import Axios from "axios";
 

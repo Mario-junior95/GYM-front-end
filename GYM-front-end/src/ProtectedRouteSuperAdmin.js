@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-const ProtectedRouteAdmin = ({
-  isAdminAuth: isAdminAuth,
+const ProtectedRouteSuperAdmin = ({
+  isSuperAdminAuth: isSuperAdminAuth,
   component: Component,
   ...rest
 }) => {
@@ -11,13 +11,13 @@ const ProtectedRouteAdmin = ({
       <Route
         {...rest}
         render={(props) => {
-          if (isAdminAuth) {
+          if (isSuperAdminAuth) {
             return <Component />;
           } else {
             return (
               <Redirect
                 to={{
-                  pathname: "/admin-Login",
+                  pathname: "/superAdmin-Login",
                   state: { from: props.location },
                 }}
               />
@@ -29,4 +29,4 @@ const ProtectedRouteAdmin = ({
   );
 };
 
-export default ProtectedRouteAdmin;
+export default ProtectedRouteSuperAdmin;

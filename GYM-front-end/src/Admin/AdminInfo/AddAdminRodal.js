@@ -61,7 +61,7 @@ const AddAdminRodal = (props) => {
       await Axios.post("http://localhost:8000/api/admin", data, {
         headers: {
           "content-type": "multipart/form-data",
-          Authorization: "Bearer " + localStorage.getItem("tokens"),
+          Authorization: "Bearer " + localStorage.getItem("superAdminToken"),
         },
       }).then((response) => {
         if (

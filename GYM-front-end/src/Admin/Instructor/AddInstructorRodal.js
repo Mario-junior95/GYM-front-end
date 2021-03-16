@@ -13,6 +13,7 @@ import {
 } from "@material-ui/core";
 
 const AddInstructorRodal = (props) => {
+  
   const { setRender } = props.render;
 
   const [name, setName] = useState("");
@@ -22,6 +23,8 @@ const AddInstructorRodal = (props) => {
   const [image, setImage] = useState(null);
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
 
   const [listInstructor, setListInstructor] = useState([]);
 
@@ -34,6 +37,8 @@ const AddInstructorRodal = (props) => {
   const [imageErr, setImageErr] = useState("");
   const [descriptionErr, setDescriptionErr] = useState("");
   const [priceErr, setPriceErr] = useState("");
+  const [usernameErr, setUserNameErr] = useState("");
+  const [passwordErr, setPasswordErr] = useState("");
 
   /**  Clear Data */
 
@@ -51,6 +56,10 @@ const AddInstructorRodal = (props) => {
     setDescriptionErr("");
     setPrice("");
     setPriceErr("");
+    setUserName("");
+    setPassword("");
+    setPasswordErr("");
+    setUserNameErr("");
   };
 
   const expireToken = () => {
@@ -73,6 +82,8 @@ const AddInstructorRodal = (props) => {
     data.append("image", image);
     data.append("description", description);
     data.append("price", price);
+    data.append("username", userName);
+    data.append("password", password);
     try {
       await Axios.post("http://localhost:8000/api/instructor", data, {
         headers: {
@@ -147,6 +158,44 @@ const AddInstructorRodal = (props) => {
                   }}
                 />
               </Grid>
+
+              {/* <Typography style={{ color: "red", margin: "0 auto" }}>
+                {nameErr}
+              </Typography> */}
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  label="Username"
+                  name="username"
+                  size="small"
+                  variant="outlined"
+                  value={userName}
+                  onChange={(e) => {
+                    setUserName(e.target.value);
+                    setUserNameErr("");
+                  }}
+                />
+              </Grid>
+
+              {/* <Typography style={{ color: "red", margin: "0 auto" }}>
+                {nameErr}
+              </Typography> */}
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  label="Password"
+                  name="password"
+                  size="small"
+                  type="password"
+                  variant="outlined"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                    setPasswordErr("");
+                  }}
+                />
+              </Grid>
+
               <Typography style={{ color: "red", margin: "0 auto" }}>
                 {emailErr}
               </Typography>
