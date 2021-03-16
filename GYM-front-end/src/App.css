@@ -51,14 +51,14 @@
 .delete[type="submit"] {
   background-color: red;
 }
-.view[type="submit"]{
-  background-color: rgb(13, 255, 13);
+.view[type="submit"] {
+  background-color: rgb(10 126 10);
 }
 
 [type="submit"]:focus {
   outline: none;
 }
 
-.Rodal_Title{
+.Rodal_Title {
   color: #2196f3 !important;
 }

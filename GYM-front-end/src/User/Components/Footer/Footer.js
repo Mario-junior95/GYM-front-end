@@ -1,12 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import LogoWhite from "../../../Images/logoWhite.svg";
 import { Link } from "react-router-dom";
 
 import "./Footer.css";
+import $ from "jquery";
+import "./WorkWithUs.scss";
+
+import WorkWithUsModal from "./WorkWithUsModal";
 
 const Footer = () => {
+  const [visible, setVisible] = useState(false);
+
+  const show = () => {
+    setVisible(true);
+  };
+
+  const hide = () => {
+    setVisible(false);
+  };
+
   return (
-    <div style={{ display: "flex", marginLeft: "8vw", paddingBottom: "2vw" }}>
+    <div
+      style={{
+        display: "flex",
+        marginLeft: "8vw",
+        paddingBottom: "2vw",
+        position: "relative",
+        zIndex: "1",
+      }}
+    >
       <div
         style={{
           borderLeft: "1px white solid",
@@ -116,15 +138,28 @@ const Footer = () => {
           </Link>
           <br />
           <Link
-            to="/hshs"
+            to="#"
             style={{
               textTransform: "uppercase",
               fontFamily: "Impact, Arial black, sans-serif",
               color: "white",
             }}
+            onClick={show}
           >
             Work With Us
           </Link>
+          {visible && (
+            <WorkWithUsModal
+              visible={visible}
+              hide={hide}
+              animation={"slideUp"}
+              duration={500}
+              closeMaskOnClick={true}
+              closeOnEsc={true}
+              height={452}
+              width={500}
+            />
+          )}
           <br />
           <Link
             to="/contactUs"
@@ -132,6 +167,8 @@ const Footer = () => {
               textTransform: "uppercase",
               fontFamily: "Impact, Arial black, sans-serif",
               color: "white",
+              position: "relative",
+              top: "2.2vw",
             }}
           >
             Contact us
@@ -143,6 +180,8 @@ const Footer = () => {
               textTransform: "uppercase",
               fontFamily: "Impact, Arial black, sans-serif",
               color: "white",
+              position: "relative",
+              top: "-2.4vw",
             }}
           >
             FAQ

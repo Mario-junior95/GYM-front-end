@@ -60,7 +60,7 @@ const AdminShop = () => {
   };
 
   useEffect(async () => {
-    await Axios.get("http://localhost:8000/api/shop", {
+    await Axios.get("http://localhost:8000/api/item", {
       headers: {
         "content-type": "multipart/form-data",
         Authorization: "Bearer " + localStorage.getItem("tokens"),
@@ -74,8 +74,7 @@ const AdminShop = () => {
         expireToken();
         return window.location.reload();
       } else {
-        setListShop(response.data.shop);
-        console.log(response.data.shop);
+        setListShop(response.data.item);
       }
     });
   }, [render]);
@@ -140,7 +139,7 @@ const AdminShop = () => {
 
   const deleteAdmin = async (id) => {
     try {
-      await Axios.delete(`http://localhost:8000/api/shop/${id} `, {
+      await Axios.delete(`http://localhost:8000/api/item/${id} `, {
         headers: {
           Accept: "application/json",
           "content-type": "multipart/form-data",

@@ -1,4 +1,21 @@
-.hover >  a:hover{
-    color:gray !important
-} 
+.hover > a:hover {
+  color: gray !important;
+}
 
+.btnFooter {
+  background: transparent;
+  color: #f0f0f0;
+  font-size: 15px;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.4s;
+  font-family: Impact, Arial black, sans-serif;
+  border: none;
+  appearance: none;
+}
+
+.btnFooter:hover {
+  color: gray !important;
+  border: none;
+}

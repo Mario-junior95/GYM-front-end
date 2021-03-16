@@ -12,6 +12,9 @@ const UserAccount = () => {
       <Link exact="true" to="/myclasses">
         My Classes
       </Link>
+      <Link exact="true" to="/merchandise">
+        The Merchandise
+      </Link>
     </div>
   );
 };

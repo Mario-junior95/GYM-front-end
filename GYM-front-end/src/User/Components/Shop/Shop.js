@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory, Redirect } from "react-router-dom";
 import Header from "../Navigation/Header";
 import "../../../App.css";
 import Tilt from "react-parallax-tilt";
@@ -14,10 +15,16 @@ const Shop = () => {
   const [type, setType] = useState([]);
 
   useEffect(() => {
-    Axios.get("http://localhost:8000/api/shop").then((response) => {
-      setListShop(response.data.shop);
+    Axios.get("http://localhost:8000/api/item").then((response) => {
+      setListShop(response.data.item);
     });
   }, []);
+
+  const expireToken = () => {
+    localStorage.clear() && <Redirect exact="true" to="/Admin-Login" />;
+  };
+
+  const history = useHistory();
 
   /**   Search Section  */
 
@@ -25,6 +32,18 @@ const Shop = () => {
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(6);
+
+
+  const [image , setImage] = useState("null");
+
+  
+  const [noToken , setNoToken ] = useState("");
+  const redirectWithouToken  = () => {
+    setNoToken("SignIn Before Buying any Item");
+    setTimeout(() => {
+      history.push('/SignIn')
+     } , 3000)
+  }
 
   useEffect(() => {
     setFilteredData(
@@ -106,6 +125,7 @@ const Shop = () => {
                 <div className="label-text">Search </div>
               </label>
             )}
+            <p style={{color:"red"}}>{noToken}</p>
             <div
               style={{
                 display: "grid",
@@ -119,6 +139,49 @@ const Shop = () => {
               ) : (
                 <>
                   {currentPosts.map((val) => {
+                    /** Add Item   */
+
+                    const handleAdd = async (e) => {
+                      e.preventDefault();
+                      const data = new FormData();
+                      data.append("name", val.name);
+                      data.append("image", image);
+                      data.append("amount", val.amount);
+                      data.append("type", val.type);
+                      data.append("user_id", localStorage.getItem("idUser"));
+
+                      try {
+                        await Axios.post(
+                          "http://localhost:8000/api/shop",
+                          data,
+                          {
+                            headers: {
+                              "content-type": "multipart/form-data",
+                              Authorization:
+                                "Bearer " + localStorage.getItem("token"),
+                            },
+                          }
+                        ).then((response) => {
+                          if (
+                            response.data.status === "Token is Expired" ||
+                            response.data.status === "Token is Invalid" ||
+                            response.data.status ===
+                              "Authorization Token not found"
+                          ) {
+                            expireToken();
+                            return window.location.reload();
+                          } else {
+                            setTimeout(() => {
+                              history.push("/payment");
+                            }, 2500);
+                          }
+                        });
+                      } catch (error) {
+                        if (error.response) {
+                          console.log(error);
+                        }
+                      }
+                    };
                     return (
                       <Tilt key={val.id}>
                         <div className="page-index ">
@@ -153,7 +216,23 @@ const Shop = () => {
                               >
                                 <strong> Type :</strong> {val.type}
                               </p>
-                              <button className="button_shop">Add To Card</button>
+                              {localStorage.getItem("token")?
+                               <button
+                               className="button_shop"
+                               onClick={handleAdd}
+                             >
+                               Buy
+                             </button>:
+                             <>
+                             <button
+                               className="button_shop"
+                               onClick= {redirectWithouToken} 
+                             >
+                               Buy
+                             </button>
+                           
+                             </>
+                             }
                             </div>
                           </div>
                         </div>

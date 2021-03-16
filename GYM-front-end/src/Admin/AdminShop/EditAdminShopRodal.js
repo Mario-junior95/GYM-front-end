@@ -54,7 +54,7 @@ const EditAdminShopRodal = (props) => {
     data.append("type", type);
     try {
       await Axios.post(
-        `http://localhost:8000/api/shop/${props.val.id}?_method=PUT `,
+        `http://localhost:8000/api/item/${props.val.id}?_method=PUT `,
         data,
         {
           headers: {

@@ -43,13 +43,7 @@ const AddAdminShopRodal = (props) => {
 
   const [close, setClose] = useState("");
 
-  const [listType, setListType] = useState([]);
 
-  useEffect(() => {
-    Axios.get("http://localhost:8000/api/type").then((response) => {
-      setListType(response.data.type);
-    });
-  }, []);
 
   /**   Create Admin */
 
@@ -62,7 +56,7 @@ const AddAdminShopRodal = (props) => {
     data.append("type", type);
 
     try {
-      await Axios.post("http://localhost:8000/api/shop", data, {
+      await Axios.post("http://localhost:8000/api/item", data, {
         headers: {
           "content-type": "multipart/form-data",
           Authorization: "Bearer " + localStorage.getItem("tokens"),
@@ -76,7 +70,7 @@ const AddAdminShopRodal = (props) => {
           expireToken();
           return window.location.reload();
         } else {
-          setListShop(response.data.shop);
+          setListShop(response.data.item);
           setRender((prev) => !prev);
           setSuccess("Item Added Successfully!!!");
           clearData();

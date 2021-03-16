@@ -1,11 +1,7 @@
- /* html    ,  body {
-  background: white !important;
-} */
+
 
 .adminContainer > form {
   transform: translate(0px, 13vw);
-  /* background-color: white;
-  padding: 20px 2vw; */
 }
 
 .adminContainer > form > h1 {

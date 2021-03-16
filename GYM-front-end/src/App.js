@@ -40,6 +40,7 @@ import HomeAdmin from "./Admin/HomeAdmin/HomeAdmin";
 import FaqAdmin from "./Admin/FaqAdmin/FaqAdmin";
 import ContactUsAdmin from "./Admin/ContactUsAdmin/ContactUsAdmin";
 import WorkWithUs from "./Admin/WorkWithUs/WorkWithUs";
+import TheMerchandise from "./User/TheMerchandise/TheMerchandise";
 
 //eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9hZG1pbi1sb2dpbiIsImlhdCI6MTYxNDc5NjA2OCwiZXhwIjoxNjE0Nzk5NjY4LCJuYmYiOjE2MTQ3OTYwNjgsImp0aSI6Im1GN29uZUpKREN1enlodFciLCJzdWIiOjEsInBydiI6ImNmMjg0YzJiMWUwNmYzM2MyNmJkNTc5NzU2NmQ5ZmQ3NGJlMTFiZjUifQ.G0OnJAQOcz8Q7NVbVdMrjlKEB1uHNdyaQ3_pOMw_s8A
 
@@ -90,6 +91,12 @@ function App() {
           exact
           path="/payment"
           component={Payment}
+          isUserAuth={isUserAuth}
+        />
+        <ProtectedRouteUser
+          exact
+          path="/merchandise"
+          component={TheMerchandise}
           isUserAuth={isUserAuth}
         />
         <Route exact path="/userAccount" component={UserAccount} />

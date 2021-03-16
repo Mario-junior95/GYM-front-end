@@ -16,6 +16,8 @@ const ViewMemberRodal = (props) => {
   const [userInstructor, setUserInstructor] = useState([]);
   const [userTime, setUserTime] = useState([]);
 
+  const [buyItemUser , setBuyItemUser] = useState([]);
+
   const showMembership = () => {
     setVisibleMembership(true);
   };
@@ -90,11 +92,13 @@ const ViewMemberRodal = (props) => {
         <TableCell align="right">
           <input
             type="submit"
-            value="MemberShip Type"
+            value="View Buy Items"
             className="view"
+            
             onClick={(e) => {
               e.preventDefault();
               showShop();
+              setBuyItemUser(props.val.id)
             }}
           />
         </TableCell>
@@ -127,7 +131,7 @@ const ViewMemberRodal = (props) => {
           height={450}
           width={500}
           show={showShop}
-          // val={listMembership}
+          val={buyItemUser}
         />
       )}{" "}
     </Rodal>

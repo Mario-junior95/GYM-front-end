@@ -6,7 +6,7 @@ import "./AdminInfo.css";
 
 import { TextField } from "@material-ui/core";
 import AddAdminRodal from "./AddAdminRodal";
-import EditAdminRodal from "./EditAdminRodal";
+// import EditAdminRodal from "./EditAdminRodal";
 
 import {
   Typography,
@@ -100,7 +100,7 @@ const AdminInfo = () => {
 
   /**  Rodal Delete Functions  */
   const [visible, setVisible] = useState(false);
-  const [visibleEdit, setVisibleEdit] = useState(false);
+  // const [visibleEdit, setVisibleEdit] = useState(false);
 
   const show = () => {
     setVisible(true);
@@ -110,13 +110,13 @@ const AdminInfo = () => {
     setVisible(false);
   };
 
-  const showEdit = () => {
-    setVisibleEdit(true);
-  };
+  // const showEdit = () => {
+  //   setVisibleEdit(true);
+  // };
 
-  const hideEdit = () => {
-    setVisibleEdit(false);
-  };
+  // const hideEdit = () => {
+  //   setVisibleEdit(false);
+  // };
 
   /** Delete Admin */
 
