@@ -4,16 +4,14 @@ import "../../Admin/AdminSideNav/AdminSideNav.css";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-
 import LockIcon from "@material-ui/icons/Lock";
 import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-
 import { Link, useHistory } from "react-router-dom";
 import { useConfirm } from "material-ui-confirm";
 import LogoWhite from "../../Images/logoWhite.svg";
-
 import PersonIcon from "@material-ui/icons/Person";
+import Button from "@material-ui/core/Button";
 
 // import EditAdminInfo from "../EditAdminInfo/EditAdminInfo";
 
@@ -28,7 +26,6 @@ import {
   Typography,
   ListItem,
   IconButton,
-  Button,
 } from "@material-ui/core";
 
 // Import ChangePassword Rodal
@@ -104,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PtSideNav() {
+export default function AdminSideNav() {
   const classes = useStyles();
   const history = useHistory();
   const theme = useTheme();
@@ -134,27 +131,31 @@ export default function PtSideNav() {
 
   /**    Logout Button Confirmation */
 
+  // const fire = () => {
+  //   confirm({
+  //     title: "Are you sure you want to Exit!!!",
+  //   })
+  //     .then(() => {
+  //         localStorage.removeItem("idPt");
+  //         localStorage.removeItem("usernamePt");
+  //         localStorage.removeItem("PtToken");
+  //         history.push("/");
+  //     })
+  //     .catch(() => {
+  //       history.push("/pt-login");
+  //     });
+  // };
   const confirm = useConfirm();
-
   const fire = () => {
     confirm({
-      title: "Are you sure you want to Exit!!!",
+      title: "Hello World!",
+      description: "This is a confirm dialog",
     })
       .then(() => {
-        if (localStorage.getItem("tokens")) {
-          localStorage.removeItem("idAdmin");
-          localStorage.removeItem("username");
-          localStorage.removeItem("tokens");
-          history.push("/");
-        } else if (localStorage.getItem("superAdminToken")) {
-          localStorage.removeItem("idSuperAdmin");
-          localStorage.removeItem("usernameSuperAdmin");
-          localStorage.removeItem("superAdminToken");
-          history.push("/");
-        }
+        console.log("do something");
       })
       .catch(() => {
-        history.push("/admin-home");
+        console.log("do nothing");
       });
   };
 
@@ -187,9 +188,15 @@ export default function PtSideNav() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            PT Panel
-          </Typography>
+          {localStorage.getItem("tokens") ? (
+            <Typography variant="h6" noWrap>
+              Admin Panel
+            </Typography>
+          ) : (
+            <Typography variant="h6" noWrap>
+              Super Admin Panel
+            </Typography>
+          )}
         </Toolbar>
       </AppBar>
       <Drawer
@@ -228,55 +235,6 @@ export default function PtSideNav() {
               </div>
             </Link>
           </ListItem>
-          {localStorage.getItem("PtToken") ? (
-            <>
-              <ListItem>
-                <Link
-                  onClick={() => {
-                    showEdit();
-                  }}
-                  style={{ cursor: "pointer" }}
-                >
-                  <div>
-                    <PersonIcon />
-                    Update Your Info
-                  </div>
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link onClick={show} style={{ cursor: "pointer" }}>
-                  <div>
-                    <LockIcon />
-                    Change Password
-                  </div>
-                </Link>
-              </ListItem>
-            </>
-          ) : (
-            <>
-              <ListItem style={{ display: "none" }}>
-                <Link
-                  onClick={() => {
-                    showEdit();
-                  }}
-                  style={{ cursor: "pointer" }}
-                >
-                  <div>
-                    <PersonIcon />
-                    Update Your Info
-                  </div>
-                </Link>
-              </ListItem>
-              <ListItem style={{ display: "none" }}>
-                <Link onClick={show} style={{ cursor: "pointer" }}>
-                  <div>
-                    <LockIcon />
-                    Change Password
-                  </div>
-                </Link>
-              </ListItem>
-            </>
-          )}
           <ListItem className={classes.root}>
             <Button color="secondary" onClick={fire}>
               <div>

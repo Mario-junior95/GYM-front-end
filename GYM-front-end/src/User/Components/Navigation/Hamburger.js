@@ -50,9 +50,7 @@ const Hamburger = (props) => {
       fadeInUp(info);
       staggerText(line1, line2, line3);
     }
-    return () => {
-
-    }
+    return () => {};
   }, [state]);
 
   //Change image  on Hover

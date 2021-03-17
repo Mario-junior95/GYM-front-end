@@ -4,7 +4,7 @@ import Header from "../Navigation/Header";
 import Axios from "axios";
 import "./MyInfo.scss";
 
-import WallWorkout from "../../../Images/wall-workout.png";
+import Punshing from "../../../Images/punshing.png";
 
 const EditInfo = () => {
   const [newFirstName, setnewFirstName] = useState("");
@@ -114,7 +114,18 @@ const EditInfo = () => {
     <div className="App">
       <Header />
       <div style={{ display: "flex" }}>
-        {/* <img src={WallWorkout} alt="error_wallWorkout" style={{width: '40vw' ,height: '40vw' , position:'fixed' }}/> */}
+        <img
+          src={Punshing}
+          alt="error_wallWorkout"
+          style={{
+            width: "40vw",
+            height: "40vw",
+            position: "fixed",
+            position: "fixed",
+            left: "16.8vw",
+            top: "9vw",
+          }}
+        />
         <div className="container">
           <div className="wrapper">
             <div className="home">

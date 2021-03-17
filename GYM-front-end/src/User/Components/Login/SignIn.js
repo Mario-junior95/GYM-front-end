@@ -4,6 +4,8 @@ import Header from "../Navigation/Header";
 import Axios from "axios";
 import "./Login.css";
 
+import Loading from "../../../Loading/Loading";
+
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -62,7 +64,16 @@ const SignIn = () => {
     }
   };
 
+   /**   For Loading */
+   const [loading, setLoading] = useState(true);
+
+   useEffect(() => {
+     setTimeout(() => setLoading(false), 4550);
+   }, []);
+
   return (
+    <>
+      {loading === false ? (
     <div className="LoginSection">
       <Header />
       <div className="container">
@@ -163,6 +174,8 @@ const SignIn = () => {
         </div>
       </div>
     </div>
+      ):<Loading/>}
+      </>
   );
 };
 

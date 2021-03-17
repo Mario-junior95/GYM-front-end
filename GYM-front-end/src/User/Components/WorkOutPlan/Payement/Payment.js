@@ -8,6 +8,8 @@ import CreditCardLogo from "../../../../Images/creditcard.png";
 
 import Footer from "../../Footer/Footer";
 
+import Loading from "../../../../Loading/Loading";
+
 const Payment = () => {
   useEffect(() => {
     VanillaTilt.init(document.querySelectorAll(".card"), {
@@ -16,6 +18,13 @@ const Payment = () => {
       glare: true,
       "max-glare": 1,
     });
+  }, []);
+
+  /**   For Loading */
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 4550);
   }, []);
 
   const [cardnumber, setCardNumber] = useState("");
@@ -53,61 +62,67 @@ const Payment = () => {
   };
 
   return (
-    <div className="App">
-      <Header />
-      <div className="blockCard">
-        <div className="card">
-          <div className="content">
-            <h2>CREDIT CARD</h2>
-            <h3>
-              <img
-                src={CreditCardLogo}
-                style={{ width: "4vw" }}
-                alt="credit_card_logo_error"
-              />
-              {localStorage.getItem("firstname")}{" "}
-              {localStorage.getItem("lastname")}
-            </h3>
-            <label
-              style={{
-                paddingTop: " 30px",
-                position: "absolute",
-                top: "7vw",
-                left: "-7vw",
-              }}
-            >
-              <input
-                type="text"
-                placeholder="enter your card-number"
-                style={{ marginLeft: "-5vw" }}
-                value={cardnumber}
-                onChange={(e) => setCardNumber(e.target.value)}
-              />
-              <button className="btnLogin" onClick={AddPayment}>
-                Save
-              </button>
-            </label>
+    <>
+      {loading === false ? (
+        <div className="App">
+          <Header />
+          <div className="blockCard">
+            <div className="card">
+              <div className="content">
+                <h2>CREDIT CARD</h2>
+                <h3>
+                  <img
+                    src={CreditCardLogo}
+                    style={{ width: "4vw" }}
+                    alt="credit_card_logo_error"
+                  />
+                  {localStorage.getItem("firstname")}{" "}
+                  {localStorage.getItem("lastname")}
+                </h3>
+                <label
+                  style={{
+                    paddingTop: " 30px",
+                    position: "absolute",
+                    top: "7vw",
+                    left: "-7vw",
+                  }}
+                >
+                  <input
+                    type="text"
+                    placeholder="enter your card-number"
+                    style={{ marginLeft: "-5vw" }}
+                    value={cardnumber}
+                    onChange={(e) => setCardNumber(e.target.value)}
+                  />
+                  <button className="btnLogin" onClick={AddPayment}>
+                    Save
+                  </button>
+                </label>
+              </div>
+            </div>
+            <div style={{ marginTop: "18vw" }}>
+              <h2 style={{ color: "red" }}>
+                Please hover the card to edit your card number
+              </h2>
+              <p style={{ color: "white" }}>
+                Email : {localStorage.getItem("email")}
+              </p>
+              <p style={{ color: "white" }}>
+                Address : {localStorage.getItem("address")}{" "}
+              </p>
+              <p style={{ color: "white" }}>
+                Phone Number : {localStorage.getItem("phone")}
+              </p>
+            </div>
+          </div>
+          <div style={{ marginTop: "-7vw" }}>
+            <Footer />
           </div>
         </div>
-        <div style={{ marginTop: "18vw" }}>
-          <h2 style={{ color: "red" }}>
-            Please hover the card to edit your card number
-          </h2>
-          <p style={{ color: "white" }}>
-            Email : {localStorage.getItem("email")}
-          </p>
-          <p style={{ color: "white" }}>
-            Address : {localStorage.getItem("address")}{" "}
-          </p>
-          <p style={{ color: "white" }}>
-            Phone Number : {localStorage.getItem("phone")}
-          </p>
-        </div>
-      </div>
-      <div style={{ marginTop: "-7vw" }}>
-        <Footer />
-      </div>
-    </div>
+      ) : (
+        <Loading />
+      )}
+    </>
   );
 };
 

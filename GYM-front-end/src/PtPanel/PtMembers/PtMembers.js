@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import PtSideNav from "../PtSideNav/PtSideNav";
 import Axios from "axios";
 import "../../Admin/AdminInfo/AdminInfo.css";
@@ -12,8 +12,7 @@ import {
   TableBody,
   TableCell,
   TableContainer,
-  TableHead,
-  TablePagination,
+  TableHead, 
   TextField,
   TableRow,
 } from "@material-ui/core";

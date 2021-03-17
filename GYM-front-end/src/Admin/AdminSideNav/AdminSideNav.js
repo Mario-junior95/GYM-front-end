@@ -194,12 +194,15 @@ export default function AdminSideNav() {
           >
             <MenuIcon />
           </IconButton>
-          {localStorage.getItem("tokens")? <Typography variant="h6" noWrap>
-            Admin Panel
-          </Typography>:
-           <Typography variant="h6" noWrap >
-           Super Admin Panel
-         </Typography>}
+          {localStorage.getItem("tokens") ? (
+            <Typography variant="h6" noWrap>
+              Admin Panel
+            </Typography>
+          ) : (
+            <Typography variant="h6" noWrap>
+              Super Admin Panel
+            </Typography>
+          )}
         </Toolbar>
       </AppBar>
       <Drawer

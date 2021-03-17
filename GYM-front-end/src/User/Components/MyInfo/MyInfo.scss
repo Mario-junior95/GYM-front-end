@@ -167,8 +167,9 @@
 
 .arrows {
   position: fixed;
-  left: 42.22vw;
+  left: 42.1vw;
   top: 8.8vw;
+  z-index: 1;
 }
 
 .sideBox > a {
@@ -179,6 +180,8 @@
 //   margin: 11vw 0 11vw 25vw;
 // }
 
-.blockEditInfo{
+.blockEditInfo {
   margin: 11vw 0 11vw 24.5vw;
+  position: relative;
+  z-index: 3;
 }

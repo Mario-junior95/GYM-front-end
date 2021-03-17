@@ -20,11 +20,13 @@ const ViewWorkWithUsRodal = (props) => {
         <h1 className="Rodal_Title" style={{ textAlign: "center" }}>
           View Message Info
         </h1>
-        <img
-          src={`http://localhost:8000/storage/${props.val.image}`}
-          style={{ width: "50%", margin: "0 21%" }}
-          alt="error_instructor_img"
-        />
+        <a
+          href={`http://localhost:8000/storage/${props.val.image}`}
+          target="_blank"
+          style={{ marginLeft: "17.6vw", color: "black" }}
+        >
+          Download CV
+        </a>
         <p style={{ textAlign: "center" }}>
           <strong> Email : </strong>
           {props.val.email}
