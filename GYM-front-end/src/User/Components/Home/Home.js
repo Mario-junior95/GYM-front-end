@@ -35,7 +35,6 @@ const Home = () => {
   const expireToken = () => {
     localStorage.clear() && <Redirect exact="true" to="/Admin-Login" />;
   };
-  
 
   useEffect(async () => {
     await Axios.get("http://localhost:8000/api/home", {
@@ -146,7 +145,21 @@ const Home = () => {
                               alt="error_coach_image"
                               style={{ width: "45vw", margin: "20px" }}
                             /> */}
-                            <video style={{ width: "45vw", margin: "20px" }}  loop autoPlay>
+                            <video
+                              style={{
+                                width: "45vw",
+                                height: "27vw",
+                                margin: "20px",
+                                position: "relative",
+                                left: "-5vw",
+                              }}
+                              loop
+                              autoPlay
+                              data-aos="fade-zoom-in"
+                              data-aos-easing="ease-in-back"
+                              data-aos-delay="400"
+                              data-aos-offset="0"
+                            >
                               <source
                                 src={`http://localhost:8000/storage/${val.image}`}
                                 type="video/mp4"
@@ -203,7 +216,7 @@ const Home = () => {
                               marginBottom: "3vw",
                             }}
                           >
-                            <img
+                            {/* <img
                               src={`http://localhost:8000/storage/${val.image}`}
                               alt="error_coach_image"
                               style={{ width: "45vw", margin: "20px" }}
@@ -211,7 +224,29 @@ const Home = () => {
                               data-aos-easing="ease-in-back"
                               data-aos-delay="400"
                               data-aos-offset="0"
-                            />
+                            /> */}
+                            <video
+                              style={{
+                                width: "45vw",
+                                margin: "20px",
+                                height: "33vw",
+                                position: "relative",
+                                left: "4vw",
+                              }}
+                              loop
+                              autoPlay
+                              data-aos="fade-zoom-in"
+                              data-aos-easing="ease-in-back"
+                              data-aos-delay="400"
+                              data-aos-offset="0"
+                            >
+                              <source
+                                src={`http://localhost:8000/storage/${val.image}`}
+                                type="video/mp4"
+                              />
+                              <source src="movie.ogg" type="video/ogg" />
+                              Your browser does not support the video tag.
+                            </video>
                             <div
                               className="coachInfo"
                               data-aos="fade-up"

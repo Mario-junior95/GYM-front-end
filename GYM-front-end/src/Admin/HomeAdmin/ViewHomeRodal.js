@@ -23,7 +23,11 @@ const ViewHomeRodal = (props) => {
             View {props.val.title} Info
           </h1>
 
-          <video style={{ width: "50%", margin: "0 21%" }} loop autoPlay>
+          <video
+            style={{ width: "50%", height: "17vw", margin: "0 21%" }}
+            loop
+            autoPlay
+          >
             <source
               src={`http://localhost:8000/storage/${props.val.image}`}
               type="video/mp4"

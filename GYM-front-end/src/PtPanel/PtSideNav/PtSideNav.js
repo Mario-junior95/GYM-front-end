@@ -194,7 +194,7 @@ export default function AdminSideNav() {
             </Typography>
           ) : (
             <Typography variant="h6" noWrap>
-              Super Admin Panel
+              Pt Panel
             </Typography>
           )}
         </Toolbar>

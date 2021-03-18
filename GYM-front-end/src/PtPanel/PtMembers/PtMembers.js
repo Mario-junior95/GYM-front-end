@@ -12,7 +12,7 @@ import {
   TableBody,
   TableCell,
   TableContainer,
-  TableHead, 
+  TableHead,
   TextField,
   TableRow,
 } from "@material-ui/core";
@@ -211,6 +211,8 @@ const PtMembers = () => {
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .map((val) => {
                       return val.time.map((i) => {
+                        console.log(i.start);
+                        console.log(i.end);
                         return (
                           <TableBody key={i.id}>
                             <TableCell

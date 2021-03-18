@@ -223,7 +223,7 @@ const WorkOutPlan = () => {
                             </div>
                             <img
                               src={`http://localhost:8000/storage/${val.image}`}
-                              style={{ width: "45vw", margin: "20px" }}
+                              style={{ width: "44vw", margin: "20px" }}
                             />
 
                             <span
@@ -231,6 +231,7 @@ const WorkOutPlan = () => {
                               data-aos="fade-left"
                               data-aos-offset="300"
                               data-aos-easing="ease-in-sine"
+                              style={{marginTop: '27vw'}}
                             >
                               CARDIO
                             </span>
@@ -252,6 +253,7 @@ const WorkOutPlan = () => {
                               data-aos="fade-right"
                               data-aos-offset="300"
                               data-aos-easing="ease-in-sine"
+                              style={{marginTop: '23vw'}}
                             >
                               ZUMBA
                             </span>
@@ -323,6 +325,7 @@ const WorkOutPlan = () => {
                               data-aos="fade-left"
                               data-aos-offset="300"
                               data-aos-easing="ease-in-sine"
+                              style={{marginTop: '20vw'}}
                             >
                               POOL
                             </span>

@@ -4,6 +4,7 @@
   background-size: 100%;
   /* width: 100vw; */
   width: 99vw;
+  background-attachment: fixed;
 }
 
 .home_title {
