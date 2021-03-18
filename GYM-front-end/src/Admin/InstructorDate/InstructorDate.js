@@ -192,7 +192,7 @@ const InstructorDate = () => {
                   <TableCell align="right">
                     <ScheduleIcon
                       onClick={show}
-                      style={{ cursor: "pointer" , margin:' 8px 0 0 17vw' }}
+                      style={{ cursor: "pointer" , margin:' 8px 0 0 13vw' }}
                     />
                   </TableCell>
                 </TableRow>

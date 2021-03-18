@@ -22,11 +22,15 @@ const ViewHomeRodal = (props) => {
           <h1 className="Rodal_Title" style={{ textAlign: "center" }}>
             View {props.val.title} Info
           </h1>
-          <img
-            src={`http://localhost:8000/storage/${props.val.image}`}
-            style={{ width: "50%", margin: "0 21%" }}
-            alt="error_workout_img"
-          />
+
+          <video style={{ width: "50%", margin: "0 21%" }} loop autoPlay>
+            <source
+              src={`http://localhost:8000/storage/${props.val.image}`}
+              type="video/mp4"
+            />
+            <source src="movie.ogg" type="video/ogg" />
+            Your browser does not support the video tag.
+          </video>
           <Typography style={{ textAlign: "center" }}>
             {props.val.description}
           </Typography>

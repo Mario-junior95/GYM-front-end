@@ -86,6 +86,7 @@ const PtLogin = () => {
                   label="Username"
                   name="username"
                   size="small"
+                  className = "usernamField"
                   variant="outlined"
                   onChange={(e) => {
                     setUsername(e.target.value);
@@ -106,6 +107,7 @@ const PtLogin = () => {
                   size="small"
                   type="password"
                   variant="outlined"
+                  className = "passwordField"
                   value={password}
                   onChange={(e) => {
                     setPassword(e.target.value);

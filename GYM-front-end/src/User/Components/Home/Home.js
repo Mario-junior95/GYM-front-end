@@ -35,6 +35,7 @@ const Home = () => {
   const expireToken = () => {
     localStorage.clear() && <Redirect exact="true" to="/Admin-Login" />;
   };
+  
 
   useEffect(async () => {
     await Axios.get("http://localhost:8000/api/home", {
@@ -136,7 +137,7 @@ const Home = () => {
                               marginLeft: "6vw",
                             }}
                           >
-                            <img
+                            {/* <img
                               data-aos="fade-zoom-in"
                               data-aos-easing="ease-in-back"
                               data-aos-delay="400"
@@ -144,7 +145,22 @@ const Home = () => {
                               src={`http://localhost:8000/storage/${val.image}`}
                               alt="error_coach_image"
                               style={{ width: "45vw", margin: "20px" }}
-                            />
+                            /> */}
+                            <video style={{ width: "45vw", margin: "20px" }}  loop autoPlay>
+                              <source
+                                src={`http://localhost:8000/storage/${val.image}`}
+                                type="video/mp4"
+                              />
+                              <source src="movie.ogg" type="video/ogg" />
+                              Your browser does not support the video tag.
+                            </video>
+                            {/* <iframe
+                              src={`http://localhost:8000/storage/${val.image}`}
+                              frameBorder="0"
+                              allow="autoplay; encrypted-media"
+                              allowFullScreen
+                              title="video"
+                            /> */}
 
                             <div
                               className="coachInfo"

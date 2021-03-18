@@ -275,7 +275,7 @@ const Instructor = () => {
               duration={500}
               closeMaskOnClick={true}
               closeOnEsc={true}
-              height={635}
+              height={755}
               width={750}
               render={{ setRender }}
             />

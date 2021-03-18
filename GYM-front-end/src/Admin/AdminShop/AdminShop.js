@@ -191,7 +191,7 @@ const AdminShop = () => {
                   <TableCell align="right">
                     <ShoppingCartIcon
                       onClick={show}
-                      style={{ cursor: "pointer", margin: "8px 0 0 12vw" }}
+                      style={{ cursor: "pointer", margin: "8px 0 0 10vw" }}
                     />
                   </TableCell>
                 </TableRow>

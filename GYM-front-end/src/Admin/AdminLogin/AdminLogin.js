@@ -4,6 +4,7 @@ import Axios from "axios";
 
 import "./AdminLogin.css";
 
+
 // MUI Core
 import { Button, Container, Grid, TextField  , Typography} from "@material-ui/core";
 
@@ -60,6 +61,8 @@ const AdminLogin = () => {
     <Redirect  to="/admin-Login" />;
   }
 
+
+
   return (
     <Container maxWidth="xs" className="adminContainer">
       <form>
@@ -76,7 +79,9 @@ const AdminLogin = () => {
               <Grid item xs={12}>
                 <TextField
                   fullWidth
+                  className="usernamField"
                   inputRef={inputEl}
+                  style={{color:'white !important'}}
                   label="Username"
                   name="username"
                   size="small"
@@ -100,6 +105,7 @@ const AdminLogin = () => {
                   size="small"
                   type="password"
                   variant="outlined"
+                  className = "passwordField"
                   value={password}
                   onChange={(e) => {
                     setPassword(e.target.value);

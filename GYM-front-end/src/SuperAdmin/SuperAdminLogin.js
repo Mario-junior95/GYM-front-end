@@ -89,6 +89,7 @@ const SuperAdminLogin = () => {
                   label="Username"
                   name="username"
                   size="small"
+                  className = "usernamField"
                   variant="outlined"
                   onChange={(e) => {
                     setUsername(e.target.value);
@@ -108,6 +109,7 @@ const SuperAdminLogin = () => {
                   name="password"
                   size="small"
                   type="password"
+                  className = "passwordField"
                   variant="outlined"
                   value={password}
                   onChange={(e) => {
