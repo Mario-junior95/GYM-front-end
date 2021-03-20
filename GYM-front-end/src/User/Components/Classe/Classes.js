@@ -86,10 +86,10 @@ const Classes = () => {
                   </tr>
                 </tbody>
               </table>
-              <h1 style={{ marginTop: "50px" }}>
+              <h1 style={{ marginTop: "50px" }} className="reservePt">
                 Reserved PT<sub>section</sub>
               </h1>
-              <table style={{ width: "60%" }}>
+              <table style={{ width: "60%" }} className = "tableInstructor">
                 <tr>
                   <th>Instructor</th>
                   <th>Date</th>

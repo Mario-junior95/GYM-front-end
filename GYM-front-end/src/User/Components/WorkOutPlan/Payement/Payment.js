@@ -100,7 +100,7 @@ const Payment = () => {
                 </label>
               </div>
             </div>
-            <div style={{ marginTop: "18vw" }}>
+            <div className="cardInfo" style={{ marginTop: "18vw" }}>
               <h2 style={{ color: "red" }}>
                 Please hover the card to edit your card number
               </h2>

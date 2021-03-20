@@ -1,5 +1,3 @@
-
-
 .shoe {
   display: block;
   position: relative;
@@ -52,4 +50,44 @@
 .button_shop:focus {
   background-color: black;
   color: white;
+}
+
+@media only screen and (min-width: 480px) {
+  .shop > h1 {
+    font-size: 9vw !important;
+    margin-left: -88vw !important;
+    margin-top: 22vw !important;
+  }
+
+  .items {
+    display: grid;
+    grid-template-columns: 50% 50% !important;
+    margin-left: 18vw !important;
+  }
+  /* 
+  .items > div{
+    margin-left: 16vw !important;
+  } */
+
+  .shoe {
+    width: 18vw !important;
+  }
+
+  .button_shop {
+    position: relative;
+    top: -2vw !important;
+    left: -3vw !important;
+  }
+
+  .items > p {
+    margin-left: -21vw !important;
+    width: 32vw !important;
+    height: 54vw !important;
+  }
+
+  /*    FOR PAGINATION */
+  .pagination > .page-item > .page-link {
+    padding: 3px 3vw !important;
+    margin-left: -19.6vw !important;
+  }
 }

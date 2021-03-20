@@ -136,6 +136,7 @@ const Shop = () => {
                 )}
                 <p style={{ color: "red" }}>{noToken}</p>
                 <div
+                className ="items"
                   style={{
                     display: "grid",
                     gridTemplateColumns: "1fr 1fr 1fr ",

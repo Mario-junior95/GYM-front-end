@@ -36,6 +36,7 @@ const Faq = () => {
             <div className="wrapper">
               <div className="home">
                 <div
+                className = "faqTop"
                   style={{
                     marginTop: "4vw",
                     marginBottom: "4vw",

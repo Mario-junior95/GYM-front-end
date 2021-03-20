@@ -22,7 +22,6 @@ body::-webkit-scrollbar-thumb {
   outline: 1px solid rgb(46, 49, 53);
 }
 
-
 html,
 body {
   padding: 0;
@@ -231,5 +230,21 @@ header {
   }
   100% {
     background-position: 0% 0%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .container {
+    max-width: 50vw !important;
+    min-width: 0;
+  }
+
+  header .hamburger-menu .menu-layer .wrapper {
+    float: right !important;
+    margin-right: -10vw !important;
+  }
+
+  .menu-secondary-background-color {
+    width: 100% !important;
   }
 }

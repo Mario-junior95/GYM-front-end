@@ -91,7 +91,7 @@ const Header = (props) => {
 
   return (
     <header className ="headers">
-      <div className="container">
+      <div className="container  containers">
         <div className="wrapper">
           <div className="inner-header">
             <div className="logo">

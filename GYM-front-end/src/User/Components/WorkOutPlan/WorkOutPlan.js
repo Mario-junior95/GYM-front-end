@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../Navigation/Header";
 import "./WorkOutPlan.css";
@@ -82,6 +82,7 @@ const WorkOutPlan = () => {
                               style={{ marginTop: " 3vw" }}
                               data-aos="fade-down"
                               data-aos-anchor-placement="top-center"
+                              className="description"
                             >
                               <span className="paragraph">
                                 {val.description}
@@ -111,10 +112,23 @@ const WorkOutPlan = () => {
                             id="mma"
                             key={val.id}
                           >
+                            <img
+                              src={`http://localhost:8000/storage/${val.image}`}
+                              style={{ width: "45vw", margin: "20px" }}
+                            />
+                            <span
+                              className="mma"
+                              data-aos="fade-left"
+                              data-aos-offset="300"
+                              data-aos-easing="ease-in-sine"
+                            >
+                              MMA
+                            </span>
                             <div
                               style={{ marginTop: " 3vw" }}
                               data-aos="fade-up"
                               data-aos-anchor-placement="top-center"
+                              className="description"
                             >
                               <span className="paragraph">
                                 {val.description}
@@ -131,18 +145,6 @@ const WorkOutPlan = () => {
                                 </button>
                               </Link>
                             </div>
-                            <span
-                              className="mma"
-                              data-aos="fade-left"
-                              data-aos-offset="300"
-                              data-aos-easing="ease-in-sine"
-                            >
-                              MMA
-                            </span>
-                            <img
-                              src={`http://localhost:8000/storage/${val.image}`}
-                              style={{ width: "45vw", margin: "20px" }}
-                            />
                           </section>
                         );
                       }
@@ -172,6 +174,7 @@ const WorkOutPlan = () => {
                               style={{ marginTop: " 3vw" }}
                               data-aos="fade-down"
                               data-aos-anchor-placement="top-center"
+                              className="description"
                             >
                               <span className="paragraph">
                                 {val.description}
@@ -201,10 +204,25 @@ const WorkOutPlan = () => {
                             id="cardio"
                             key={val.id}
                           >
+                            <span
+                              className="cardio"
+                              data-aos="fade-left"
+                              data-aos-offset="300"
+                              data-aos-easing="ease-in-sine"
+                              style={{ marginTop: "27vw" }}
+                            >
+                              CARDIO
+                            </span>
+                            <img
+                              src={`http://localhost:8000/storage/${val.image}`}
+                              style={{ width: "44vw", margin: "20px" }}
+                            />
+
                             <div
                               style={{ marginTop: " 3vw" }}
                               data-aos="fade-up"
                               data-aos-anchor-placement="top-center"
+                              className="description"
                             >
                               <span className="paragraph">
                                 {val.description}
@@ -221,20 +239,6 @@ const WorkOutPlan = () => {
                                 </button>
                               </Link>
                             </div>
-                            <img
-                              src={`http://localhost:8000/storage/${val.image}`}
-                              style={{ width: "44vw", margin: "20px" }}
-                            />
-
-                            <span
-                              className="cardio"
-                              data-aos="fade-left"
-                              data-aos-offset="300"
-                              data-aos-easing="ease-in-sine"
-                              style={{marginTop: '27vw'}}
-                            >
-                              CARDIO
-                            </span>
                           </section>
                         );
                       }
@@ -253,7 +257,7 @@ const WorkOutPlan = () => {
                               data-aos="fade-right"
                               data-aos-offset="300"
                               data-aos-easing="ease-in-sine"
-                              style={{marginTop: '23vw'}}
+                              style={{ marginTop: "23vw" }}
                             >
                               ZUMBA
                             </span>
@@ -265,6 +269,7 @@ const WorkOutPlan = () => {
                               style={{ marginTop: " 3vw" }}
                               data-aos="fade-down"
                               data-aos-anchor-placement="top-center"
+                              className="description"
                             >
                               <span className="paragraph">
                                 {val.description}
@@ -295,11 +300,25 @@ const WorkOutPlan = () => {
                             id="pool"
                             key={val.id}
                           >
+                            <span
+                              className="pool"
+                              data-aos="fade-left"
+                              data-aos-offset="300"
+                              data-aos-easing="ease-in-sine"
+                              style={{ marginTop: "20vw" }}
+                            >
+                              POOL
+                            </span>
+                            <img
+                              src={`http://localhost:8000/storage/${val.image}`}
+                              style={{ width: "45vw", margin: "20px" }}
+                            />
                             <div
                               style={{ marginTop: " 3vw" }}
                               data-aos="fade-up"
                               data-aos-anchor-placement="top-center"
                               data-aos-offset="300"
+                              className="description"
                             >
                               <span className="paragraph">
                                 {val.description}
@@ -316,19 +335,6 @@ const WorkOutPlan = () => {
                                 </button>
                               </Link>
                             </div>
-                            <img
-                              src={`http://localhost:8000/storage/${val.image}`}
-                              style={{ width: "45vw", margin: "20px" }}
-                            />
-                            <span
-                              className="pool"
-                              data-aos="fade-left"
-                              data-aos-offset="300"
-                              data-aos-easing="ease-in-sine"
-                              style={{marginTop: '20vw'}}
-                            >
-                              POOL
-                            </span>
                           </section>
                         );
                       }

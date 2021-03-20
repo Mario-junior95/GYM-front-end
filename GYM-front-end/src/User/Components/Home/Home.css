@@ -30,3 +30,57 @@
   margin-left: 3px;
   text-align: center;
 }
+
+@media only screen and (max-width: 480px) {
+  .Home_banner {
+    width: 140vw;
+    background-repeat: no-repeat;
+    height: 84vw;
+  }
+
+  .home_title {
+    font-size: 7vw;
+  }
+
+  .home_paragraph_top {
+    font-size: 4vw !important;
+  }
+
+  .container .wrapper .home p {
+    font-size: 3vw !important;
+  }
+
+  .horiz_home {
+    width: 127vw !important;
+    margin-top: 7vw;
+    margin-bottom: 7vw;
+  }
+  .section_home{
+    display: block !important;
+  }
+
+  .section_home > video {
+    width: 115vw !important;
+    height: 78vw !important;
+    margin: 35px !important;
+    position: relative;
+    left: -1vw !important;
+  }
+
+  .par_home{
+    margin-bottom: 7vw !important;
+  }
+
+  .coachInfo {
+    width: 129vw !important;
+  }
+
+  .section_home_right{
+    margin-left: 6vw !important
+  }
+
+  /* .rightSideVideo{
+    position: relative ;
+    left: 6vw !important;
+  } */
+}

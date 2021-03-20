@@ -6,6 +6,7 @@ import Punsh from "../../../Images/mma.jpg";
 import Axios from "axios";
 
 import Loading from "../../../Loading/Loading";
+import './ContactUs.css';
 
 const ContactUs = () => {
   const [email, setEmail] = useState("");
@@ -82,7 +83,7 @@ const ContactUs = () => {
           <div className="container">
             <div className="wrapper">
               <div className="home">
-                <div>
+                <div className = "contactUs">
                   <h1
                     style={{
                       fontSize: "5vw",
@@ -193,7 +194,7 @@ const ContactUs = () => {
                         </button>
                       </form>
                     </section>
-                    <section>
+                    <section className = "imgContactUs">
                       <img
                         src={Punsh}
                         alt="error_push_image"

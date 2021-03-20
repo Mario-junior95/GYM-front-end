@@ -4,7 +4,7 @@
   margin-top: 3vw;
 }
 
-.rc-collapse-header >.arrow {
+.rc-collapse-header > .arrow {
   visibility: hidden !important;
 }
 .my-header-class {
@@ -79,5 +79,28 @@
     text-align: center;
     padding: 5% 0;
     font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .faqTop > h1 {
+    margin-left: -29vw !important;
+  }
+  .faqTop {
+    margin-top: 19vw !important;
+  }
+  .faqTop > h1 > span {
+    font-size: 9vw !important;
+  }
+
+  .faqTop > h1 > span > sub {
+    font-size: 4vw !important;
+  }
+
+  .rc-collapse-header,
+  .rc-collapse-content-box {
+    width: 129vw !important;
+    margin-left: -33vw !important;
+    padding: 4vw 0;
   }
 }

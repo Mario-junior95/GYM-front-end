@@ -185,3 +185,24 @@
   position: relative;
   z-index: 3;
 }
+
+@media screen and (max-width: 480px) {
+  .imageEdit {
+    display: none;
+  }
+
+  .blockEditInfo {
+    margin: 22vw 0 3vw -46.9vw;
+    position: relative;
+    z-index: 3;
+    overflow-x: hidden;
+  }
+
+  .gender > label > input {
+    width: 23vw !important;
+  }
+
+  .arrows {
+    display: none;
+  }
+}

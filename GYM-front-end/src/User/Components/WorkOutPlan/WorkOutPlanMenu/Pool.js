@@ -50,6 +50,7 @@ const Pool = () => {
       <div className="container">
         <div className="wrapper">
           <div className="home">
+          <div className="benefitsCards">
             {listMembership.map((val, index) => {
               if (index !== 0 && index === 11) {
                 return (
@@ -108,6 +109,7 @@ const Pool = () => {
       <div style={{padding: '17vw 0 0 0'}}>
       <Footer/>
       </div>
+    </div>
     </div>
   );
 };

@@ -53,3 +53,27 @@ body {
   background-repeat: repeat-x;
   opacity: 1;
 }
+
+/* Responsive  Loading  */
+
+@media only screen and (max-width: 480px) {
+  html , body {
+    background: #141414 !important;
+    width: 140vw !important;
+  
+  }
+
+
+  #root{
+  .loading{
+    position: relative;
+    padding-top: 42vw !important;
+  }
+  .wave{
+    width: 140vw !important;
+    span.loading_stroke{
+      font-size: 15vw;
+    }
+  }
+}
+}

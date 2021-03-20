@@ -104,8 +104,6 @@ const EditInfo = () => {
         setnewDateErr(error.response.data.errors.date);
         setnewGenderErr(error.response.data.errors.gender);
         console.log(error.response.data.errors.date);
-
-        // setMemberShipIdErr(error.response.data.errors.membership_id);
       }
     }
   };
@@ -115,6 +113,7 @@ const EditInfo = () => {
       <Header />
       <div style={{ display: "flex" }}>
         <img
+          className="imageEdit"
           src={Punshing}
           alt="error_wallWorkout"
           style={{

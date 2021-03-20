@@ -158,3 +158,28 @@ label input:valid + .label-text {
   height: 49vw;
   overflow: hidden;
 }
+
+@media only screen and (max-width: 480px) {
+  .LoginSection{
+    height:166vw !important;
+    /* overflow: visible; */
+    
+  }
+
+  .block{
+    display: flex;
+    flex-direction: column;
+  }
+  .leftSide{
+    height: 89vw !important;
+    margin-left: -46.5vw !important;
+  }
+  .rightSide{
+    margin-left: -46.5vw !important;
+    height: 60vw !important;
+  }
+  
+  label input{
+    width: 68vw !important;
+  }
+}

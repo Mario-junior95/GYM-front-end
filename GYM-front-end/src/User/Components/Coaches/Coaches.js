@@ -94,6 +94,7 @@ const Coaches = () => {
                       if (index % 2 === 0) {
                         return (
                           <div
+                            className="sectionCoaches"
                             key={val.id}
                             style={{ display: "flex", marginLeft: "6vw" }}
                           >
@@ -107,7 +108,7 @@ const Coaches = () => {
                               style={{ width: "45vw", margin: "20px" }}
                             />
                             <div className="coachInfo">
-                              <p>
+                              <p className="coachTitle">
                                 <strong>
                                   {"Know more about the role of "}
                                   {val.name}
@@ -115,9 +116,10 @@ const Coaches = () => {
                               </p>
                               <p>{val.description}</p>
                               <p
+                              className="coachPrice"
                                 style={{ fontWeight: "bold", fontSize: "15px" }}
                               >
-                                {val.price + "$ /hr"}
+                              <span  className="coachPrice"> {val.price + "$ /hr"}</span>
                               </p>
                               <div>
                                 {localStorage.getItem("token") ? (
@@ -169,6 +171,7 @@ const Coaches = () => {
                         return (
                           <div
                             key={val.id}
+                            className="sectionCoaches"
                             style={{
                               float: "right",
                               display: "flex",
@@ -186,7 +189,7 @@ const Coaches = () => {
                               data-aos-offset="0"
                             />
                             <div className="coachInfo">
-                              <p>
+                              <p className="coachTitle">
                                 <strong>
                                   {"Know more about the role of "}
                                   {val.name}
@@ -194,9 +197,10 @@ const Coaches = () => {
                               </p>
                               <p>{val.description}</p>
                               <p
+                               
                                 style={{ fontWeight: "bold", fontSize: "15px" }}
                               >
-                                {val.price + "$ /hr"}
+                               <span  className="coachPrice"> {val.price + "$ /hr"}</span>
                               </p>
                               <div>
                                 {localStorage.getItem("token") ? (

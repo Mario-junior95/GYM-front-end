@@ -79,6 +79,7 @@ const Home = () => {
                         margin: "0 auto",
                         width: "80%",
                       }}
+                      className = "par_home"
                       data-aos="fadeLeft"
                       data-aos-easing="ease-in-out"
                     >
@@ -109,6 +110,7 @@ const Home = () => {
                     data-aos="fadeLeft"
                     data-aos-easing="ease-in-out"
                     data-aos-delay="50"
+                    className = "horiz_home"
                     style={{
                       width: "60vw",
                       borderRadius: "100%",
@@ -131,20 +133,12 @@ const Home = () => {
                         return (
                           <div
                             key={val.id}
+                            className = "section_home"
                             style={{
                               display: "flex",
                               marginLeft: "6vw",
                             }}
                           >
-                            {/* <img
-                              data-aos="fade-zoom-in"
-                              data-aos-easing="ease-in-back"
-                              data-aos-delay="400"
-                              data-aos-offset="0"
-                              src={`http://localhost:8000/storage/${val.image}`}
-                              alt="error_coach_image"
-                              style={{ width: "45vw", margin: "20px" }}
-                            /> */}
                             <video
                               style={{
                                 width: "45vw",
@@ -167,13 +161,6 @@ const Home = () => {
                               <source src="movie.ogg" type="video/ogg" />
                               Your browser does not support the video tag.
                             </video>
-                            {/* <iframe
-                              src={`http://localhost:8000/storage/${val.image}`}
-                              frameBorder="0"
-                              allow="autoplay; encrypted-media"
-                              allowFullScreen
-                              title="video"
-                            /> */}
 
                             <div
                               className="coachInfo"
@@ -215,16 +202,8 @@ const Home = () => {
                               flexDirection: "row-reverse",
                               marginBottom: "3vw",
                             }}
+                            className = "section_home section_home_right"
                           >
-                            {/* <img
-                              src={`http://localhost:8000/storage/${val.image}`}
-                              alt="error_coach_image"
-                              style={{ width: "45vw", margin: "20px" }}
-                              data-aos="fade-zoom-in"
-                              data-aos-easing="ease-in-back"
-                              data-aos-delay="400"
-                              data-aos-offset="0"
-                            /> */}
                             <video
                               style={{
                                 width: "45vw",
@@ -233,6 +212,7 @@ const Home = () => {
                                 position: "relative",
                                 left: "4vw",
                               }}
+                             
                               loop
                               autoPlay
                               data-aos="fade-zoom-in"

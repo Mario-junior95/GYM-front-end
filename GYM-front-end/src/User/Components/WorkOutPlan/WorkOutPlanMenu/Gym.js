@@ -50,7 +50,8 @@ const Gym = () => {
       <div className="container">
         <div className="wrapper">
           <div className="home">
-          {listMembership.map((val, index) => {
+           <div className="benefitsCards">
+           {listMembership.map((val, index) => {
               if (index !== 0 && index === 1) {
                 return (
                   <div className="cardBox" key={val.id}>
@@ -103,6 +104,7 @@ const Gym = () => {
               }
             })}
             
+           </div>
           </div>
         </div>
       </div>

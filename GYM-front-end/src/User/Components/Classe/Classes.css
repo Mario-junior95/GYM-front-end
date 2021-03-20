@@ -10,26 +10,17 @@ td {
   padding: 2px;
 }
 
+@media only screen and (max-width: 480px) {
+  table {
+    width: 73vw;
+    margin-left: -15vw;
+  }
 
-/* .btnDeleteInfo {
-  background: transparent;
-  margin-right: -9vw;
-  color: #f0f0f0;
-  border: 2px solid #f0f0f0;
-  font-size: 10px;
-  letter-spacing: 2px;
-  padding: 0px 0vw;
-  margin-top: -6px;
-  text-transform: uppercase;
-  cursor: pointer;
-  display: inline-block;
-  transition: all 0.4s;
-  font-family: Impact, Arial black, sans-serif;
-  width: 17em;
+  .reservePt {
+    margin-left: -15vw !important;
+  }
+
+  .tableInstructor {
+    width: 155% !important;
+  }
 }
-
-.btnDeleteInfo:hover,
-.btnDeleteInfo:focus {
-  background-color: white;
-  color: black;
-} */

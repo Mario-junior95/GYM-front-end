@@ -28,6 +28,7 @@ const Footer = () => {
         position: "relative",
         zIndex: "1",
       }}
+      className="footer_section"
     >
       <div
         style={{
@@ -35,15 +36,19 @@ const Footer = () => {
           paddingLeft: "2vw",
           height: "13vw",
         }}
+        className="border"
       >
         <div style={{ height: 2 }} className="hover">
           <Link to="/">
-            <img src={LogoWhite} alt="error_logo" />
+            <img src={LogoWhite} alt="error_logo" className="footerImg" />
           </Link>
-          <div className="copyright">
+          <div className="copyright copyrights copyrightWorkouts">
             <span style={{ color: "white" }}>CopyRight Ⓒ 2021 .</span>
             <br />
-            <span style={{ fontWeight: "bold", fontSize: "15px" }}>
+            <span
+              style={{ fontWeight: "bold", fontSize: "15px" }}
+              className="myName"
+            >
               <a
                 target="_blank"
                 href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=karehmario@gmail.com"
@@ -69,6 +74,7 @@ const Footer = () => {
           marginLeft: "14vw",
           lineHeight: "2",
         }}
+        className="borderFooter"
       >
         <div style={{ marginTop: "1vw" }} className="hover">
           <Link
@@ -124,6 +130,7 @@ const Footer = () => {
           marginLeft: "8vw",
           lineHeight: "2",
         }}
+        className="borderFooter"
       >
         <div style={{ marginTop: "1vw" }} className="hover">
           <Link
@@ -196,6 +203,7 @@ const Footer = () => {
           marginLeft: "8vw",
           lineHeight: "2",
         }}
+        className="borderFooter"
       >
         <div style={{ marginTop: "1vw" }} className="hover">
           <Link
