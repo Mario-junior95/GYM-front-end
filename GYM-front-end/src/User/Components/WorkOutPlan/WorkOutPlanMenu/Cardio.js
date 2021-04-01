@@ -5,7 +5,6 @@ import "./Gym.css";
 
 import Axios from "axios";
 
-import Footer from "../../Footer/Footer";
 
 const Cardio = () => {
   const [listMembership, setListMembership] = useState([]);
@@ -46,7 +45,7 @@ const Cardio = () => {
   };
 
   return (
-    <div className="App" style={{ height: "49vw" }}>
+    <div className="App"  className="workout">
       <Header />
       <div className="container">
         <div className="wrapper">
@@ -106,9 +105,6 @@ const Cardio = () => {
             })}
           </div>
         </div>
-      </div>
-      <div style={{padding: '17vw 0 0 0'}}>
-      <Footer/>
       </div>
     </div>
     </div>

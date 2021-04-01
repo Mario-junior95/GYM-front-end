@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import Header from "../../Navigation/Header";
 import "./Gym.css";
 
-import Footer from "../../Footer/Footer";
 import Axios from "axios";
 
 const Gym = () => {
@@ -45,71 +44,73 @@ const Gym = () => {
   };
 
   return (
-    <div className="App" style={{ height: "49vw" }}>
+    <div className="App" className="workout">
       <Header />
       <div className="container">
         <div className="wrapper">
           <div className="home">
-           <div className="benefitsCards">
-           {listMembership.map((val, index) => {
-              if (index !== 0 && index === 1) {
-                return (
-                  <div className="cardBox" key={val.id}>
-                    <div className="card">
-                      <div className="front">
-                        <h3>{val.name}</h3>
-                        <p>{val.benefits}</p>
-                      </div>
-                      <div className="back">
-                        <p style={{ color: "red" }}>{warning}</p>
-                        <h3>{val.name}</h3>
-                        <p>
-                          {val.amount}
-                          {"$"}
-                        </p>
-                        <p>{val.date}</p>
-                        <button className="btnLogin" onClick={RedirectToLogin}>
-                          Subscribe
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                );
-              }
-            })}
-            {listMembership.map((val, index) => {
-              if (index !== 0 && index === 2) {
-                return (
-                  <div className="cardBox" key={val.id}>
-                    <div className="card">
-                      <div className="front">
-                        <h3>{val.name}</h3>
-                        <p>{val.benefits}</p>
-                      </div>
-                      <div className="back">
-                        <p style={{ color: "red" }}>{warning}</p>
-                        <h3>{val.name}</h3>
-                        <p>
-                          {val.amount}
-                          {"$"}
-                        </p>
-                        <p>{val.date}</p>
-                        <button className="btnLogin" onClick={RedirectToLogin}>
-                          Subscribe
-                        </button>
+            <div className="benefitsCards">
+              {listMembership.map((val, index) => {
+                if (index !== 0 && index === 1) {
+                  return (
+                    <div className="cardBox" key={val.id}>
+                      <div className="card">
+                        <div className="front">
+                          <h3>{val.name}</h3>
+                          <p>{val.benefits}</p>
+                        </div>
+                        <div className="back">
+                          <p style={{ color: "red" }}>{warning}</p>
+                          <h3>{val.name}</h3>
+                          <p>
+                            {val.amount}
+                            {"$"}
+                          </p>
+                          <p>{val.date}</p>
+                          <button
+                            className="btnLogin"
+                            onClick={RedirectToLogin}
+                          >
+                            Subscribe
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                );
-              }
-            })}
-            
-           </div>
+                  );
+                }
+              })}
+              {listMembership.map((val, index) => {
+                if (index !== 0 && index === 2) {
+                  return (
+                    <div className="cardBox" key={val.id}>
+                      <div className="card">
+                        <div className="front">
+                          <h3>{val.name}</h3>
+                          <p>{val.benefits}</p>
+                        </div>
+                        <div className="back">
+                          <p style={{ color: "red" }}>{warning}</p>
+                          <h3>{val.name}</h3>
+                          <p>
+                            {val.amount}
+                            {"$"}
+                          </p>
+                          <p>{val.date}</p>
+                          <button
+                            className="btnLogin"
+                            onClick={RedirectToLogin}
+                          >
+                            Subscribe
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                }
+              })}
+            </div>
           </div>
         </div>
-      </div>
-      <div style={{padding: '17vw 0 0 0'}}>
-      <Footer/>
       </div>
     </div>
   );

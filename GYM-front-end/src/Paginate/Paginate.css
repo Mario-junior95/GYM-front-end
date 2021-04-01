@@ -21,3 +21,14 @@
   background-color: black !important;
   color: white !important;
 }
+
+
+@media only screen and (max-width: 480px) {
+.pagination > .page-item > .page-link {
+  color: white;
+  border: 1px white solid;
+  margin-left: 0vw !important;
+  position: relative;
+  left: -16vw !important;
+}
+}

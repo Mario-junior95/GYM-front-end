@@ -42,7 +42,7 @@ const ViewBuyItemsRodal = (props) => {
     >
       <form className="addAdmin">
         <h1 className="Rodal_Title" style={{ textAlign: "center" }}>
-          View Items Buyed By Member
+          View Khaldoun Items
         </h1>
         <table
           style={{

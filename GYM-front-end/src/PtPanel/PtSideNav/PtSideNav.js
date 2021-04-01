@@ -131,32 +131,11 @@ export default function AdminSideNav() {
 
   /**    Logout Button Confirmation */
 
-  // const fire = () => {
-  //   confirm({
-  //     title: "Are you sure you want to Exit!!!",
-  //   })
-  //     .then(() => {
-  //         localStorage.removeItem("idPt");
-  //         localStorage.removeItem("usernamePt");
-  //         localStorage.removeItem("PtToken");
-  //         history.push("/");
-  //     })
-  //     .catch(() => {
-  //       history.push("/pt-login");
-  //     });
-  // };
-  const confirm = useConfirm();
   const fire = () => {
-    confirm({
-      title: "Hello World!",
-      description: "This is a confirm dialog",
-    })
-      .then(() => {
-        console.log("do something");
-      })
-      .catch(() => {
-        console.log("do nothing");
-      });
+    localStorage.removeItem("idPt");
+    localStorage.removeItem("usernamePt");
+    localStorage.removeItem("PtToken");
+    history.push("/");
   };
 
   const handleDrawerOpen = () => {
@@ -245,31 +224,6 @@ export default function AdminSideNav() {
           </ListItem>
         </List>
       </Drawer>
-      {/* {visible && (
-        <ChangePasswordRodal
-          visible={visible}
-          hide={hide}
-          animation={"slideLeft"}
-          duration={500}
-          closeMaskOnClick={true}
-          closeOnEsc={true}
-          height={400}
-          width={500}
-        />
-      )}
-
-      {visibleEdit && (
-        <EditAdminInfo
-          visible={visibleEdit}
-          hide={hideEdit}
-          animation={"slideLeft"}
-          duration={500}
-          closeMaskOnClick={true}
-          closeOnEsc={true}
-          height={550}
-          width={500}
-        />
-      )} */}
     </div>
   );
 }

@@ -136,10 +136,11 @@ const Shop = () => {
                 )}
                 <p style={{ color: "red" }}>{noToken}</p>
                 <div
-                className ="items"
+                  className="items"
                   style={{
                     display: "grid",
                     gridTemplateColumns: "1fr 1fr 1fr ",
+                    padding: "0 0 4vw  0",
                   }}
                 >
                   {filteredData.length === 0 ? (

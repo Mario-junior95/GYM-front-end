@@ -60,6 +60,11 @@
   transform: rotateY(180deg);
 }
 
+.workout{
+  height: 49vw !important;
+  background-color: black;
+}
+
 @-webkit-keyframes giro {
   from {
     transform: rotateY(180deg);
@@ -114,6 +119,10 @@
   .card .front {
     margin-left: -35vw !important;
     min-width: 100vw !important;
+  }
+
+  .workout{
+    margin-bottom: 20vw !important;
   }
 
 
